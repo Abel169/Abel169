@@ -12,3 +12,10 @@ ffmpeg -y -framerate 60 -i "$TMP/frames/f%05d.jpg" -i "$TMP/music.wav" \
   -c:v libx264 -preset slow -crf 17 -profile:v high -movflags +faststart \
   -c:a aac -b:a 192k -shortest okplus-showreel.mp4
 echo "-> okplus-showreel.mp4"
+
+# Version with voiceover (voice generated with ElevenLabs, saved in assets/voiceover.mp3)
+ffmpeg -y -i assets/voiceover.mp3 -ar 44100 -ac 1 "$TMP/voice.wav"
+python3 mix_voice.py "$TMP/music.wav" "$TMP/voice.wav" "$TMP/mix.wav"
+ffmpeg -y -i okplus-showreel.mp4 -i "$TMP/mix.wav" -map 0:v -map 1:a -c:v copy -af "volume=-3.1dB" \
+  -c:a aac -b:a 192k -movflags +faststart okplus-showreel-voix.mp4
+echo "-> okplus-showreel-voix.mp4"
