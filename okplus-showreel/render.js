@@ -1,15 +1,18 @@
 // Usage:
 //   node render.js preview <outdir> t1 t2 ...     -> PNG stills at given times
+//   (PAGE=vertical.html SIZE=1080x1920 for the 9:16 version)
 //   node render.js frames <outdir> <fps> <workers> -> numbered JPEG frames for the whole film
 const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
 
-const URL = 'file://' + path.join(__dirname, 'index.html');
+const PAGE = process.env.PAGE || 'index.html';
+const [VW, VH] = (process.env.SIZE || '1920x1080').split('x').map(Number);
+const URL = 'file://' + path.join(__dirname, PAGE);
 const DUR = 30;
 
 async function openPage(browser) {
-  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
+  const page = await browser.newPage({ viewport: { width: VW, height: VH }, deviceScaleFactor: 1 });
   await page.goto(URL);
   await page.evaluate(() => window.ready);
   await page.waitForTimeout(300);

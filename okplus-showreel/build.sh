@@ -19,3 +19,11 @@ python3 mix_voice.py "$TMP/music.wav" "$TMP/voice.wav" "$TMP/mix.wav"
 ffmpeg -y -i okplus-showreel.mp4 -i "$TMP/mix.wav" -map 0:v -map 1:a -c:v copy -af "volume=-3.1dB" \
   -c:a aac -b:a 192k -movflags +faststart okplus-showreel-voix.mp4
 echo "-> okplus-showreel-voix.mp4"
+
+# 9:16 version for social media (same timing, vertical layouts in vertical.html, with voiceover)
+PAGE=vertical.html SIZE=1080x1920 node render.js frames "$TMP/vframes" 60 4
+ffmpeg -y -framerate 60 -i "$TMP/vframes/f%05d.jpg" -i "$TMP/mix.wav" \
+  -vf "tmix=frames=2,fps=30,format=yuv420p" -af "volume=-3.1dB" \
+  -c:v libx264 -preset slow -crf 18 -profile:v high -movflags +faststart \
+  -c:a aac -b:a 192k -shortest okplus-showreel-9x16.mp4
+echo "-> okplus-showreel-9x16.mp4"
