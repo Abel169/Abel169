@@ -1,0 +1,19 @@
+<svg viewBox="0 0 1300 420" xmlns="http://www.w3.org/2000/svg">
+ <g fill="none" stroke="#fff">
+  <circle cx="215" cy="262" r="116" stroke-width="7"/>
+ </g>
+ <g fill="#fff">
+  <polygon points="146,196 178,186 178,210 146,218"/>
+  <rect x="150" y="226" width="26" height="110"/>
+  <path d="M190 190 H238 A73 73 0 0 1 238 336 H190 Z M216 214 V312 H236 A49 49 0 0 0 236 214 Z" fill-rule="evenodd"/>
+  <polygon points="186,340 186,292 216,256 216,340" fill="var(--logo-bg,#000)"/>
+  <rect x="383" y="168" width="15" height="134"/>
+  <path d="M420 168 H468 A32 32 0 0 1 468 232 H420 Z M434 180 V220 H466 A20 20 0 0 0 466 180 Z M420 232 H472 A35 35 0 0 1 472 302 H420 Z M434 244 V290 H470 A23 23 0 0 0 470 244 Z" fill-rule="evenodd"/>
+  <polygon points="560,168 576,168 630,302 614,302 568,186 522,302 506,302"/>
+  <rect x="560" y="262" width="34" height="13"/>
+  <path d="M716 168 H752 A67 67 0 0 1 752 302 H698 V214 H712 V289 H750 A54 54 0 0 0 750 181 H716 Z"/>
+  <rect x="822" y="168" width="74" height="14"/><rect x="822" y="228" width="74" height="14"/><rect x="822" y="288" width="74" height="14"/>
+  <text x="905" y="302" font-family="Outfit" font-weight="400" font-size="186" textLength="395" lengthAdjust="spacingAndGlyphs">SIGN</text>
+  <text x="380" y="372" font-family="Outfit" font-weight="400" font-size="62" textLength="912" lengthAdjust="spacing">PRET A PORTER</text>
+ </g>
+</svg>
