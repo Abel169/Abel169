@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Job Academy · Spot</title>
+<style>
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-900-normal.woff2);font-weight:900}
+@font-face{font-family:Play;src:url(fonts/playfair-display-latin-700-italic.woff2);font-weight:700;font-style:italic}
+:root{--b:#0546A2;--b2:#062A66;--b3:#0A5BD0;--y:#FDCC06;--y2:#FFE27A;--w:#FFFFFF;--tie:#CFE0F5;--ink:#0B1B33}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+body{font-family:Mont,sans-serif;color:var(--w)}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--b2)}
+#world{position:absolute;inset:0}
+.scene{position:absolute;inset:0;overflow:hidden;display:none}
+.a{position:absolute;left:0;top:0;will-change:transform,opacity}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .05em .14em;margin-bottom:-.14em}
+.wi{display:inline-block;will-change:transform}
+.h{font-weight:900;letter-spacing:-3px;line-height:1.02;white-space:nowrap}
+.lab{font-weight:800;font-size:26px;letter-spacing:8px;white-space:nowrap}
+svg.ic{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.card{background:#fff;border-radius:34px;box-shadow:0 30px 70px rgba(6,42,102,.25)}
+.grid{background-image:linear-gradient(rgba(255,255,255,.06) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.06) 2px,transparent 2px);background-size:90px 90px}
+#sig{position:absolute;left:0;width:1080px;top:1846px;text-align:center;font-family:Mont;font-weight:800;font-size:22px;letter-spacing:9px;z-index:20;pointer-events:none}
+#grain{position:absolute;inset:0;width:1080px;height:1920px;mix-blend-mode:overlay;opacity:.06;pointer-events:none}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.stripe{position:absolute;left:-300px;width:1700px;height:2600px;top:0}
+</style>
+</head>
+<body>
+<div id="stage" style="background:radial-gradient(ellipse at 50% 35%,#0A5BD0 0%,#0546A2 45%,#062A66 100%)">
+  <div class="a" style="width:2800px;height:2800px;left:-860px;top:-700px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.06) 0deg 6deg,transparent 6deg 18deg);-webkit-mask-image:radial-gradient(circle,#000 10%,transparent 60%)"></div>
+  <div class="a grid" style="width:1080px;height:1920px"></div>
+  <div class="a" id="lg" style="width:170px;height:170px;left:455px;top:285px"></div>
+  <div class="a h" style="width:1080px;text-align:center;top:480px;font-size:84px">Diplôme en poche,</div>
+  <div class="a h" style="width:1080px;text-align:center;top:575px;font-size:84px">mais pas de job ?</div>
+  <div class="a" style="width:1080px;text-align:center;top:700px"><span style="display:inline-block;background:#FDCC06;color:#062A66;font-weight:900;font-size:58px;padding:14px 34px;border-radius:20px;transform:rotate(-2deg);letter-spacing:-1px">Décroche le job de tes rêves</span></div>
+  <div class="a" style="width:420px;height:420px;left:70px;top:1030px;border-radius:30px;overflow:hidden;transform:rotate(-10deg);box-shadow:0 30px 70px rgba(0,0,0,.4)"><img src="assets/p_amphi.jpg" style="width:100%;height:100%;object-fit:cover"></div>
+  <div class="a" style="width:420px;height:420px;left:590px;top:1030px;border-radius:30px;overflow:hidden;transform:rotate(10deg);box-shadow:0 30px 70px rgba(0,0,0,.4)"><img src="assets/p_cv.jpg" style="width:100%;height:100%;object-fit:cover"></div>
+  <div class="a" style="width:470px;height:470px;left:305px;top:960px;border-radius:32px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.5);border:6px solid #fff"><img src="assets/p_talents.jpg" style="width:100%;height:100%;object-fit:cover"></div>
+  <div class="a" style="width:1080px;text-align:center;top:1500px;font-weight:900;font-size:58px">job-academy<span style="color:#FDCC06">.online</span></div>
+  <div class="a" style="width:1080px;text-align:center;top:1846px;font-weight:800;font-size:22px;letter-spacing:9px;color:rgba(255,255,255,.6)">SOGOBA CRÉATIVE</div>
+</div>
+<script>
+function logoSVG(){return `<svg viewBox="0 0 100 100" style="width:100%;height:100%;overflow:visible">
+  <circle class="ld" cx="50" cy="50" r="46" fill="#0546A2" style="transform-box:fill-box;transform-origin:50% 50%"/>
+  <circle class="lr" cx="50" cy="50" r="46" fill="none" stroke="#FDCC06" stroke-width="2.4" pathLength="1" transform="rotate(-90 50 50)"/>
+  <g class="lcol" fill="#fff" style="transform-box:fill-box;transform-origin:50% 0">
+    <path d="M27 23 L50 33 L45 44 L29 37 Z"/><path d="M73 23 L50 33 L55 44 L71 37 Z"/></g>
+  <g class="ltie" style="transform-box:view-box;transform-origin:50px 33px">
+    <path d="M45 33 H55 L53 41 H47 Z" fill="#E9F1FB"/>
+    <path d="M47 41 H53 L57 72 L50 80 L43 72 Z" fill="#CFE0F5"/>
+    <path d="M48.5 43 L51 43 L54 70 L50 75 Z" fill="#fff" opacity=".45"/></g></svg>`}
+
+document.getElementById('lg').innerHTML=logoSVG();
+window.ready=Promise.all([document.fonts.ready,...[...document.images].map(i=>i.decode().catch(()=>{}))]);
+</script></body></html>
