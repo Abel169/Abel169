@@ -40,6 +40,13 @@ att, rel = 64 / (.04 * SR), 64 / (.25 * SR)
 for i in range(0, N, 64):
     tgt = act[i]; g = min(tgt, g + att) if tgt > g else max(tgt, g - rel); duck[i:i + 64] = g
 
-mix = m * (1 - .62 * duck)[:, None] * .8 + fx * (1 - .35 * duck)[:, None] * .75 + vt[:, None] * .8
+# voice-forward balance: music ~-9 dB and SFX ~-6 dB under the voice
+mg = (1 - .66 * duck)[:, None] * .72
+fg = (1 - .5 * duck)[:, None] * .6
+mix = m * mg + fx * fg + vt[:, None] * 1.0
+# report voice vs music level while the voice is speaking
+on = duck > .9
+rv = np.sqrt(np.mean(vt[on] ** 2)); rm = np.sqrt(np.mean((m * mg)[on] ** 2)); rf = np.sqrt(np.mean((fx * fg)[on] ** 2))
+print(f'voix vs musique: +{20*np.log10(rv/rm):.1f} dB | voix vs effets: +{20*np.log10(rv/rf):.1f} dB')
 mix = np.tanh(mix * 1.05); mix /= np.max(np.abs(mix)) * 1.06
 wavfile.write(out, SR, (mix * 32767).astype(np.int16)); print('ok')
