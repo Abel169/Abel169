@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Sogoba Créative · Présentation</title>
+<style>
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-900-normal.woff2);font-weight:900}
+:root{--c1:#25F4EE;--c2:#8B5CF6;--c3:#FE2C55;--gr:linear-gradient(100deg,#25F4EE 0%,#8B5CF6 50%,#FE2C55 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+body{font-family:Mont,sans-serif;color:#fff}
+#stage{position:absolute;inset:0;overflow:hidden;background:#07070C}
+#bg{position:absolute;inset:-200px;background:radial-gradient(ellipse at 15% 10%,rgba(139,92,246,.55) 0%,rgba(139,92,246,0) 45%),radial-gradient(ellipse at 90% 95%,rgba(254,44,85,.45) 0%,rgba(254,44,85,0) 45%),radial-gradient(ellipse at 90% 20%,rgba(37,244,238,.18) 0%,rgba(37,244,238,0) 40%)}
+.scene{position:absolute;inset:0;display:none}
+.a{position:absolute;left:0;top:0;will-change:transform,opacity}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .14em;margin-bottom:-.14em}
+.wi{display:inline-block;will-change:transform}
+.t{font-weight:800;white-space:nowrap;text-align:center;width:1920px}
+.small{font-weight:600;font-size:40px;color:rgba(255,255,255,.85)}
+.big{font-weight:900;font-size:110px;letter-spacing:-3px;line-height:1.05}
+.pill{display:inline-block;padding:4px 30px 10px;border-radius:22px;background:var(--gr);color:#07070C;font-weight:900;letter-spacing:-2px}
+.phone{width:400px;height:800px;border-radius:58px;background:#111;padding:12px;box-shadow:0 0 0 2px #2a2a33 inset,0 40px 90px rgba(0,0,0,.6)}
+.phone .s{width:376px;height:776px;border-radius:46px;overflow:hidden;background:#000;position:relative}
+.phone .s img{width:100%;height:100%;object-fit:cover;display:block}
+.tile{width:220px;height:390px;border-radius:26px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.offer{width:940px;left:900px;padding:26px 36px;border-radius:32px;background:linear-gradient(160deg,#181822,#0f0f16);border:2px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:26px;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:30px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);font-weight:800;font-size:27px;white-space:nowrap}
+#grain{position:absolute;inset:0;width:1920px;height:1080px;mix-blend-mode:overlay;opacity:.07;pointer-events:none;z-index:50}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:51}
+</style>
+</head>
+<body>
+<div id="stage"><div id="bg"></div><div id="world" class="a" style="width:1920px;height:1080px">
+
+<!-- S1 0–8 capture -> pub -->
+<div class="scene" id="s1">
+  <div class="a t small" id="s1a" style="left:0;width:1150px;top:330px"></div>
+  <div class="a t big" id="s1b" style="left:0;width:1150px;top:385px"></div>
+  <div class="a t" id="s1c" style="left:0;width:1150px;top:540px;font-size:64px"></div>
+  <div class="a" id="s1ph" style="perspective:2200px"><div class="phone" id="s1phi"><div class="s"><img id="s1img" src="assets/ja_flat.jpg"></div></div></div>
+  <div class="a" id="s1scan" style="width:400px;height:10px;border-radius:5px;background:var(--gr);box-shadow:0 0 30px #8B5CF6"></div>
+</div>
+
+<!-- S2 8–11.5 wall + name -->
+<div class="scene" id="s2">
+  <div class="a" id="s2wall" style="width:1600px;height:2400px;left:160px;top:-700px;transform-origin:50% 50%"></div>
+  <div class="a" style="width:1920px;height:1080px;background:radial-gradient(ellipse at center,rgba(7,7,12,.55) 0%,rgba(7,7,12,.92) 70%)"></div>
+  <div class="a t small" id="s2a" style="top:340px">Ça, c'est</div>
+  <div class="a t big" id="s2b" style="top:400px;font-size:150px;letter-spacing:-5px">SOGOBA</div>
+  <div class="a t" id="s2c" style="top:570px;font-size:110px"><span class="pill">CRÉATIVE</span></div>
+</div>
+
+<!-- S3 11.5–24 portfolio -->
+<div class="scene" id="s3">
+  <div class="a t small" id="s3a" style="top:50px">Je crée des</div>
+  <div class="a t" id="s3cat" style="top:105px;font-size:96px"></div>
+  <div id="s3phones"></div>
+  <div class="a t" id="s3end" style="top:480px;font-size:96px;font-weight:900;letter-spacing:-2px"></div>
+</div>
+
+<!-- S4 24–29 problem -->
+<div class="scene" id="s4">
+  <div class="a t big" id="s4a" style="left:0;width:1150px;top:300px;font-size:84px"></div>
+  <div class="a t small" id="s4b" style="left:0;width:1150px;top:430px;font-size:54px"></div>
+  <div class="a t" id="s4c" style="left:0;width:1150px;top:510px;font-size:110px"><span class="pill" style="background:#FE2C55;color:#fff">LE VOIT ?</span></div>
+  <div class="a" id="s4card" style="width:520px;padding:24px;border-radius:30px;background:#16161f;border:2px solid rgba(255,255,255,.1)">
+    <div style="height:520px;border-radius:20px;background:linear-gradient(160deg,#2a2a35,#1a1a22);display:grid;place-items:center;font-size:120px;filter:grayscale(1);opacity:.5">🛍️</div>
+    <div style="display:flex;justify-content:space-between;margin-top:18px;font-weight:800;font-size:32px;color:#777"><span>👁 <span id="s4v">0</span> vues</span><span>♡ 0</span></div></div>
+</div>
+
+<!-- S5 29–40 offers -->
+<div class="scene" id="s5">
+  <div class="a" id="s5ring" style="width:330px;height:330px;border-radius:50%;padding:10px;background:conic-gradient(from 0deg,#25F4EE,#8B5CF6,#FE2C55,#25F4EE)">
+    <div style="width:100%;height:100%;border-radius:50%;border:8px solid #07070C;background:url(assets/portrait.jpg) center 20%/cover"></div></div>
+  <div class="a t" id="s5n" style="left:0;width:840px;top:460px;font-weight:900;font-size:62px;letter-spacing:-1px">SOGOBA CRÉATIVE</div>
+  <div class="a t" id="s5l" style="left:0;width:840px;top:540px;font-weight:800;font-size:30px;letter-spacing:8px;color:#25F4EE">OFFRES DE LANCEMENT</div>
+  <div id="s5offers"></div>
+  <div class="a" id="s5perks" style="width:760px;left:40px;top:640px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px"></div>
+</div>
+
+<!-- S6 40–46 CTA -->
+<div class="scene" id="s6">
+  <div class="a" id="s6rays" style="width:2800px;height:2800px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.06) 0deg 6deg,transparent 6deg 18deg);-webkit-mask-image:radial-gradient(circle,#000 10%,transparent 60%)"></div>
+  <div class="a t big" id="s6a" style="top:150px;font-size:100px"></div>
+  <div class="a" id="s6wa" style="display:flex;align-items:center;gap:22px;padding:30px 50px;border-radius:60px;background:#25D366;color:#062B14;font-weight:900;font-size:60px;white-space:nowrap;box-shadow:0 30px 70px rgba(37,211,102,.4)">
+    <svg width="74" height="74" viewBox="0 0 24 24"><path fill="#062B14" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.1z"/></svg>
+    +223 64 97 57 93</div>
+  <div class="a t" id="s6b" style="top:640px;font-weight:900;font-size:64px"><span style="background:var(--gr);-webkit-background-clip:text;color:transparent">@sogobacreative</span></div>
+  <div class="a t" id="s6c" style="top:760px;font-weight:700;font-size:38px;color:rgba(255,255,255,.85)">Sogoba Créative · À toi de briller ✨</div>
+</div>
+
+</div>
+<canvas id="grain" width="640" height="360"></canvas>
+<div id="flash"></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const EZ={lin:x=>x,outCubic:x=>1-Math.pow(1-x,3),inCubic:x=>x*x*x,inOutCubic:x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,
+ outExpo:x=>x>=1?1:1-Math.pow(2,-10*x),inExpo:x=>x<=0?0:Math.pow(2,10*x-10),outBack:x=>{const c1=1.8,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)}};
+const E=(t,a,b,e='outExpo')=>EZ[e](seg(t,a,b));
+function tf(el,o){const {x=0,y=0,s=1,r=0,ry=0,rx=0,c=true,op,blur}=o;
+  el.style.transform=`translate(${x}px,${y}px)${c?' translate(-50%,-50%)':''} rotateX(${rx}deg) rotateY(${ry}deg) rotate(${r}deg) scale(${s})`;
+  if(op!==undefined)el.style.opacity=op;if(blur!==undefined)el.style.filter=blur>.05?`blur(${blur}px)`:'none';}
+function show(id,t,a,b){const v=t>=a&&t<b;$(id).style.display=v?'block':'none';return v}
+const words=txt=>txt.split(' ').map(w=>`<span class="w"><span class="wi">${w}</span></span>`).join(' ');
+function animW(el,t,t0,stag=.07,dur=.5){el.querySelectorAll('.wi').forEach((w,i)=>{const p=E(t,t0+i*stag,t0+i*stag+dur);w.style.transform=`translateY(${(1-p)*110}%)`})}
+const setSrc=(img,src)=>{if(img.getAttribute('src')!==src)img.setAttribute('src',src)};
+const N={ja:138,sg:102,ok:102,sp:102,mc:102,mc2:102,ja2:102,zv:102,zv2:102,sg2:102};
+const fr=(k,lt)=>`clips/${k}_${String(clamp(Math.floor(lt*30)+1,1,N[k])).padStart(3,'0')}.jpg`;
+
+/* build */
+$('s1a').innerHTML=words('Une simple');$('s1b').innerHTML=words("capture d'écran…");
+$('s2wall').innerHTML=Array.from({length:42},(_,i)=>`<div class="tile a" style="left:${(i%7)*232}px;top:${Math.floor(i/7)*402}px"><img src="assets/thumbs/th${i%16}.jpg"></div>`).join('');
+const CAT=[[11.5,'SPOTS PUB',['sg','sp','ok']],[15.3,'TUTOS D\'APPLIS',['mc','ja2','mc2']],[19.1,'CAMPAGNES',['zv','sg2','zv2']]];
+$('s3phones').innerHTML=[0,1,2].map(i=>`<div class="a s3p" style="perspective:2000px"><div class="phone"><div class="s"><img></div></div></div>`).join('');
+$('s3end').innerHTML=words('Je donne vie à tes idées.');
+$('s4a').innerHTML=words('Ton produit est bon…');$('s4b').innerHTML=words('mais personne ne');
+const OF=[['Starter','Pub 15 s avec tes photos + musique','20 000'],['Pro','Pub 30 s motion design + voix off','40 000'],['Campagne','3 pubs + 3 visuels réseaux','90 000']];
+$('s5offers').innerHTML=OF.map(([n,d,p],i)=>`<div class="a offer s5o" style="top:${170+i*235}px"><div style="width:96px;height:96px;border-radius:26px;background:var(--gr);display:grid;place-items:center;color:#07070C;font-weight:900;font-size:44px;flex:none">${i+1}</div>
+ <div style="flex:1"><div style="font-weight:900;font-size:44px">${n}</div><div style="font-weight:600;font-size:24px;color:rgba(255,255,255,.7)">${d}</div></div>
+ <div style="text-align:right;white-space:nowrap"><div style="font-weight:900;font-size:48px;background:var(--gr);-webkit-background-clip:text;color:transparent">${p}</div><div style="font-weight:800;font-size:22px;color:rgba(255,255,255,.7)">FCFA</div></div></div>`).join('');
+$('s5perks').innerHTML=['⚡ Livraison 48 h','🎙️ Voix off incluse','📱 Tous formats','🟠 Orange Money'].map(p=>`<div class="chip s5c">${p}</div>`).join('');
+$('s6a').innerHTML=words('Écris-moi !');
+
+const gctx=$('grain').getContext('2d');const gimg=gctx.createImageData(640,360);
+function grain(f){let s=(f*7919+13)%2147483647||1;const d=gimg.data;for(let i=0;i<d.length;i+=4){s=(s*16807)%2147483647;const v=s&255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255}gctx.putImageData(gimg,0,0)}
+
+function render(t,frame){
+  let shx=0,shy=0;for(const [st,a] of [[3.2,10],[5.4,10],[8,14],[11.5,8],[15.3,8],[19.1,8],[24,8],[29,10],[40,12]]){const k=seg(t,st,st+.35);if(k>0&&k<1){const m=a*(1-k)**2;shx+=Math.sin(t*95)*m;shy+=Math.cos(t*81)*m}}
+  $('world').style.transform=`translate(${shx}px,${shy}px)`;
+  let fl=0;for(const [st,a] of [[3.2,.35],[8,.6],[29,.3],[40,.4]]){const k=seg(t,st,st+.4);if(t>=st&&k<1)fl=Math.max(fl,a*(1-EZ.outCubic(k)))}
+  $('flash').style.opacity=fl;
+  $('bg').style.transform=`rotate(${Math.sin(t*.2)*6}deg) scale(${1+.05*Math.sin(t*.3)})`;
+
+  /* S1 */
+  if(show('s1',t,0,8.05)){
+    animW($('s1a'),t,.15,.08,.5);animW($('s1b'),t,.4,.08,.5);
+    // texts: phase 1 "capture d'écran", phase 2 "prend du MOUVEMENT", phase 3 "devient une PUB"
+    const ph=t<3.2?0:t<5.4?1:2;
+    $('s1c').innerHTML=ph===0?'':ph===1?'prend du <span class="pill">MOUVEMENT</span>':'devient une <span class="pill">PUB</span>';
+    const cp=ph===0?0:E(t,ph===1?3.2:5.4,(ph===1?3.2:5.4)+.4,'outBack');tf($('s1c'),{c:false,x:0,y:0,s:1,op:clamp(cp*2)});$('s1c').style.transform=`scale(${lerp(1.4,1,cp)})`;
+    const pin=E(t,.5,1.3,'outBack');
+    const big=E(t,5.4,6.2,'inOutCubic');
+    tf($('s1ph'),{x:1450,y:560+(1-pin)*900,s:lerp(.92,1.0,big)});
+    $('s1phi').style.transform=`rotateY(${lerp(-18,0,E(t,3.2,4.0,'inOutCubic'))}deg) rotateX(${lerp(10,0,E(t,3.2,4.0,'inOutCubic'))}deg)`;
+    const img=$('s1img');
+    if(t<3.2){setSrc(img,'assets/ja_flat.jpg');img.style.filter=`grayscale(1) brightness(.85)`;img.style.objectPosition='50% 0';}
+    else{setSrc(img,fr('ja',t-3.2));img.style.filter='none';img.style.objectPosition='50% 50%';}
+    const sc=seg(t,2.2,3.2);tf($('s1scan'),{x:1450,y:560-370+sc*740,op:t>2.2&&t<3.25?1:0});
+    if(t>=2.2&&t<3.2)img.style.filter=`grayscale(${1-sc}) brightness(${.85+sc*.15})`;
+    const ex=E(t,7.6,8.05,'inExpo');$('s1').style.transform=`scale(${1+ex*.4})`;$('s1').style.opacity=1-ex;
+  }
+
+  /* S2 */
+  if(show('s2',t,8,11.55)){
+    const w=$('s2wall');w.style.transform=`perspective(1600px) rotateX(${lerp(40,25,seg(t,8,11.5))}deg) rotateZ(-8deg) translateY(${-(t-8)*60}px) scale(${lerp(1.3,1,E(t,8,8.8))})`;
+    w.style.filter=`blur(${E(t,8.6,9.4)*5}px)`;
+    tf($('s2a'),{c:false,op:E(t,8.5,8.9)});
+    $('s2b').style.opacity=E(t,8.7,9.1);$('s2b').style.letterSpacing=lerp(40,-5,E(t,8.7,9.6))+'px';
+    const c=E(t,9.3,9.7,'outBack');$('s2c').style.transform=`scale(${c})`;$('s2c').style.opacity=clamp(c*2);
+    const ex=E(t,11.15,11.55,'inExpo');$('s2').style.transform=`scale(${1-ex*.2})`;$('s2').style.opacity=1-ex;
+  }
+
+  /* S3 */
+  if(show('s3',t,11.5,24.05)){
+    tf($('s3a'),{c:false,op:E(t,11.5,11.9)*(1-E(t,22.6,23,'lin'))});
+    let ci=0;CAT.forEach((c,i)=>{if(t>=c[0])ci=i});const [c0,name,clips]=CAT[ci];
+    const cp=E(t,c0,c0+.4,'outBack');$('s3cat').innerHTML=`<span class="pill">${name}</span>`;$('s3cat').style.transform=`scale(${lerp(1.5,1,cp)})`;$('s3cat').style.opacity=clamp(cp*2)*(1-E(t,22.6,23,'lin'));
+    document.querySelectorAll('.s3p').forEach((p,i)=>{const enter=E(t,c0+i*.12,c0+i*.12+.6,'outBack');const out=ci<2?E(t,CAT[ci+1][0]-.35,CAT[ci+1][0],'inCubic'):E(t,22.5,23.0,'inCubic');
+      const X=[500,960,1420][i],Y=[660,630,660][i];
+      tf(p,{x:X+(1-enter)*1200-out*1200,y:Y+(i===1?0:20)+Math.sin(t*1.4+i)*10,s:(i===1?.82:.7),r:[-7,0,7][i]});
+      p.querySelector('.phone').style.transform=`rotateY(${[-14,0,14][i]}deg)`;p.style.zIndex=i===1?3:1;
+      setSrc(p.querySelector('img'),fr(clips[i],t-c0));});
+    animW($('s3end'),t,22.9,.08,.5);
+    const ex=E(t,23.7,24.05,'inExpo');$('s3').style.opacity=1-ex;
+  }
+
+  /* S4 */
+  if(show('s4',t,24,29.05)){
+    animW($('s4a'),t,24.1,.08,.5);animW($('s4b'),t,25.0,.08,.5);
+    const c=E(t,25.6,26.0,'outBack');$('s4c').style.transform=`scale(${lerp(1.6,1,c)}) rotate(${(1-c)*-8}deg)`;$('s4c').style.opacity=clamp(c*2);
+    const cd=E(t,24.4,25.0);tf($('s4card'),{x:1450,y:550+(1-cd)*500,r:-3,op:cd,s:1.05});
+    $('s4v').textContent=t<26.2?'0':String(Math.min(12,Math.floor((t-26.2)*8)));
+    const ex=E(t,28.65,29.05,'inExpo');$('s4').style.transform=`scale(${1+ex*.3})`;$('s4').style.opacity=1-ex;
+  }
+
+  /* S5 */
+  if(show('s5',t,29,40.05)){
+    const r=E(t,29.1,29.6,'outBack');tf($('s5ring'),{x:420,y:290,s:r*.85});$('s5ring').style.backgroundImage=`conic-gradient(from ${t*120}deg,#25F4EE,#8B5CF6,#FE2C55,#25F4EE)`;
+    tf($('s5n'),{c:false,op:E(t,29.5,29.9)});tf($('s5l'),{c:false,op:E(t,29.8,30.2)});
+    document.querySelectorAll('.s5o').forEach((o,i)=>{const p=E(t,30.5+i*.7,31.1+i*.7);o.style.transform=`translateX(${(1-p)*(i%2?-1100:1100)}px)`;o.style.opacity=clamp(p*2)});
+    document.querySelectorAll('.s5c').forEach((c,i)=>{const p=E(t,35.6+i*.3,36.0+i*.3,'outBack');c.style.transform=`scale(${p})`;c.style.opacity=clamp(p*3)});
+    const ex=E(t,39.65,40.05,'inExpo');$('s5').style.transform=`translateY(${-ex*1080}px)`;
+  }
+
+  /* S6 */
+  if(show('s6',t,40,47.01)){
+    tf($('s6rays'),{x:960,y:480,r:t*10});
+    animW($('s6a'),t,40.1,.08,.5);
+    const w=E(t,40.4,40.9,'outBack');tf($('s6wa'),{x:960,y:470,s:w*(1+(t>41.5?.03*Math.sin((t-41.5)*6):0))});
+    tf($('s6b'),{c:false,y:(1-E(t,42.0,42.5))*30,op:E(t,42.0,42.5)});
+    tf($('s6c'),{c:false,op:E(t,42.6,43.1)});
+  }
+  grain(frame);
+}
+window.render=render;
+window.settle=()=>Promise.all([...document.images].filter(i=>i.getAttribute('src')&&!i.complete).map(i=>i.decode().catch(()=>{})));
+window.ready=Promise.all([document.fonts.ready,...[...document.images].map(i=>i.decode().catch(()=>{}))]);
+</script>
+</body>
+</html>

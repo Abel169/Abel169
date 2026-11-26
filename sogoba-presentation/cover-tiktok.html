@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Sogoba Créative · Présentation</title>
+<style>:root{--W:1080px;--H:1920px}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-900-normal.woff2);font-weight:900}
+:root{--c1:#25F4EE;--c2:#8B5CF6;--c3:#FE2C55;--gr:linear-gradient(100deg,#25F4EE 0%,#8B5CF6 50%,#FE2C55 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:var(--W);height:var(--H);overflow:hidden;background:#000}
+body{font-family:Mont,sans-serif;color:#fff}
+#stage{position:absolute;inset:0;overflow:hidden;background:#07070C}
+#bg{position:absolute;inset:-200px;background:radial-gradient(ellipse at 15% 10%,rgba(139,92,246,.55) 0%,rgba(139,92,246,0) 45%),radial-gradient(ellipse at 90% 95%,rgba(254,44,85,.45) 0%,rgba(254,44,85,0) 45%),radial-gradient(ellipse at 90% 20%,rgba(37,244,238,.18) 0%,rgba(37,244,238,0) 40%)}
+.scene{position:absolute;inset:0;display:none}
+.a{position:absolute;left:0;top:0;will-change:transform,opacity}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .14em;margin-bottom:-.14em}
+.wi{display:inline-block;will-change:transform}
+.t{font-weight:800;white-space:nowrap;text-align:center;width:1080px}
+.small{font-weight:600;font-size:40px;color:rgba(255,255,255,.85)}
+.big{font-weight:900;font-size:110px;letter-spacing:-3px;line-height:1.05}
+.pill{display:inline-block;padding:4px 30px 10px;border-radius:22px;background:var(--gr);color:#07070C;font-weight:900;letter-spacing:-2px}
+.phone{width:400px;height:800px;border-radius:58px;background:#111;padding:12px;box-shadow:0 0 0 2px #2a2a33 inset,0 40px 90px rgba(0,0,0,.6)}
+.phone .s{width:376px;height:776px;border-radius:46px;overflow:hidden;background:#000;position:relative}
+.phone .s img{width:100%;height:100%;object-fit:cover;display:block}
+.tile{width:220px;height:390px;border-radius:26px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.offer{width:940px;left:70px;padding:26px 36px;border-radius:32px;background:linear-gradient(160deg,#181822,#0f0f16);border:2px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:26px;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:30px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);font-weight:800;font-size:27px;white-space:nowrap}
+#grain{position:absolute;inset:0;width:1080px;height:1920px;mix-blend-mode:overlay;opacity:.07;pointer-events:none;z-index:50}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:51}
+</style>
+</head>
+<body><div id="stage" style="width:1080px;height:1920px"><div id="bg"></div>
+<div class="a" style="left:-60px;top:250px;transform:rotate(-8deg)"><div class="tile a" style="left:0px;top:0px;opacity:.35"><img src="assets/thumbs/th0.jpg"></div><div class="tile a" style="left:232px;top:0px;opacity:.35"><img src="assets/thumbs/th3.jpg"></div><div class="tile a" style="left:464px;top:0px;opacity:.35"><img src="assets/thumbs/th6.jpg"></div><div class="tile a" style="left:696px;top:0px;opacity:.35"><img src="assets/thumbs/th9.jpg"></div><div class="tile a" style="left:928px;top:0px;opacity:.35"><img src="assets/thumbs/th12.jpg"></div><div class="tile a" style="left:0px;top:402px;opacity:.35"><img src="assets/thumbs/th15.jpg"></div><div class="tile a" style="left:232px;top:402px;opacity:.35"><img src="assets/thumbs/th2.jpg"></div><div class="tile a" style="left:464px;top:402px;opacity:.35"><img src="assets/thumbs/th5.jpg"></div><div class="tile a" style="left:696px;top:402px;opacity:.35"><img src="assets/thumbs/th8.jpg"></div><div class="tile a" style="left:928px;top:402px;opacity:.35"><img src="assets/thumbs/th11.jpg"></div><div class="tile a" style="left:0px;top:804px;opacity:.35"><img src="assets/thumbs/th14.jpg"></div><div class="tile a" style="left:232px;top:804px;opacity:.35"><img src="assets/thumbs/th1.jpg"></div><div class="tile a" style="left:464px;top:804px;opacity:.35"><img src="assets/thumbs/th4.jpg"></div><div class="tile a" style="left:696px;top:804px;opacity:.35"><img src="assets/thumbs/th7.jpg"></div><div class="tile a" style="left:928px;top:804px;opacity:.35"><img src="assets/thumbs/th10.jpg"></div><div class="tile a" style="left:0px;top:1206px;opacity:.35"><img src="assets/thumbs/th13.jpg"></div><div class="tile a" style="left:232px;top:1206px;opacity:.35"><img src="assets/thumbs/th0.jpg"></div><div class="tile a" style="left:464px;top:1206px;opacity:.35"><img src="assets/thumbs/th3.jpg"></div><div class="tile a" style="left:696px;top:1206px;opacity:.35"><img src="assets/thumbs/th6.jpg"></div><div class="tile a" style="left:928px;top:1206px;opacity:.35"><img src="assets/thumbs/th9.jpg"></div></div>
+<div class="a" style="width:1080px;height:1920px;background:radial-gradient(ellipse at 50% 45%,rgba(7,7,12,.55) 0%,rgba(7,7,12,.93) 65%)"></div>
+<div class="a" style="left:375px;top:300px;width:330px;height:330px;border-radius:50%;padding:10px;background:conic-gradient(from 40deg,#25F4EE,#8B5CF6,#FE2C55,#25F4EE)"><div style="width:100%;height:100%;border-radius:50%;border:8px solid #07070C;background:url(assets/portrait.jpg) center 20%/cover"></div></div>
+<div class="a t" style="top:670px;font-weight:600;font-size:42px;color:rgba(255,255,255,.85)">Ton produit mérite d'être</div>
+<div class="a t" style="top:735px;font-size:150px"><span class="pill" style="padding:6px 40px 14px">VU.</span></div>
+<div class="a t" style="top:930px;font-weight:900;font-size:76px;letter-spacing:-2px">SOGOBA CRÉATIVE</div>
+<div class="a t" style="top:1030px;font-weight:800;font-size:30px;letter-spacing:6px;color:#25F4EE">SPOTS PUB · MOTION DESIGN · TUTOS</div>
+<div class="a" style="left:0;width:1080px;top:1140px;display:flex;justify-content:center;gap:16px">
+ <div class="chip" style="font-size:32px">Dès <b style="margin-left:8px;background:var(--gr);-webkit-background-clip:text;color:transparent">20 000 FCFA</b></div>
+ <div class="chip" style="font-size:32px">⚡ 48 h</div></div>
+<div class="a" style="left:0;width:1080px;top:1290px;display:flex;justify-content:center"><div style="display:flex;align-items:center;gap:16px;padding:22px 40px;border-radius:50px;background:#25D366;color:#062B14;font-weight:900;font-size:46px">💬 +223 64 97 57 93</div></div>
+</div><script>window.ready=Promise.all([document.fonts.ready,...[...document.images].map(i=>i.decode().catch(()=>{}))]);</script></body></html>
