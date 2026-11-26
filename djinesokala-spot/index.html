@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Djinè Sokala · Prototype</title>
+<style>
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-900-normal.woff2);font-weight:900}
+@font-face{font-family:Cor;src:url(fonts/cormorant-garamond-latin-600-italic.woff2);font-weight:600;font-style:italic}
+:root{--b1:#0B1E9C;--b2:#2E3BE8;--vi:#7A2BD9;--pk:#FF3D8B;--y:#FFD21F;--o:#FF8A00;--rd:#E8202A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+body{font-family:Mont,sans-serif;color:#fff}
+#stage{position:absolute;inset:0;overflow:hidden;background:#07106A}
+#world{position:absolute;inset:0}
+.scene{position:absolute;inset:0;overflow:hidden;display:none}
+.a{position:absolute;left:0;top:0;will-change:transform,opacity}
+.bg{background:radial-gradient(ellipse at 30% 25%,#3D4BFF 0%,#1424B8 35%,#0A1270 70%,#05093F 100%)}
+.cor{font-family:Cor,serif;font-style:italic;font-weight:600}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .06em .18em;margin-bottom:-.18em}
+.wi{display:inline-block;will-change:transform}
+.h{font-weight:900;letter-spacing:-2px;line-height:1.02;white-space:nowrap}
+.caps{font-weight:800;letter-spacing:8px;text-transform:uppercase;white-space:nowrap}
+.puff{font-weight:900;color:#FFD21F;-webkit-text-stroke:10px #111;paint-order:stroke fill;text-shadow:0 10px 0 #111,0 18px 30px rgba(0,0,0,.4)}
+.letter{display:inline-block;will-change:transform}
+.pill{background:#FFF8EE;color:#7A1E1E;border-radius:60px;padding:10px 46px;box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 0 4px #FFD21F inset}
+.chip{display:inline-flex;align-items:center;gap:14px;padding:16px 30px;border-radius:40px;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.35);font-weight:800;font-size:30px;white-space:nowrap}
+svg.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#lights{position:absolute;inset:0;width:1080px;height:1920px;pointer-events:none;z-index:30;mix-blend-mode:screen}
+#conf{position:absolute;inset:0;width:1080px;height:1920px;pointer-events:none;z-index:31}
+#grain{position:absolute;inset:0;width:1080px;height:1920px;mix-blend-mode:overlay;opacity:.06;pointer-events:none;z-index:32}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:33}
+#sig{position:absolute;left:0;width:1080px;top:1850px;text-align:center;font-weight:700;font-size:21px;letter-spacing:10px;color:rgba(255,255,255,.7);z-index:40}
+#proto{position:absolute;right:30px;top:30px;padding:8px 18px;border-radius:20px;background:rgba(0,0,0,.35);font-weight:700;font-size:18px;letter-spacing:4px;color:rgba(255,255,255,.75);z-index:40}
+</style>
+</head>
+<body>
+<div id="stage"><div id="world">
+
+<!-- ferris wheel (shared background element) -->
+<svg class="a" id="wheel" width="900" height="900" viewBox="-450 -450 900 900" style="z-index:1"></svg>
+
+<!-- S1 0–3.2 gift -->
+<div class="scene bg" id="s1">
+  <div class="a caps" id="s1lab" style="width:1080px;text-align:center;top:260px;font-size:28px;color:#FFD21F">Centre Aéré de la BCEAO présente</div>
+  <div class="a cor" id="s1a" style="width:1080px;text-align:center;top:320px;font-size:120px;color:#fff"></div>
+  <div class="a" id="s1box" style="width:520px;height:560px">
+    <div style="position:absolute;left:30px;right:30px;bottom:0;height:400px;border-radius:24px;background:linear-gradient(135deg,#FF3D8B,#C2187A);box-shadow:0 40px 80px rgba(0,0,0,.45)"></div>
+    <div style="position:absolute;left:225px;width:70px;bottom:0;height:400px;background:linear-gradient(90deg,#2E3BE8,#5B6BFF,#2E3BE8)"></div>
+    <div id="s1lid" style="position:absolute;left:0;right:0;top:60px;height:110px;transform-origin:50% 100%">
+      <div style="position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,#FF5AA0,#D8238A);box-shadow:0 14px 30px rgba(0,0,0,.35)"></div>
+      <div style="position:absolute;left:225px;width:70px;top:0;bottom:0;background:linear-gradient(90deg,#2E3BE8,#5B6BFF,#2E3BE8)"></div>
+      <svg style="position:absolute;left:140px;top:-110px" width="240" height="130" viewBox="0 0 240 130"><path d="M120 110 C 60 20, 0 40, 20 90 C 30 120, 90 115, 120 110 Z M120 110 C 180 20, 240 40, 220 90 C 210 120, 150 115, 120 110 Z" fill="#3D4BFF" stroke="#1B26B0" stroke-width="5"/><circle cx="120" cy="108" r="20" fill="#5B6BFF" stroke="#1B26B0" stroke-width="5"/></svg>
+    </div>
+  </div>
+  <div class="a" id="s1badge" style="width:220px;height:220px;border-radius:50%;background:#fff;border:8px solid #2E3BE8;display:grid;place-items:center;color:#111;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.35)">
+    <div><div style="font-weight:900;font-size:96px;line-height:.9">4<sup style="font-size:40px">e</sup></div><div style="font-weight:900;font-size:34px">édition</div></div></div>
+</div>
+
+<!-- S2 3.2–6.6 castle reveal -->
+<div class="scene" id="s2">
+  <img class="a" id="s2poster" src="assets/p_poster.jpg" style="width:1080px">
+  <div class="a" style="width:1080px;height:1920px;background:linear-gradient(180deg,rgba(5,9,63,.45) 0%,rgba(5,9,63,0) 22%,rgba(5,9,63,0) 44%,rgba(5,9,63,.97) 60%,#05093F 100%)"></div>
+  <div class="a cor" id="s2t" style="width:1080px;text-align:center;top:1540px;font-size:96px;color:#fff;text-shadow:0 6px 24px rgba(0,0,40,.7)"></div>
+</div>
+
+<!-- S3 6.6–10 title -->
+<div class="scene bg" id="s3">
+  <div class="a" id="s3rays" style="width:2800px;height:2800px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,210,31,.12) 0deg 6deg,transparent 6deg 18deg);-webkit-mask-image:radial-gradient(circle,#000 10%,transparent 60%)"></div>
+  <div class="a" id="s3castle" style="width:900px;height:418px;border-radius:40px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.45)"><img src="assets/p_castle.jpg" style="width:100%;height:100%;object-fit:cover;object-position:50% 70%"></div>
+  <div class="a puff" id="s3t1" style="width:1080px;text-align:center;font-size:168px;letter-spacing:4px"></div>
+  <div class="a puff" id="s3t2" style="width:1080px;text-align:center;font-size:168px;letter-spacing:4px"></div>
+  <div class="a" id="s3pill"><div class="pill cor" style="font-size:64px;white-space:nowrap">Fête de fin d'année</div></div>
+  <div class="a cor" id="s3ch" style="width:1080px;text-align:center;font-size:116px;color:#fff;text-shadow:0 0 12px #5B6BFF,0 0 40px #2E3BE8,0 6px 0 #1424B8">Le Château enchanté</div>
+</div>
+
+<!-- S4 10–19 programme -->
+<div class="scene bg" id="s4">
+  <div class="a caps" id="s4lab" style="width:1080px;text-align:center;top:150px;font-size:28px;color:#FFD21F">Pour petits et grands</div>
+  <div class="a puff" id="s4big" style="width:1080px;text-align:center;top:200px;font-size:150px"></div>
+  <div class="a cor" id="s4sub" style="width:1080px;text-align:center;top:380px;font-size:84px"></div>
+  <div id="s4acts"></div>
+  <div class="a h" id="s4name" style="width:1080px;text-align:center;font-size:66px;text-shadow:0 6px 20px rgba(0,0,40,.6)"></div>
+  <div class="a" id="s4chips" style="width:1000px;left:40px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px"></div>
+</div>
+
+<!-- S5 19–23.4 calendar -->
+<div class="scene bg" id="s5">
+  <div class="a caps" id="s5lab" style="width:1080px;text-align:center;top:230px;font-size:28px;color:#FFD21F">Un mois de fête</div>
+  <div class="a" id="s5cal" style="width:860px;padding:34px;border-radius:44px;background:#fff;color:#111;box-shadow:0 40px 90px rgba(0,0,0,.45)">
+    <div style="display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#2E3BE8,#7A2BD9);color:#fff;border-radius:24px;padding:18px 28px;font-weight:900;font-size:36px"><span>Déc. 2026</span><span style="color:#FFD21F">→</span><span>Janv. 2027</span></div>
+    <div id="s5grid" style="display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-top:22px"></div>
+  </div>
+  <div class="a" id="s5count" style="width:1080px;text-align:center"><span class="puff" style="font-size:200px" id="s5n">0</span><span class="h" style="font-size:80px;margin-left:16px;color:#fff">jours</span></div>
+  <div class="a" id="s5dates" style="width:1080px;text-align:center;font-weight:900;font-size:50px;line-height:1.3">Du <span style="color:#FFD21F">15 décembre 2026</span><br>au <span style="color:#FFD21F">15 janvier 2027</span></div>
+</div>
+
+<!-- S6 23.4–26.6 venue + socials -->
+<div class="scene bg" id="s6">
+  <div id="s6rings"></div>
+  <div class="a" id="s6pin"><svg width="200" height="250" viewBox="0 0 24 30"><path d="M12 29s10-9.5 10-17A10 10 0 0 0 2 12c0 7.5 10 17 10 17z" fill="#E8202A"/><circle cx="12" cy="12" r="5.5" fill="#fff"/></svg></div>
+  <div class="a h" id="s6t" style="width:1080px;text-align:center;font-size:84px;line-height:1.1"></div>
+  <div class="a" id="s6soc" style="display:flex;flex-direction:column;align-items:center;gap:20px">
+    <div class="chip s6c"><svg width="40" height="40" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#1877F2"/><path d="M15.5 8H14c-.8 0-1 .4-1 1v1.5h2.5L15 13h-2v7h-2.6v-7H8.8v-2.5h1.6V8.7C10.4 6.8 11.5 6 13.3 6h2.2z" fill="#fff"/></svg>Centre Aéré Sotuba</div>
+    <div class="chip s6c"><svg width="40" height="40" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#111"/><path d="M14 5c.3 1.8 1.5 3 3.3 3.2v2.4a5.6 5.6 0 0 1-3.2-1v5.2a4.3 4.3 0 1 1-4.3-4.3v2.5a1.8 1.8 0 1 0 1.8 1.8V5z" fill="#fff"/></svg>@centreaerebceao</div>
+  </div>
+</div>
+
+<!-- S7 26.6–30 partners + end -->
+<div class="scene bg" id="s7">
+  <div class="a" id="s7rays" style="width:2800px;height:2800px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.08) 0deg 6deg,transparent 6deg 18deg);-webkit-mask-image:radial-gradient(circle,#000 10%,transparent 60%)"></div>
+  <div class="a puff" id="s7t1" style="width:1080px;text-align:center;font-size:120px;letter-spacing:3px">DJINÈ SOKALA</div>
+  <div class="a cor" id="s7t2" style="width:1080px;text-align:center;font-size:88px">On vous attend !</div>
+  <div class="a" id="s7logos" style="width:560px;border-radius:70px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.4)"><img src="assets/p_logos.jpg" style="width:100%;display:block"></div>
+  <div class="a caps" id="s7plab" style="width:1080px;text-align:center;font-size:22px;color:#FFD21F">Nos partenaires depuis la 1ʳᵉ édition</div>
+  <div class="a" id="s7part" style="width:1000px;left:40px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px"></div>
+</div>
+
+</div>
+<canvas id="lights" width="1080" height="1920"></canvas>
+<canvas id="conf" width="1080" height="1920"></canvas>
+<canvas id="grain" width="360" height="640"></canvas>
+<div id="flash"></div>
+<div id="proto">PROTOTYPE</div>
+<div id="sig">SOGOBA CRÉATIVE</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const EZ={lin:x=>x,outCubic:x=>1-Math.pow(1-x,3),inCubic:x=>x*x*x,inOutCubic:x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,inOutSine:x=>-(Math.cos(Math.PI*x)-1)/2,
+ inOutQuint:x=>x<.5?16*x**5:1-Math.pow(-2*x+2,5)/2,outExpo:x=>x>=1?1:1-Math.pow(2,-10*x),inExpo:x=>x<=0?0:Math.pow(2,10*x-10),
+ outBack:x=>{const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)},
+ outBounce:x=>{const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375},
+ outElastic:x=>x<=0?0:x>=1?1:Math.pow(2,-10*x)*Math.sin((x*10-.75)*(2*Math.PI/3))+1};
+const E=(t,a,b,e='outExpo')=>EZ[e](seg(t,a,b));
+function tf(el,o){const {x=0,y=0,s=1,sx,sy,r=0,c=true,op,blur}=o;
+  el.style.transform=`translate(${x}px,${y}px)${c?' translate(-50%,-50%)':''} rotate(${r}deg) scale(${sx??s},${sy??s})`;
+  if(op!==undefined)el.style.opacity=op; if(blur!==undefined)el.style.filter=blur>0.05?`blur(${blur}px)`:'none';}
+let seed=63;const rnd=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};
+function show(id,t,a,b){const v=t>=a&&t<b;$(id).style.display=v?'block':'none';return v}
+const words=txt=>txt.split(' ').map(w=>`<span class="w"><span class="wi">${w}</span></span>`).join(' ');
+const letters=txt=>[...txt].map(c=>`<span class="letter">${c===' '?'&nbsp;':c}</span>`).join('');
+function animW(el,t,t0,stag=.07,dur=.6,from=115){el.querySelectorAll('.wi').forEach((w,i)=>{const p=E(t,t0+i*stag,t0+i*stag+dur);w.style.transform=`translateY(${(1-p)*from}%) rotate(${(1-p)*5}deg)`})}
+function dropLetters(el,t,t0,stag=.06){el.querySelectorAll('.letter').forEach((l,i)=>{const p=E(t,t0+i*stag,t0+i*stag+.7,'outBounce');l.style.transform=`translateY(${(1-p)*-900}px) rotate(${(1-p)*(i%2?20:-20)}deg)`;l.style.opacity=t>t0+i*stag?1:0})}
+
+/* ---------- build ---------- */
+// ferris wheel
+{let h='<g id="wrot">';const N=12;for(let i=0;i<N;i++){const a=i/N*Math.PI*2;h+=`<line x1="0" y1="0" x2="${Math.cos(a)*360}" y2="${Math.sin(a)*360}" stroke="#FF8A00" stroke-width="6"/>`}
+ h+='<circle r="360" fill="none" stroke="#FF5A1F" stroke-width="14"/><circle r="300" fill="none" stroke="#FFD21F" stroke-width="5"/><circle r="40" fill="#FFD21F" stroke="#FF5A1F" stroke-width="8"/>';
+ for(let i=0;i<N;i++){const a=i/N*Math.PI*2;h+=`<g class="cab" data-a="${a}"><circle r="12" fill="#FFF27A"/></g>`}h+='</g>';
+ for(let i=0;i<N;i++)h+=`<g class="cab2" data-i="${i}"><rect x="-30" y="0" width="60" height="44" rx="12" fill="${['#E8202A','#FF3D8B','#2E3BE8','#FFD21F'][i%4]}" stroke="#fff" stroke-width="3"/></g>`;
+ h+='<path d="M-60 0 L-200 440 M60 0 L200 440" stroke="#FF5A1F" stroke-width="14"/>';$('wheel').innerHTML=h;}
+$('s1a').innerHTML=words('Les fêtes arrivent…');
+$('s2t').innerHTML=words('Le château ouvre ses portes !');
+$('s3t1').innerHTML=letters('DJINÈ');$('s3t2').innerHTML=letters('SOKALA');
+$('s4big').innerHTML=letters('30 JOURS');$('s4sub').innerHTML=words('de fête non-stop !');
+const ACT=['Spectacles son & lumière','Compétitions sportives','Jeux & tournois','Manèges & attractions','Concours culinaire','Espaces enfants'];
+$('s4acts').innerHTML=ACT.map((_,i)=>`<div class="a s4a" style="width:560px;height:560px;border-radius:50%;box-shadow:0 0 0 10px #FFD21F,0 0 0 18px #2E3BE8,0 40px 80px rgba(0,0,0,.5)"><img src="assets/p_act${i}.png" style="width:100%;height:100%;border-radius:50%;display:block"></div>`).join('');
+const CH=[['🎤','Humoristes'],['🎭','Marionnettistes'],['📸','Photo call'],['🎨','Expositions d’art & savoir-faire'],['🍽️','Restaurants & buvettes']];
+$('s4chips').innerHTML=CH.map(([e,t])=>`<div class="chip s4ch"><span style="font-size:34px">${e}</span>${t}</div>`).join('');
+$('s5grid').innerHTML=Array.from({length:32},(_,i)=>{const d=i<17?15+i:i-16;const lab=i<17?d:d;return `<div class="day" style="height:62px;border-radius:14px;display:grid;place-items:center;font-weight:800;font-size:26px;background:#EEF0FF;color:#2E3BE8">${lab}</div>`}).join('');
+$('s6rings').innerHTML=Array.from({length:4},()=>'<div class="a rg" style="width:240px;height:240px;border-radius:50%;border:5px solid rgba(255,210,31,.6)"></div>').join('');
+$('s6t').innerHTML=`<div>${words('Au Centre Aéré')}</div><div style="color:#FFD21F">${words('de la BCEAO')}</div>`;
+const PART=['JB Foods','BMS SA','BIM SA','MS Consulting','BOZO Imprimerie'];
+$('s7part').innerHTML=PART.map(p=>`<div class="chip s7p" style="font-size:28px;padding:14px 26px">${p}</div>`).join('');
+
+/* lights + confetti */
+const lc=$('lights').getContext('2d');
+const BEAMS=Array.from({length:6},(_,i)=>({x:120+i*170,c:['#2E3BE8','#FF3D8B','#7A2BD9','#FFD21F','#25C2FF','#FF8A00'][i],ph:rnd()*6}));
+function lights(t,a){lc.clearRect(0,0,1080,1920);if(a<=0)return;
+  for(const b of BEAMS){const ang=Math.sin(t*1.1+b.ph)*.5;lc.save();lc.translate(b.x,1980);lc.rotate(ang);const g=lc.createLinearGradient(0,0,0,-1900);
+    g.addColorStop(0,b.c+'aa');g.addColorStop(1,b.c+'00');lc.fillStyle=g;lc.globalAlpha=a*.45;lc.beginPath();lc.moveTo(-20,0);lc.lineTo(-170,-1900);lc.lineTo(170,-1900);lc.lineTo(20,0);lc.fill();lc.restore();}lc.globalAlpha=1;}
+const cc=$('conf').getContext('2d');
+const CF=Array.from({length:140},()=>{const a=-Math.PI/2+(rnd()-.5)*2.4,v=900+rnd()*1500;return{vx:Math.cos(a)*v,vy:Math.sin(a)*v,r:rnd()*6,vr:(rnd()-.5)*12,w:12+rnd()*16,h:7+rnd()*9,c:['#FFD21F','#FF3D8B','#2E3BE8','#25C2FF','#FF8A00','#fff','#E8202A'][Math.floor(rnd()*7)]}});
+const RAIN=Array.from({length:60},()=>({x:rnd()*1080,y:rnd()*1920,v:120+rnd()*180,r:rnd()*6,vr:(rnd()-.5)*5,w:10+rnd()*12,h:6+rnd()*7,c:['#FFD21F','#FF3D8B','#25C2FF','#fff'][Math.floor(rnd()*4)]}));
+function confetti(t,burstT,ox,oy,rain){cc.clearRect(0,0,1080,1920);
+  for(const[bt,x0,y0] of burstT){const ct=t-bt;if(ct<0||ct>2.6)continue;for(const p of CF){const x=x0+p.vx*ct*.55,y=y0+p.vy*ct*.55+900*ct*ct;
+    cc.save();cc.translate(x,y);cc.rotate(p.r+p.vr*ct);cc.globalAlpha=clamp(1-(ct-1.9)/.7);cc.fillStyle=p.c;cc.fillRect(-p.w/2,-p.h/2,p.w,p.h*Math.abs(Math.cos(ct*8+p.r)));cc.restore();}}
+  if(rain>0)for(const p of RAIN){const y=((p.y+t*p.v)%2000+2000)%2000-40;cc.save();cc.translate(p.x+Math.sin(t+p.r)*30,y);cc.rotate(p.r+t*p.vr);cc.globalAlpha=rain*.8;cc.fillStyle=p.c;cc.fillRect(-p.w/2,-p.h/2,p.w,p.h);cc.restore();}
+  cc.globalAlpha=1;}
+const gctx=$('grain').getContext('2d');const gimg=gctx.createImageData(360,640);
+function grain(f){let s=(f*7919+13)%2147483647||1;const d=gimg.data;for(let i=0;i<d.length;i+=4){s=(s*16807)%2147483647;const v=s&255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255}gctx.putImageData(gimg,0,0)}
+function wheel(t,x,y,s,op){const w=$('wheel');if(op<=0){w.style.display='none';return}w.style.display='block';tf(w,{x,y,s,op});
+  const rot=t*18;$('wrot').setAttribute('transform',`rotate(${rot})`);
+  document.querySelectorAll('.cab2').forEach(c=>{const a=+c.dataset.i/12*Math.PI*2+rot*Math.PI/180;c.setAttribute('transform',`translate(${Math.cos(a)*360} ${Math.sin(a)*360})`)});}
+
+function render(t,frame){
+  let shx=0,shy=0;for(const [st,a] of [[3.2,18],[6.9,12],[7.3,10],[10,8],[19,8],[23.4,8],[26.6,10]]){const k=seg(t,st,st+.35);if(k>0&&k<1){const m=a*(1-k)**2;shx+=Math.sin(t*95)*m;shy+=Math.cos(t*81)*m}}
+  $('world').style.transform=`translate(${shx}px,${shy}px)`;
+  let fl=0;for(const [st,a] of [[3.2,.7],[10,.25],[26.6,.35]]){const k=seg(t,st,st+.45);if(t>=st&&k<1)fl=Math.max(fl,a*(1-EZ.outCubic(k)))}
+  $('flash').style.opacity=fl;
+  $('proto').style.opacity=E(t,.3,.8,'lin');$('sig').style.opacity=E(t,.3,.8,'lin');
+  let la=0,rain=0,bursts=[[3.2,540,1180],[26.7,540,700]];
+  // wheel placement per scene
+  if(t<3.2)wheel(t,140,1640,.55,E(t,.2,.8,'lin')*.85);
+  else if(t>=6.6&&t<10)wheel(t,90,1700,.55,.8);
+  else if(t>=10&&t<19)wheel(t,1010,1760,.5,.55);
+  else if(t>=26.6)wheel(t,540,1720,.62,E(t,26.7,27.2,'lin')*.55);
+  else wheel(t,0,0,1,0);
+
+  /* S1 */
+  if(show('s1',t,0,3.25)){
+    la=.6;tf($('s1lab'),{c:false,op:E(t,.1,.5)});
+    animW($('s1a'),t,.25,.1,.6);
+    const bp=E(t,.4,1.0,'outBack');const shake=t>1.6?Math.sin(t*40)*(t-1.6)*5:0;
+    tf($('s1box'),{x:540,y:1120+(1-bp)*900,r:shake,s:1+Math.max(0,t-2.2)*.08});
+    $('s1lid').style.transform=`translateY(${t>2.9?-(t-2.9)*1400:0}px) rotate(${t>2.9?(t-2.9)*-60:0}deg)`;
+    const bd=E(t,1.0,1.5,'outElastic');tf($('s1badge'),{x:840,y:760,s:bd,r:12+(1-bd)*-90});
+  }
+
+  /* S2 */
+  if(show('s2',t,3.2,6.95)){
+    la=.5;rain=.4;
+    const kb=seg(t,3.2,6.95);const s=lerp(2.35,2.05,EZ.inOutSine(kb));
+    tf($('s2poster'),{c:false,x:540-1000*s*1080/2448,y:lerp(-760,-520,kb)*s/1.8,s:s});$('s2poster').style.transformOrigin='0 0';
+    $('s2poster').style.transform=`translate(${540-1224*s*1080/2448}px,${720-880*s*1080/2448}px) scale(${s})`;
+    animW($('s2t'),t,4.2,.08,.6);
+    const ex=E(t,6.6,6.95,'inExpo');$('s2').style.opacity=1-ex;
+  }
+
+  /* S3 */
+  if(show('s3',t,6.6,10.05)){
+    la=.8;rain=.5;
+    tf($('s3rays'),{x:540,y:900,r:t*12});
+    const cp=E(t,6.7,7.3,'outBack');tf($('s3castle'),{x:540,y:1500+(1-cp)*700,r:-2});
+    dropLetters($('s3t1'),t,6.75,.07);tf($('s3t1'),{c:false,x:0,y:360});
+    dropLetters($('s3t2'),t,7.05,.07);tf($('s3t2'),{c:false,x:0,y:560});
+    const pl=E(t,7.8,8.2,'outBack');tf($('s3pill'),{x:540,y:830,s:pl,op:clamp(pl*3)});
+    const ch=seg(t,8.2,9.0);$('s3ch').style.clipPath=`inset(0 ${(1-EZ.inOutCubic(ch))*100}% 0 0)`;tf($('s3ch'),{c:false,x:0,y:1000,s:1});
+    const ex=E(t,9.7,10.05,'inExpo');$('s3').style.transform=`scale(${1+ex*.3})`;$('s3').style.opacity=1-ex;
+  }
+
+  /* S4 */
+  if(show('s4',t,10,19.05)){
+    la=.7;rain=.3;
+    tf($('s4lab'),{c:false,op:E(t,10.1,10.5)});
+    dropLetters($('s4big'),t,10.1,.05);
+    animW($('s4sub'),t,10.6,.07,.5);
+    const T0=11.0,D=1.05;
+    document.querySelectorAll('.s4a').forEach((el,i)=>{const tk=T0+i*D;const p=E(t,tk-.15,tk+.35,'outBack');const o=i<5?E(t,tk+D-.25,tk+D+.05,'inCubic'):E(t,17.0,17.4,'inCubic');
+      el.style.display=t>=tk-.2&&t<tk+D+.1?'block':(i===5&&t<17.4&&t>=tk-.2?'block':'none');
+      tf(el,{x:540+o*(-900),y:960,s:lerp(.2,1,p),r:lerp(-90,0,p)+o*-30});});
+    const ai=clamp(Math.floor((t-T0)/D),0,5);const tk=T0+ai*D;const np=E(t,tk,tk+.35,'outBack');
+    $('s4name').textContent=ACT[ai];tf($('s4name'),{x:540,y:1340,s:t<T0?0:np,op:t<T0-.1||t>17.4?0:1});
+    document.querySelectorAll('.s4ch').forEach((c,i)=>{const p=E(t,17.2+i*.12,17.55+i*.12,'outBack');c.style.transform=`scale(${p})`;c.style.opacity=clamp(p*3)});
+    tf($('s4chips'),{c:false,x:0,y:700});
+    const ex=E(t,18.7,19.05,'inExpo');$('s4').style.transform=`translateX(${-ex*1080}px)`;
+  }
+
+  /* S5 */
+  if(show('s5',t,18.95,23.45)){
+    la=.4;
+    $('s5').style.clipPath=`inset(0 0 0 ${(1-E(t,18.95,19.3,'inOutCubic'))*100}%)`;
+    tf($('s5lab'),{c:false,op:E(t,19.1,19.5)});
+    const cp=E(t,19.1,19.6,'outBack');tf($('s5cal'),{x:540,y:620,s:cp,r:(1-cp)*-6});
+    const prog=seg(t,19.6,21.6);
+    document.querySelectorAll('.day').forEach((d,i)=>{const on=i<Math.round(prog*32);d.style.background=on?(i<17?'#2E3BE8':'#7A2BD9'):'#EEF0FF';d.style.color=on?'#fff':'#2E3BE8';
+      d.style.transform=`scale(${on&&i===Math.round(prog*32)-1?1.15:1})`});
+    $('s5n').textContent=Math.round(E(t,19.6,21.6,'inOutCubic')*30);
+    tf($('s5count'),{x:540,y:1180});
+    tf($('s5dates'),{x:540,y:1450+(1-E(t,21.7,22.2))*30,op:E(t,21.7,22.2)});
+    const ex=E(t,23.1,23.45,'inExpo');$('s5').style.opacity=1-ex;
+  }
+
+  /* S6 */
+  if(show('s6',t,23.35,26.7)){
+    la=.4;
+    $('s6').style.opacity=E(t,23.35,23.6,'lin');
+    document.querySelectorAll('.rg').forEach((r,i)=>{const k=((t-23.6)/1.2+i/4)%1;tf(r,{x:540,y:680,s:.6+k*2.6,sy:(.6+k*2.6)*.35,op:t<23.65?0:(1-k)*.8})});
+    const p=E(t,23.5,24.1,'outBounce');tf($('s6pin'),{x:540,y:lerp(-200,560,p)});
+    animW($('s6t'),t,24.0,.08,.55);tf($('s6t'),{x:540,y:930});
+    document.querySelectorAll('.s6c').forEach((c,i)=>{const q=E(t,24.8+i*.2,25.2+i*.2,'outBack');c.style.transform=`scale(${q})`;c.style.opacity=clamp(q*3)});
+    tf($('s6soc'),{x:540,y:1290});
+    const ex=E(t,26.3,26.7,'inExpo');$('s6').style.transform=`scale(${1-ex*.15})`;$('s6').style.opacity=Math.min(+$('s6').style.opacity,1-ex);
+  }
+
+  /* S7 */
+  if(show('s7',t,26.6,30.01)){
+    la=.9;rain=.6;
+    tf($('s7rays'),{x:540,y:560,r:-t*10});
+    const a=E(t,26.7,27.2,'outElastic');tf($('s7t1'),{c:false,x:0,y:330,s:a});$('s7t1').style.transformOrigin='50% 50%';
+    tf($('s7t2'),{c:false,x:0,y:490,op:E(t,27.1,27.5)});
+    const lp=E(t,27.4,27.8,'outBack');tf($('s7logos'),{x:540,y:760,s:lp});
+    tf($('s7plab'),{x:540,y:950,op:E(t,27.8,28.2)});
+    document.querySelectorAll('.s7p').forEach((c,i)=>{const q=E(t,28.0+i*.1,28.35+i*.1,'outBack');c.style.transform=`scale(${q})`;c.style.opacity=clamp(q*3)});
+    tf($('s7part'),{c:false,x:0,y:1000});
+  }
+  lights(t,la);confetti(t,bursts,0,0,rain);
+  grain(frame);
+}
+window.render=render;
+window.settle=()=>Promise.all([...document.images].filter(i=>i.getAttribute('src')&&!i.complete).map(i=>i.decode().catch(()=>{})));
+window.ready=Promise.all([document.fonts.ready,...[...document.images].map(i=>i.decode().catch(()=>{}))]);
+</script>
+</body>
+</html>
