@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Sukal · Spot</title>
+<style>
+@font-face{font-family:Jos;src:url(fonts/josefin-sans-latin-100-normal.woff2);font-weight:100}
+@font-face{font-family:Jos;src:url(fonts/josefin-sans-latin-200-normal.woff2);font-weight:200}
+@font-face{font-family:Jos;src:url(fonts/josefin-sans-latin-300-normal.woff2);font-weight:300}
+@font-face{font-family:Jos;src:url(fonts/josefin-sans-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:Jos;src:url(fonts/josefin-sans-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:Cor;src:url(fonts/cormorant-garamond-latin-300-italic.woff2);font-weight:300;font-style:italic}
+@font-face{font-family:Cor;src:url(fonts/cormorant-garamond-latin-400-italic.woff2);font-weight:400;font-style:italic}
+@font-face{font-family:Cor;src:url(fonts/cormorant-garamond-latin-600-italic.woff2);font-weight:600;font-style:italic}
+@font-face{font-family:Cor;src:url(fonts/cormorant-garamond-latin-400-normal.woff2);font-weight:400}
+:root{--cr:#FDE6C4;--cr2:#F6E3C8;--or:#DBAF58;--or2:#F2D28C;--nr:#140D14;--br:#2A1A12;--terra:#A8543F}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+body{font-family:Jos,sans-serif;color:var(--cr)}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--nr)}
+#world{position:absolute;inset:0}
+.scene{position:absolute;inset:0;overflow:hidden;display:none}
+.a{position:absolute;left:0;top:0;will-change:transform,opacity}
+.cor{font-family:Cor,serif;font-style:italic}
+.caps{font-family:Jos;font-weight:300;letter-spacing:14px;text-transform:uppercase;white-space:nowrap}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .06em .2em;margin-bottom:-.2em}
+.wi{display:inline-block;will-change:transform}
+.ph{position:absolute;overflow:hidden}
+.ph img{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+#fx{position:absolute;inset:0;width:1920px;height:1080px;pointer-events:none;z-index:8}
+#leak{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;z-index:9}
+#grain{position:absolute;inset:0;width:1920px;height:1080px;mix-blend-mode:overlay;opacity:.09;pointer-events:none;z-index:10}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 52%,rgba(20,10,5,.5) 100%);pointer-events:none;z-index:11}
+#flash{position:absolute;inset:0;background:#FFF1D6;opacity:0;pointer-events:none;z-index:12}
+#sig{position:absolute;left:0;width:1920px;top:1030px;text-align:center;font-family:Jos;font-weight:400;font-size:21px;letter-spacing:10px;z-index:13;pointer-events:none}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9C7428"/><stop offset=".45" stop-color="#F2D28C"/><stop offset=".6" stop-color="#DBAF58"/><stop offset="1" stop-color="#A8802F"/></linearGradient>
+  <linearGradient id="choc" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1a0f0c"/><stop offset=".35" stop-color="#4a2a1c"/><stop offset=".5" stop-color="#7a4a32"/><stop offset=".65" stop-color="#3a2016"/><stop offset="1" stop-color="#140D14"/></linearGradient>
+</defs></svg>
+<div id="stage"><div id="world">
+
+<!-- S1 : drip logo 0–3.6 -->
+<div class="scene" id="s1" style="background:radial-gradient(ellipse at 50% 40%,#2a1a14 0%,#140D14 60%,#080406 100%)">
+  <svg class="a" id="s1svg" width="1920" height="1080" viewBox="0 0 1920 1080"></svg>
+  <div class="a" id="s1word" style="width:1920px;text-align:center;font-family:Jos;font-weight:200;font-size:150px;letter-spacing:26px;color:#F6E3C8;padding-left:26px"></div>
+  <div class="a caps" id="s1sub" style="width:1920px;text-align:center;font-size:26px;color:#DBAF58">Maison · Bamako</div>
+</div>
+
+<!-- S2 : drip reveal + hero 3.2–7.2 -->
+<div class="scene" id="s2">
+  <svg class="a" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs><clipPath id="s2drips"></clipPath></defs>
+    <g clip-path="url(#s2drips)"><image id="s2img" href="photos/roule_choco.jpg" width="1440" height="1800" preserveAspectRatio="none"/></g>
+  </svg>
+  <div class="a" style="width:1920px;height:1080px;background:linear-gradient(180deg,rgba(20,13,20,.4) 0%,rgba(20,13,20,0) 30%,rgba(20,13,20,0) 50%,rgba(20,13,20,.88) 100%)" id="s2shade"></div>
+  <div class="a cor" id="s2a" style="width:1920px;text-align:center;font-weight:300;font-size:130px;line-height:1;color:#FDE6C4"></div>
+  <div class="a cor" id="s2b" style="width:1920px;text-align:center;font-weight:400;font-size:84px;line-height:1.05;color:#F2D28C"></div>
+  <div class="a" id="s2line" style="width:240px;height:2px;background:#DBAF58"></div>
+</div>
+
+<!-- S3 : circle match-cuts 7.2–13.2 -->
+<div class="scene" id="s3" style="background:radial-gradient(ellipse at 50% 45%,#FBEBD3 0%,#F1DCBD 60%,#E2C7A0 100%)">
+  <div class="a caps" id="s3lab" style="left:1000px;width:840px;text-align:center;top:300px;font-size:26px;color:#8A6A3C">La pâtisserie</div>
+  <div class="a cor" id="s3h" style="left:1000px;width:840px;text-align:center;top:350px;font-weight:400;font-size:84px;line-height:1.1;color:#2A1A12">Un geste, une signature.</div>
+  <div class="a" id="s3shadow" style="width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(80,45,20,.35) 0%,rgba(80,45,20,0) 70%)"></div>
+  <div id="s3circles"></div>
+  <svg class="a" id="s3ring" width="960" height="960" viewBox="0 0 960 960" style="overflow:visible">
+    <circle cx="480" cy="480" r="452" fill="none" stroke="url(#gold)" stroke-width="3"/>
+    <path id="s3arc" d="M480 480 m-470 0 a470 470 0 1 1 940 0 a470 470 0 1 1 -940 0" fill="none"/>
+    <text font-family="Jos" font-weight="300" font-size="22" letter-spacing="9" fill="#8A6A3C"><textPath href="#s3arc">SUKAL · BOULANGERIE · PÂTISSERIE · SNACKING · TRAITEUR · SUKAL · BOULANGERIE · PÂTISSERIE · </textPath></text>
+  </svg>
+  <div class="a caps" id="s3num" style="width:840px;text-align:center;font-size:24px;color:#B08A4A"></div>
+  <div class="a cor" id="s3name" style="width:840px;text-align:center;font-weight:600;font-size:74px;color:#2A1A12"></div>
+</div>
+
+<!-- S4 : pleats triptych + universes 13.2–17.4 -->
+<div class="scene" id="s4" style="background:#140D14">
+  <div id="s4panels"></div>
+  <div class="a" style="width:1920px;height:1080px;background:radial-gradient(ellipse at 50% 55%,rgba(20,13,20,.15) 0%,rgba(20,13,20,.65) 100%)"></div>
+  <div class="a cor" id="s4word" style="width:1920px;text-align:center;font-weight:400;font-size:150px;color:#FDE6C4;text-shadow:0 10px 40px rgba(0,0,0,.6)"></div>
+  <div class="a" id="s4bar" style="height:3px;width:300px;background:#DBAF58"></div>
+  <div class="a caps" id="s4dots" style="width:1920px;text-align:center;font-size:24px;color:rgba(253,230,196,.8)"></div>
+</div>
+
+<!-- S5 : fêtes 17.4–20.8 -->
+<div class="scene" id="s5" style="background:radial-gradient(ellipse at 50% 40%,#2a1a14 0%,#140D14 60%,#080406 100%)">
+  <div id="s5bokeh"></div>
+  <div class="ph a" id="s5p1" style="width:1920px;height:1080px"><img src="photos/buche_tiramisu.jpg" style="width:1440px"></div>
+  <div class="ph a" id="s5p2" style="width:1920px;height:1080px"><img src="photos/buche_choco.jpg" style="width:1440px"></div>
+  <svg class="a" id="s5cut" width="1920" height="1080" viewBox="0 0 1920 1080"><line id="s5l" stroke="url(#gold)" stroke-width="6"/></svg>
+  <div class="a" style="width:1920px;height:1080px;background:linear-gradient(180deg,rgba(20,13,20,.75) 0%,rgba(20,13,20,0) 25%,rgba(20,13,20,0) 70%,rgba(20,13,20,.9) 100%)"></div>
+  <div class="a caps" id="s5lab" style="width:1920px;text-align:center;top:70px;font-size:26px;color:#DBAF58">Bûches · Galettes</div>
+  <div class="a cor" id="s5t" style="width:1920px;text-align:center;top:860px;font-weight:400;font-size:104px;color:#FDE6C4"></div>
+</div>
+
+<!-- S6 : la maison 20.8–25 -->
+<div class="scene" id="s6" style="background:#140D14">
+  <div class="ph a" id="s6front" style="width:1060px;height:1080px"><img src="photos/devanture.jpg" style="width:1440px"></div>
+  <div class="a" style="width:1920px;height:1080px;background:linear-gradient(90deg,rgba(20,13,20,0) 0%,rgba(20,13,20,0) 45%,rgba(20,13,20,.9) 56%,#140D14 70%)"></div>
+  <div class="a caps" id="s6lab" style="left:1060px;width:820px;text-align:center;top:250px;font-size:26px;color:#F2D28C">La maison</div>
+  <div class="a cor" id="s6t" style="left:1060px;width:820px;text-align:center;top:300px;font-weight:400;font-size:96px;color:#FDE6C4"></div>
+  <div class="a" id="s6hours" style="width:760px;border:1.5px solid rgba(219,175,88,.7);border-radius:24px;padding:30px 44px;background:rgba(20,13,20,.55);backdrop-filter:blur(6px)">
+    <div class="caps" style="font-size:22px;color:#DBAF58;text-align:center">Ouvert 7 jours sur 7</div>
+    <div style="display:flex;justify-content:space-between;margin-top:18px;font-family:Jos;font-weight:300;font-size:38px"><span>Lun – Ven</span><span style="color:#F2D28C">6h30 – 20h</span></div>
+    <div style="display:flex;justify-content:space-between;margin-top:8px;font-family:Jos;font-weight:300;font-size:38px"><span>Sam – Dim</span><span style="color:#F2D28C">8h – 19h</span></div>
+  </div>
+</div>
+
+<!-- S7 : outro 25–30 -->
+<div class="scene" id="s7" style="background:radial-gradient(ellipse at 50% 42%,#FFF0DA 0%,#FDE6C4 55%,#EFD2A8 100%)">
+  <svg class="a" id="s7svg" width="1920" height="1080" viewBox="0 0 1920 1080"></svg>
+  <div class="a" id="s7word" style="width:1920px;text-align:center;font-family:Jos;font-weight:200;font-size:120px;letter-spacing:26px;color:#140D14;padding-left:26px"></div>
+  <div class="a caps" id="s7uni" style="width:1920px;text-align:center;font-size:24px;letter-spacing:8px;color:#8A6A3C">Boulangerie · Pâtisserie · Snacking · Traiteur</div>
+  <div class="a" id="s7line" style="width:200px;height:2px;background:#DBAF58"></div>
+  <div class="a" id="s7tel" style="width:1920px;text-align:center;font-family:Jos;font-weight:300;font-size:66px;letter-spacing:6px;color:#140D14">79 07 97 97</div>
+  <div class="a" id="s7mail" style="width:1920px;text-align:center;font-family:Jos;font-weight:300;font-size:32px;letter-spacing:3px;color:#5A4030">hello@maisonsukal.com</div>
+  <div class="a cor" id="s7bk" style="width:1920px;text-align:center;font-weight:400;font-size:44px;color:#8A6A3C">Bamako</div>
+</div>
+
+</div>
+<canvas id="fx" width="1920" height="1080"></canvas>
+<div id="leak"></div>
+<canvas id="grain" width="640" height="360"></canvas>
+<div id="vig"></div>
+<div id="flash"></div>
+<div id="sig">SOGOBA CRÉATIVE</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const EZ={lin:x=>x,outCubic:x=>1-Math.pow(1-x,3),inCubic:x=>x*x*x,inOutCubic:x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,inOutSine:x=>-(Math.cos(Math.PI*x)-1)/2,
+ outQuart:x=>1-Math.pow(1-x,4),inOutQuart:x=>x<.5?8*x**4:1-Math.pow(-2*x+2,4)/2,outExpo:x=>x>=1?1:1-Math.pow(2,-10*x),inExpo:x=>x<=0?0:Math.pow(2,10*x-10),
+ outBack:x=>{const c1=1.3,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)}};
+const E=(t,a,b,e='outCubic')=>EZ[e](seg(t,a,b));
+function tf(el,o){const {x=0,y=0,s=1,r=0,c=true,op,blur}=o;
+  el.style.transform=`translate(${x}px,${y}px)${c?' translate(-50%,-50%)':''} rotate(${r}deg) scale(${s})`;
+  if(op!==undefined)el.style.opacity=op; if(blur!==undefined)el.style.filter=blur>0.05?`blur(${blur}px)`:'none';}
+let seed=19;const rnd=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};
+function show(id,t,a,b){const v=t>=a&&t<b;$(id).style.display=v?'block':'none';return v}
+const chars=txt=>[...txt].map(c=>`<span class="w"><span class="wi">${c===' '?'&nbsp;':c}</span></span>`).join('');
+const words=txt=>txt.split(' ').map(w=>`<span class="w"><span class="wi">${w}</span></span>`).join(' ');
+function animW(el,t,t0,stag=.06,dur=.8,from=110,ease='outQuart'){el.querySelectorAll('.wi').forEach((w,i)=>{const p=E(t,t0+i*stag,t0+i*stag+dur,ease);w.style.transform=`translateY(${(1-p)*from}%)`;w.style.opacity=clamp(p*1.4)})}
+// photo placement: fit (cx,cy) of source at screen point with scale s
+function place(img,cx,cy,s,X=540,Y=960){img.style.transform=`translate(${X-cx*s}px,${Y-cy*s}px) scale(${s})`}
+
+/* ---------- logo spikes (from the Sukal logo, 959px source) ---------- */
+const SPK=[[350,238,565,30,0],[414,210,478,30,0],[475,203,435,22,1],[530,210,478,30,0],[587,238,565,30,0]]; // cx, top, bottom, width, gold
+function spikePoly(cx,top,bot,w,k=1,lift=0){ // top edge slanted toward centre like the logo
+  const sl=(cx<475?-1:cx>475?1:0)*10;const hw=w/2;
+  return [[cx-hw,top+sl*(cx<475?-1:1)*0+(cx<475?8:cx>475?0:0)-lift],[cx+hw,top+(cx>475?8:0)-lift],[cx,top+(bot-top)*k-lift]];
+}
+function logoSpikes(svg,ox,oy,sc,fillDark,id){
+  svg.innerHTML+=`<g id="${id}" transform="translate(${ox} ${oy}) scale(${sc})">`+SPK.map(([cx,t,b,w,g],i)=>
+   `<polygon class="${id}p" data-i="${i}" fill="${g?'url(#gold)':fillDark}"/>`).join('')+`<circle class="${id}glint" r="5" fill="#FFF6DC" opacity="0"/></g>`;
+}
+function setSpikes(id,t,t0,stagger,dur,from='top'){
+  document.querySelectorAll('.'+id+'p').forEach(p=>{const i=+p.dataset.i;const [cx,top,bot,w,g]=SPK[i];
+    const st=t0+[0,1,2,1,0][i]*stagger+(g?stagger*.6:0);
+    const k=EZ.outQuart(seg(t,st,st+dur));
+    const pts=spikePoly(cx,top,bot,w,1);
+    let P;if(from==='top'){P=[pts[0],pts[1],[cx,top+(bot-top)*k]];P[0]=[cx-w/2*Math.min(1,k*3),pts[0][1]];P[1]=[cx+w/2*Math.min(1,k*3),pts[1][1]];}
+    else{const yb=bot,yy=lerp(bot,top,k);P=[[lerp(cx,cx-w/2,k),lerp(bot,pts[0][1],k)],[lerp(cx,cx+w/2,k),lerp(bot,pts[1][1],k)],[cx,bot]];}
+    p.setAttribute('points',P.map(q=>q.join(',')).join(' '));p.style.opacity=k>0.001?1:0;});
+}
+
+/* ---------- build ---------- */
+logoSpikes($('s1svg'),960-475*1.0,170-203*1.0,1.0,'url(#choc)','L1');
+logoSpikes($('s7svg'),960-475*.85,110-203*.85,.85,'#140D14','L7');
+$('s1word').innerHTML=chars('SUKAL');$('s7word').innerHTML=chars('SUKAL');
+$('s2a').innerHTML=words("L'art");$('s2b').innerHTML=words('de la gourmandise.');
+const CIR=[['roule_speculoos','Roulé spéculoos',730,930,.98,1440,1800],['tarte_citron','Tarte citron meringuée',545,1000,1.22,1440,1618],
+ ['tarte_fraise','Tarte aux fraises',720,1030,.72,1440,1796],['tarte_framboise','Tarte framboise',710,940,.74,1440,1796],['tarte_ananas','Tarte ananas rôti',720,890,.84,1440,1800]];
+$('s3circles').innerHTML=CIR.map(([p],i)=>`<div class="a s3c" style="width:860px;height:860px;border-radius:50%;overflow:hidden;box-shadow:0 40px 80px rgba(60,30,10,.35)"><img src="photos/${p}.jpg" style="position:absolute;left:0;top:0;transform-origin:0 0"></div>`).join('');
+const PAN=[['chouquettes_macro',720,640,1.0],['drip_cake',700,800,.95],['galette',760,800,.95]];
+$('s4panels').innerHTML=PAN.map(([p],i)=>`<div class="ph a s4p" style="width:636px;height:1400px;top:-160px;left:${i*642}px"><img src="photos/${p}.jpg"></div>`).join('');
+const UNI=['Boulangerie','Pâtisserie','Snacking','Traiteur'];
+$('s4dots').innerHTML=UNI.join(' · ');
+$('s5t').innerHTML=words('Les fêtes, version Sukal.');
+$('s6t').innerHTML=words('Une maison à Bamako.');
+$('s5bokeh').innerHTML=Array.from({length:26},()=>{const s=30+rnd()*90;return `<div class="a bk" data-x="${rnd()*1920}" data-y="${rnd()*1080}" data-ph="${rnd()*6.28}" style="width:${s}px;height:${s}px;border-radius:50%;background:radial-gradient(circle,rgba(242,210,140,.55),rgba(242,210,140,0) 70%)"></div>`}).join('');
+// S2 drip clip shapes (5 drips that widen and fill the frame)
+$('s2drips').innerHTML=SPK.map((_,i)=>`<path class="dr" data-i="${i}"/>`).join('');
+
+/* ---------- particles: sugar dust / gold flakes ---------- */
+const P=Array.from({length:150},()=>({x:rnd()*1920,y:rnd()*1080,v:18+rnd()*60,s:1+rnd()*3.2,ph:rnd()*6.28,g:rnd()<.35}));
+const fx=$('fx').getContext('2d');
+function drawFx(t,mode){fx.clearRect(0,0,1920,1080);if(!mode)return;
+  for(const p of P){const y=((p.y+t*p.v)%1140+1140)%1140-30;const x=p.x+Math.sin(t*.8+p.ph)*24;const a=(.25+.55*(.5+.5*Math.sin(t*2+p.ph)))*mode;
+    fx.beginPath();fx.arc(x,y,p.s,0,7);fx.fillStyle=p.g?`rgba(242,210,140,${a})`:`rgba(255,250,240,${a*.9})`;fx.shadowColor=p.g?'#DBAF58':'#fff';fx.shadowBlur=p.s*4;fx.fill();}
+  fx.shadowBlur=0;}
+// steam wisps (S2)
+function steam(t,k){if(k<=0)return;fx.save();fx.globalCompositeOperation='screen';
+  for(let j=0;j<4;j++){const bx=700+j*170;for(let i=0;i<26;i++){const u=((t*.25+i/26+j*.13)%1);const y=620-u*450;const x=bx+Math.sin(u*7+j+t)*40*u;
+    fx.beginPath();fx.arc(x,y,20+u*60,0,7);fx.fillStyle=`rgba(255,240,220,${.018*k*(1-u)})`;fx.fill();}}fx.restore();}
+
+const gctx=$('grain').getContext('2d');const gimg=gctx.createImageData(640,360);
+function grain(f){let s=(f*7919+13)%2147483647||1;const d=gimg.data;for(let i=0;i<d.length;i+=4){s=(s*16807)%2147483647;const v=s&255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255}gctx.putImageData(gimg,0,0)}
+
+function render(t,frame){
+  let fl=0;for(const [st,a] of [[3.2,.0],[7.2,.35],[13.2,.25],[17.4,.3],[20.8,.2],[25,.25]]){const k=seg(t,st,st+.5);if(t>=st&&k<1)fl=Math.max(fl,a*(1-EZ.outCubic(k)))}
+  $('flash').style.opacity=fl;
+  // light leak drifting
+  const lx=960+Math.sin(t*.35)*700,ly=420+Math.cos(t*.27)*280;
+  $('leak').style.background=`radial-gradient(circle at ${lx}px ${ly}px,rgba(255,170,80,.22),rgba(255,140,60,0) 45%)`;
+  const light=(t>=7.2&&t<13.2)||t>=25;
+  $('sig').style.color=light?'rgba(42,26,18,.55)':'rgba(253,230,196,.6)';$('sig').style.opacity=E(t,.4,1.2,'lin');
+  let dust=0;
+
+  /* S1 0–3.6 : chocolate drips form the logo */
+  if(show('s1',t,0,3.65)){
+    dust=.6*E(t,0,1,'lin');
+    setSpikes('L1',t,.15,.22,1.1,'top');
+    const gl=document.querySelector('.L1glint');const gp=seg(t,1.35,1.9);gl.setAttribute('cx',475);gl.setAttribute('cy',lerp(203,435,gp));gl.setAttribute('opacity',gp>0&&gp<1?Math.sin(gp*Math.PI):0);
+    $('s1word').querySelectorAll('.wi').forEach((w,i)=>{const p=E(t,1.55+i*.09,2.4+i*.09,'outQuart');w.style.transform=`translateY(${(1-p)*60}%)`;w.style.opacity=p});
+    tf($('s1word'),{x:960,y:700});
+    $('s1word').style.letterSpacing=lerp(60,26,E(t,1.55,2.9,'outQuart'))+'px';
+    tf($('s1sub'),{x:960,y:810,op:E(t,2.3,2.9)});
+    const out=E(t,3.0,3.6,'inCubic');$('s1').style.opacity=1-out;
+  }
+
+  /* S2 3.2–7.2 : drips reveal the hero */
+  if(show('s2',t,3.2,7.25)){
+    dust=Math.max(dust,.45);
+    const rv=seg(t,3.2,4.1);
+    document.querySelectorAll('.dr').forEach(d=>{const i=+d.dataset.i;const [cx]=SPK[i];const X=(cx-475)*2.6+960;
+      const st=[0,.12,.24,.12,0][i];const k=EZ.inOutQuart(clamp((rv-st)/(1-.24)));
+      const hw=lerp(10,700,k),len=lerp(0,1300,EZ.outQuart(clamp((rv-st)*1.6)));const tip=Math.max(0,len-260+260*(1-k));
+      d.setAttribute('d',`M${X-hw},-20 L${X+hw},-20 L${X+hw},${len-hw} Q${X+hw},${len+hw*.6} ${X},${len+hw*.8} Q${X-hw},${len+hw*.6} ${X-hw},${len-hw} Z`);});
+    const kb=seg(t,3.2,7.2);const s=lerp(1.38,1.5,EZ.inOutSine(kb));
+    $('s2img').setAttribute('transform',`translate(${960-700*s} ${470-760*s}) scale(${s})`);
+    animW($('s2a'),t,4.3,.1,1.0,100);tf($('s2a'),{c:false,x:0,y:690});
+    animW($('s2b'),t,4.6,.08,1.0,100);tf($('s2b'),{c:false,x:0,y:830});
+    tf($('s2line'),{x:960,y:975,op:E(t,5.2,5.8)});$('s2line').style.width=lerp(0,260,E(t,5.2,6.0,'inOutCubic'))+'px';
+    const out=E(t,6.9,7.25,'inCubic');$('s2').style.opacity=1-out;
+  }
+
+  /* S3 7.2–13.2 : circle match cuts */
+  if(show('s3',t,7.15,13.25)){
+    dust=Math.max(dust,.55);
+    $('s3').style.opacity=E(t,7.15,7.45,'lin');
+    tf($('s3lab'),{c:false,x:0,y:0,op:E(t,7.3,7.8)});
+    $('s3h').style.opacity=E(t,7.45,8.0);$('s3h').style.transform=`translateY(${(1-E(t,7.45,8.1,'outQuart'))*30}px)`;
+    const T0=7.45,D=1.15;const i=clamp(Math.floor((t-T0)/D),0,4);
+    const cy=540,CX3=560,SC3=.9;
+    tf($('s3shadow'),{x:CX3,y:cy+50,s:SC3});
+    document.querySelectorAll('.s3c').forEach((c,k)=>{const tk=T0+k*D;const vis=t>=tk-.25&&t<tk+D+.05;c.style.display=vis?'block':'none';if(!vis)return;
+      const [p,n,cx,cyy,sc]=CIR[k];const inn=E(t,tk-.25,tk+.25,'outQuart');const img=c.querySelector('img');
+      const zoom=sc*lerp(1.35,1,inn)*(1+.05*seg(t,tk,tk+D));const rot=lerp(-25,0,inn)+(t-tk)*3;
+      img.style.transform=`translate(430px,430px) rotate(${rot}deg) scale(${zoom}) translate(${-cx}px,${-cyy}px)`;
+      c.style.zIndex=k;tf(c,{x:CX3,y:cy,s:SC3*lerp(.92,1,inn),op:k===0?E(t,7.45,7.8,'lin'):1});
+      c.style.clipPath=k===0?'none':`circle(${lerp(0,430,inn)}px at 50% 50%)`;});
+    $('s3ring').style.transform=`translate(${CX3-480}px,${cy-480}px) scale(${SC3}) rotate(${t*14}deg)`;$('s3ring').style.opacity=E(t,7.6,8.1);
+    const tk=T0+i*D;const lp=E(t,tk+.05,tk+.45,'outQuart');
+    $('s3num').textContent=`N° 0${i+1}`;tf($('s3num'),{x:1420,y:600,op:lp});
+    $('s3name').textContent=CIR[i][1];tf($('s3name'),{x:1420,y:680+(1-lp)*24,op:lp});
+    const out=E(t,12.95,13.25,'inCubic');$('s3').style.opacity=Math.min($('s3').style.opacity,1-out);
+  }
+
+  /* S4 13.2–17.4 : toque-pleat panels */
+  if(show('s4',t,13.15,17.45)){
+    dust=Math.max(dust,.35);
+    document.querySelectorAll('.s4p').forEach((pn,k)=>{const [p,cx,cy,s]=PAN[k];const st=13.2+k*.12;const p0=E(t,st,st+.7,'outQuart');
+      const dir=k%2?-1:1;const drift=(t-13.2)*30*dir;
+      pn.style.transform=`translateY(${(1-p0)*1400*dir+drift}px)`;
+      place(pn.querySelector('img'),cx,cy,s*.95,318,700-drift);});
+    const wi=clamp(Math.floor((t-13.9)/.82),0,3);const wt=13.9+wi*.82;const wp=E(t,wt,wt+.4,'outQuart');const wo=wi<3?E(t,wt+.62,wt+.82,'inCubic'):0;
+    if(t>=13.9){$('s4word').textContent=UNI[wi];tf($('s4word'),{x:960,y:500+(1-wp)*50-wo*50,op:wp*(1-wo),blur:(1-wp)*8+wo*8});
+      tf($('s4bar'),{x:960,y:610,op:wp*(1-wo)});$('s4bar').style.width=lerp(0,260,wp)+'px';}else{$('s4word').style.opacity=0;$('s4bar').style.opacity=0}
+    tf($('s4dots'),{x:960,y:960,op:E(t,16.6,17.0)});
+    const out=E(t,17.1,17.45,'inCubic');$('s4').style.opacity=1-out;
+  }
+
+  /* S5 17.4–20.8 : festive diagonal split */
+  if(show('s5',t,17.35,20.85)){
+    dust=Math.max(dust,.75);
+    $('s5').style.opacity=E(t,17.35,17.6,'lin');
+    document.querySelectorAll('.bk').forEach(b=>{const ph=+b.dataset.ph;tf(b,{x:+b.dataset.x+Math.sin(t*.6+ph)*30,y:+b.dataset.y+Math.cos(t*.5+ph)*30,op:.4+.4*Math.sin(t*1.5+ph)})});
+    const sp=E(t,17.5,18.3,'inOutQuart');const kb=seg(t,17.4,20.8);
+    const p1=$('s5p1'),p2=$('s5p2');
+    place(p1.querySelector('img'),720,900,lerp(1.4,1.48,kb),960-lerp(0,200,sp),540);
+    place(p2.querySelector('img'),720,900,lerp(1.48,1.4,kb),960+lerp(0,200,sp),540);
+    const cut=lerp(1.4,.5,sp); // diagonal from top-right to bottom-left
+    p1.style.clipPath=`polygon(0 0, ${cut*100+20}% 0, ${cut*100-30}% 100%, 0 100%)`;
+    p2.style.clipPath=`polygon(${cut*100+20}% 0, 100% 0, 100% 100%, ${cut*100-30}% 100%)`;
+    const l=$('s5l');l.setAttribute('x1',(cut+.2)*1920);l.setAttribute('y1',0);l.setAttribute('x2',(cut-.3)*1920);l.setAttribute('y2',1080);l.style.opacity=sp>0.02&&sp<1.01?1:0;
+    tf($('s5lab'),{c:false,x:0,y:0,op:E(t,18.0,18.5)});
+    animW($('s5t'),t,18.3,.09,.9,100);
+    const out=E(t,20.5,20.85,'inCubic');$('s5').style.opacity=Math.min(+$('s5').style.opacity,1-out);
+  }
+
+  /* S6 20.8–25 : la maison */
+  if(show('s6',t,20.75,25.05)){
+    dust=Math.max(dust,.3);
+    $('s6').style.opacity=E(t,20.75,21.0,'lin');
+    const kb=seg(t,20.8,25);place($('s6front').querySelector('img'),560,700,lerp(.9,.98,EZ.inOutSine(kb)),530,560);
+    tf($('s6lab'),{c:false,x:0,y:0,op:E(t,21.0,21.5)});
+    animW($('s6t'),t,21.3,.08,.9,100);
+    const h=E(t,22.4,23.0,'outQuart');tf($('s6hours'),{x:1470,y:640+(1-h)*40,op:h});
+    const out=E(t,24.7,25.05,'inCubic');$('s6').style.opacity=Math.min(+$('s6').style.opacity,1-out);
+  }
+
+  /* S7 25–30 : outro, logo rises like dough */
+  if(show('s7',t,24.95,30.01)){
+    dust=Math.max(dust,.45);
+    $('s7').style.opacity=E(t,24.95,25.3,'lin');
+    setSpikes('L7',t,25.3,.16,.9,'bottom');
+    const gl=document.querySelector('.L7glint');const gp=seg(t,26.3,26.8);gl.setAttribute('cx',475);gl.setAttribute('cy',lerp(435,203,gp));gl.setAttribute('opacity',gp>0&&gp<1?Math.sin(gp*Math.PI):0);
+    $('s7word').querySelectorAll('.wi').forEach((w,i)=>{const p=E(t,26.2+i*.08,27.0+i*.08,'outQuart');w.style.transform=`translateY(${(1-p)*60}%)`;w.style.opacity=p});
+    tf($('s7word'),{x:960,y:520});$('s7word').style.letterSpacing=lerp(60,26,E(t,26.2,27.4,'outQuart'))+'px';
+    tf($('s7uni'),{x:960,y:620,op:E(t,26.9,27.4)});
+    tf($('s7line'),{x:960,y:680,op:E(t,27.2,27.6)});$('s7line').style.width=lerp(0,200,E(t,27.2,27.9,'inOutCubic'))+'px';
+    const a=E(t,27.5,28.0,'outQuart'),b=E(t,27.8,28.3,'outQuart'),c=E(t,28.1,28.6);
+    tf($('s7tel'),{x:960,y:760+(1-a)*25,op:a});tf($('s7mail'),{x:960,y:840+(1-b)*25,op:b});tf($('s7bk'),{x:960,y:910,op:c});
+  }
+  drawFx(t,dust);if(t>=3.2&&t<7.25)steam(t,E(t,4,5)*(1-E(t,6.9,7.25,'inCubic')));
+  grain(frame);
+}
+window.render=render;
+window.settle=()=>Promise.all([...document.images].filter(i=>i.getAttribute('src')&&!i.complete).map(i=>i.decode().catch(()=>{})));
+window.ready=Promise.all([document.fonts.ready,...[...document.images].map(i=>i.decode().catch(()=>{}))]).then(()=>new Promise(r=>{const im=new Image();im.onload=r;im.onerror=r;im.src='photos/roule_choco.jpg'}));
+</script>
+</body>
+</html>
