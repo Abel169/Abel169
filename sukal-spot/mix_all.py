@@ -42,11 +42,13 @@ for i in range(0, N, 64):
 
 # voice-forward balance: music ~-9 dB and SFX ~-6 dB under the voice
 mg = (1 - .66 * duck)[:, None] * .72
-fg = (1 - .5 * duck)[:, None] * .6
+fg = (1 - .7 * duck)[:, None] * .24
 mix = m * mg + fx * fg + vt[:, None] * 1.0
 # report voice vs music level while the voice is speaking
 on = duck > .9
 rv = np.sqrt(np.mean(vt[on] ** 2)); rm = np.sqrt(np.mean((m * mg)[on] ** 2)); rf = np.sqrt(np.mean((fx * fg)[on] ** 2))
+rfa = np.sqrt(np.mean((fx * fg) ** 2)); rma = np.sqrt(np.mean((m * mg) ** 2))
+print(f'effets vs musique (global): {20*np.log10(rfa/rma):+.1f} dB')
 print(f'voix vs musique: +{20*np.log10(rv/rm):.1f} dB | voix vs effets: +{20*np.log10(rv/rf):.1f} dB')
 mix = np.tanh(mix * 1.05); mix /= np.max(np.abs(mix)) * 1.06
 wavfile.write(out, SR, (mix * 32767).astype(np.int16)); print('ok')
