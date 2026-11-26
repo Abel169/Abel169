@@ -16,3 +16,9 @@ ffmpeg -y -i assets/voiceover.mp3 -ar 44100 -ac 1 "$TMP/voice.wav"
 python3 mix_all.py "$TMP/music.wav" "$TMP/voice.wav" "$TMP/sfx.wav" "$TMP/final.wav"
 ffmpeg -y -i mamydelices-app-9x16.mp4 -i "$TMP/final.wav" -map 0:v -map 1:a -c:v copy \
   -af "loudnorm=I=-14:TP=-1:LRA=11" -ar 44100 -c:a aac -b:a 192k -movflags +faststart -shortest mamydelices-app-9x16-voix.mp4
+
+# 16:9 version for Facebook (same timing and voice mix)
+PAGE=horizontal.html SIZE=1920x1080 node render.js frames "$TMP/hframes" 60 4
+ffmpeg -y -framerate 60 -i "$TMP/hframes/f%05d.jpg" -i "$TMP/final.wav" \
+  -vf "tmix=frames=2,fps=30,format=yuv420p" -af "loudnorm=I=-14:TP=-1:LRA=11" -ar 44100 \
+  -c:v libx264 -preset slow -crf 18 -profile:v high -movflags +faststart -c:a aac -b:a 192k -shortest mamydelices-app-16x9-voix.mp4
