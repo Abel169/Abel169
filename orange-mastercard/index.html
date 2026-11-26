@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Tutoriel · Carte Mastercard Orange Money</title>
+<style>
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-900-normal.woff2);font-weight:900}
+:root{--o:#FF7900;--o2:#FF9A3C;--bk:#0B0B0D;--g:#9AA0A6}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+body{font-family:Mont,sans-serif;color:#fff}
+#stage{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 100% 0%,rgba(255,121,0,.55) 0%,rgba(255,121,0,0) 45%),radial-gradient(ellipse at 0% 100%,rgba(255,121,0,.45) 0%,rgba(255,121,0,0) 45%),#0B0B0D}
+.a{position:absolute;left:0;top:0;will-change:transform,opacity}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .05em .14em;margin-bottom:-.14em}
+.wi{display:inline-block;will-change:transform}
+.h{font-weight:900;letter-spacing:-1.5px;line-height:1.05;white-space:nowrap}
+svg.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* phone */
+.phone{width:520px;height:1080px;border-radius:72px;background:#111;padding:16px;box-shadow:0 0 0 3px #2a2a2e inset,0 0 0 6px rgba(255,121,0,.55),0 50px 120px rgba(255,121,0,.25)}
+.scr{position:relative;width:488px;height:1048px;border-radius:56px;overflow:hidden;background:#fff;color:#111}
+.cam{position:absolute;left:50%;top:14px;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:#111;z-index:60}
+.sb{position:absolute;left:0;right:0;top:0;height:46px;display:flex;justify-content:space-between;padding:14px 34px 0;font-weight:700;font-size:17px;z-index:55}
+.pg{position:absolute;inset:0;display:none;overflow:hidden}
+.hdr{position:absolute;left:0;right:0;top:46px;height:70px;display:flex;align-items:center;gap:16px;padding:0 26px;font-weight:800;font-size:28px}
+.btn{position:absolute;height:66px;border-radius:16px;display:grid;place-items:center;font-weight:800;font-size:22px}
+.bq{border:2px solid #222;color:#111;background:#fff}.bo{background:#FF7900;color:#fff}
+.fld{position:absolute;left:30px;right:30px;border-bottom:2px solid #ddd;padding-bottom:6px}
+.fld .l{font-size:15px;color:#888;font-weight:700}.fld .v{font-size:22px;font-weight:700;min-height:30px;margin-top:2px}
+.sheet{position:absolute;left:0;right:0;bottom:0;border-radius:34px 34px 0 0;background:#fff;box-shadow:0 -20px 60px rgba(0,0,0,.3)}
+.dim{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.tap{position:absolute;width:64px;height:64px;margin:-32px;border-radius:50%;background:rgba(255,121,0,.35);border:4px solid #FF7900;z-index:70;pointer-events:none}
+.finger{position:absolute;z-index:71;pointer-events:none}
+.key{position:absolute;width:86px;height:86px;border-radius:50%;border:2px solid #FFB066;display:grid;place-items:center;font-weight:700;font-size:32px;color:#333}
+.chipA{position:absolute;width:132px;height:52px;border-radius:14px;border:2px solid #ccc;background:#f1f1f1;display:grid;place-items:center;font-weight:800;font-size:18px}
+/* stepper */
+.st{position:absolute;width:70px;text-align:center}
+.st .c{width:58px;height:58px;margin:0 auto;border-radius:50%;border:3px solid #444;display:grid;place-items:center;font-weight:900;font-size:24px;color:#777;background:#151517}
+.st .t{margin-top:8px;font-weight:700;font-size:17px;color:#777;white-space:nowrap;margin-left:-30px;margin-right:-30px}
+/* card */
+.card{width:760px;height:480px;border-radius:36px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 80% 0%,#2b2b2f 0%,#0b0b0d 60%);box-shadow:0 40px 100px rgba(0,0,0,.6),0 0 0 2px rgba(255,255,255,.08) inset}
+#grain{position:absolute;inset:0;width:1080px;height:1920px;mix-blend-mode:overlay;opacity:.05;pointer-events:none;z-index:90}
+#sig{position:absolute;left:0;width:1080px;top:1866px;text-align:center;font-weight:700;font-size:20px;letter-spacing:9px;color:rgba(255,255,255,.65);z-index:95}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="a" id="bgword" style="top:250px;font-weight:900;font-size:230px;white-space:nowrap;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.07);letter-spacing:-4px">MASTERCARD · ORANGE MONEY · MASTERCARD ·</div>
+
+  <!-- fixed header -->
+  <div class="a" id="pill" style="padding:12px 30px;border-radius:40px;background:#fff;color:#111;font-weight:800;font-size:24px;white-space:nowrap">Tutoriel · Sogoba Créative</div>
+  <div class="a h" id="t1" style="width:1080px;text-align:center;font-size:76px">COMMENT AVOIR TA</div>
+  <div class="a h" id="t2" style="width:1080px;text-align:center;font-size:84px;color:#FF7900">CARTE MASTERCARD</div>
+  <div class="a" id="t3" style="width:1080px;text-align:center;font-weight:700;font-size:40px">avec <span style="color:#FF7900">Orange Money</span> ?</div>
+  <div class="a" id="t4" style="width:1080px;text-align:center;font-weight:700;font-style:italic;font-size:26px;color:#FF9A3C">▹ Achats en ligne · pas à pas</div>
+
+  <!-- hook -->
+  <div class="a h" id="hk1" style="width:1080px;text-align:center;font-size:62px"></div>
+  <div class="a h" id="hk2" style="width:1080px;text-align:center;font-size:62px;color:#FF7900"></div>
+  <div class="a" id="hkcart" style="width:560px;padding:34px;border-radius:34px;background:#fff;color:#111;box-shadow:0 40px 90px rgba(0,0,0,.5)">
+    <div style="font-weight:800;font-size:28px">Paiement</div>
+    <div style="margin-top:16px;display:flex;justify-content:space-between;font-size:24px;font-weight:700"><span>Total</span><span>2 000 CFA</span></div>
+    <div style="margin-top:20px;height:64px;border-radius:14px;border:2px solid #ddd;display:flex;align-items:center;padding:0 18px;gap:12px;font-size:22px;color:#999"><svg class="ic" width="34" height="34" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>Numéro de carte bancaire</div>
+    <div id="hkerr" style="margin-top:16px;color:#E11D2E;font-weight:800;font-size:24px">✕ Carte requise</div>
+  </div>
+
+  <!-- phone -->
+  <div class="a" id="phw"><div class="phone"><div class="scr" id="scr">
+    <div class="cam"></div>
+    <div class="sb" id="sb"><span>13:54</span><span>4G ▮▮▮ 72%</span></div>
+
+    <!-- A home -->
+    <div class="pg" id="pA" style="background:radial-gradient(ellipse at 50% 30%,#3a3a44 0%,#15151a 70%);color:#fff"><div id="apps"></div></div>
+
+    <!-- B maxit home -->
+    <div class="pg" id="pB" style="background:#fff">
+      <div style="position:absolute;left:0;right:0;top:0;height:330px;background:linear-gradient(180deg,#FF8A1A 0%,#FFB067 70%,#fff 100%)"></div>
+      <div style="position:absolute;left:24px;top:64px;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.6);display:grid;place-items:center"><svg class="ic" width="32" height="32" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div>
+      <div style="position:absolute;left:150px;top:68px;width:190px;height:50px;border-radius:30px;background:rgba(255,255,255,.55);display:flex;align-items:center;gap:12px;padding:0 6px;font-weight:700;font-size:22px"><span style="width:60px;height:38px;border-radius:20px;background:#222;color:#fff;display:grid;place-items:center">»</span>Simple</div>
+      <div id="bSearch" style="position:absolute;left:406px;top:64px;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.6);display:grid;place-items:center"><svg class="ic" width="30" height="30" viewBox="0 0 24 24" style="stroke-width:2.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+      <div style="position:absolute;left:0;right:0;top:140px;text-align:center;font-weight:700;font-size:24px">72 ** ** 00 ▾</div>
+      <div style="position:absolute;left:24px;right:24px;top:184px;height:170px;border-radius:24px;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;padding:0 26px">
+        <div style="font-weight:800;font-size:30px">👁‍🗨 ***** CFA</div>
+        <div style="width:120px;height:120px;border-radius:14px;background:repeating-linear-gradient(90deg,#111 0 8px,#fff 8px 14px),#111;opacity:.85"></div></div>
+      <div style="position:absolute;left:24px;right:24px;top:380px;height:150px;border-radius:24px;border:2px solid #eee;padding:22px">
+        <div style="display:flex;justify-content:space-around;font-weight:800;font-size:24px"><span style="color:#FF7900;border-bottom:3px solid #FF7900">Transfert</span><span>Paiement</span></div>
+        <div style="margin-top:18px;height:52px;border-radius:14px;border:2px solid #ddd;display:flex;align-items:center;padding:0 14px;font-size:20px;color:#555">223 ▾ &nbsp; Bénéficiaire</div></div>
+      <div style="position:absolute;left:24px;right:24px;top:570px;display:flex;justify-content:space-around;text-align:center;font-size:17px;font-weight:600">
+        <div><div style="font-size:46px">📊</div>Suivi Conso</div><div><div style="font-size:46px">📶</div>Forfait</div><div><div style="font-size:46px">📱</div>Né Taa</div><div><div style="font-size:46px">➕</div>Services</div></div>
+      <div style="position:absolute;left:30px;top:730px;font-weight:800;font-size:24px">Historiques</div>
+      <div style="position:absolute;left:24px;right:24px;top:780px;height:100px;border-radius:20px;border:2px solid #eee"></div>
+      <div style="position:absolute;left:0;right:0;bottom:44px;text-align:center;font-weight:800;font-size:22px"><span style="color:#FF7900">➚</span> Orange Money</div>
+    </div>
+
+    <!-- C search -->
+    <div class="pg" id="pC" style="background:#0D141B;color:#fff">
+      <div style="position:absolute;left:20px;right:20px;top:60px;height:70px;border-radius:36px;background:#1E2A35;display:flex;align-items:center;gap:16px;padding:0 22px;font-size:26px"><span>←</span><span id="cType" style="flex:1"></span><span style="color:#8a96a3">✕</span></div>
+      <div style="position:absolute;left:20px;top:150px;display:flex;gap:12px;font-weight:700;font-size:19px">
+        <span style="padding:12px 20px;border-radius:30px;border:2px solid #FF7900;color:#FF7900;background:#3a2410">Tous</span><span style="padding:12px 20px;border-radius:30px;border:2px solid #3a4652">Orange Money</span><span style="padding:12px 20px;border-radius:30px;border:2px solid #3a4652">Ma Ligne</span></div>
+      <div id="cRes" style="position:absolute;left:0;right:0;top:230px">
+        <div style="display:flex;justify-content:space-between;padding:0 28px;font-weight:800;font-size:24px"><span>Services</span><span style="width:40px;height:40px;border-radius:50%;background:#1E2A35;display:grid;place-items:center;font-size:18px">1</span></div>
+        <div id="cRow" style="margin:22px 16px 0;padding:18px 14px;border-radius:18px;display:flex;align-items:center;gap:18px">
+          <div style="width:68px;height:68px;border-radius:50%;background:#3b2716;display:grid;place-items:center"><div style="width:38px;height:26px;border-radius:5px;background:#222;border:2px solid #d9a441"></div></div>
+          <div style="flex:1"><div style="font-weight:800;font-size:28px">Mastercard</div><div style="font-size:20px;color:#8a96a3">Orange Money</div></div><span style="font-size:28px;color:#8a96a3">›</span></div></div>
+    </div>
+
+    <!-- D popup -->
+    <div class="pg" id="pD" style="background:#f6f6f6">
+      <div class="hdr" style="background:#fff">← &nbsp;Mastercard</div>
+      <div class="dim"></div>
+      <div class="sheet" id="dSheet" style="height:470px">
+        <div style="margin:44px auto 0;width:96px;height:96px;border-radius:50%;border:6px solid #F5B800;color:#F5B800;display:grid;place-items:center;font-weight:900;font-size:52px">i</div>
+        <div style="margin:28px 40px 0;padding:24px;border-radius:18px;border:2px solid #eee;text-align:center;font-size:23px;font-weight:600;color:#444;line-height:1.35">Vous n'avez pas encore de Carte Prépayée Mastercard</div>
+        <div class="btn bq" style="left:30px;width:200px;top:350px">Fermer</div><div class="btn bo" id="dBuy" style="left:258px;width:200px;top:350px">Acheter</div>
+      </div>
+    </div>
+
+    <!-- E form -->
+    <div class="pg" id="pE" style="background:#fff">
+      <div class="hdr">← &nbsp;Achat Mastercard</div>
+      <div style="position:absolute;left:30px;top:136px;font-weight:800;font-size:22px">Quel type de carte voulez-vous ?</div>
+      <div id="eType" style="position:absolute;left:20px;right:20px;top:180px;height:70px;border-radius:16px;display:flex;align-items:center;gap:16px;padding:0 14px">
+        <span style="width:30px;height:30px;border-radius:50%;border:3px solid #FF7900;display:grid;place-items:center"><span style="width:14px;height:14px;border-radius:50%;background:#FF7900"></span></span>
+        <span style="flex:1;font-weight:700;font-size:24px">Virtuelle</span><span style="font-weight:900;font-size:24px;color:#FF7900">1 000 FCFA</span></div>
+      <div style="position:absolute;left:30px;top:282px;font-weight:800;font-size:24px">Informations personnelles</div>
+      <div id="eFields"></div>
+      <div class="btn bq" style="left:24px;width:205px;top:930px">Quitter</div><div class="btn bo" style="left:259px;width:205px;top:930px">Suivant</div>
+    </div>
+
+    <!-- F conditions -->
+    <div class="pg" id="pF" style="background:#fff">
+      <div class="hdr">← &nbsp;Nos termes et conditions</div>
+      <div style="position:absolute;left:30px;right:30px;top:140px;color:#FF7900;font-weight:900;font-size:30px;line-height:1.2">CONDITIONS GÉNÉRALES D'UTILISATION CARTE PRÉPAYÉE ORANGE MONEY MASTERCARD</div>
+      <div style="position:absolute;left:30px;right:30px;top:330px;font-size:17px;line-height:1.55;color:#555">Les présentes Conditions Générales d'Utilisation de la Carte Orange Money Mastercard ont pour objet de définir les modalités de mise à disposition et d'utilisation de la Carte émise par Orabank et distribuée par Orange Finances Mobiles Mali…</div>
+      <div id="fLines" style="position:absolute;left:30px;right:30px;top:520px"></div>
+      <div style="position:absolute;left:30px;right:30px;top:800px;display:flex;align-items:center;gap:16px;font-weight:800;font-size:19px"><span id="fBox" style="width:34px;height:34px;border-radius:8px;border:3px solid #FF7900;display:grid;place-items:center;color:#fff;font-size:24px;flex:none"></span>J'ai lu et j'accepte les termes et conditions</div>
+      <div class="btn bq" style="left:24px;width:205px;top:930px">Quitter</div><div class="btn bo" id="fNext" style="left:259px;width:205px;top:930px">Suivant</div>
+      <div class="dim" id="fDim"></div>
+      <!-- G code sheet -->
+      <div class="sheet" id="gSheet" style="height:640px">
+        <div style="margin-top:36px;text-align:center;font-weight:700;font-size:22px;color:#333">Tapez votre code secret Orange Money</div>
+        <div id="gDots" style="margin:26px auto 0;display:flex;justify-content:center;gap:30px"></div>
+        <div id="gKeys"></div>
+      </div>
+      <!-- H recap sheet -->
+      <div class="sheet" id="hSheet" style="height:620px;padding:36px 30px">
+        <div style="font-weight:800;font-size:26px">Achat Mastercard - Type</div>
+        <div style="margin-top:20px;border-radius:18px;background:#f5f5f5;padding:18px 22px;font-size:21px;line-height:2">
+          <div style="display:flex;justify-content:space-between"><span>👤 Bénéficiaire</span><b>Moi-même</b></div>
+          <div style="display:flex;justify-content:space-between"><span>💵 Montant</span><b style="color:#FF7900">1 000 CFA</b></div>
+          <div style="display:flex;justify-content:space-between"><span>🧾 Total</span><b style="color:#FF7900">1 000 CFA</b></div></div>
+        <div style="margin-top:22px;font-size:21px;font-weight:700;line-height:2.1">
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:28px;height:28px;border-radius:50%;border:3px solid #FF7900;display:grid;place-items:center"><span style="width:12px;height:12px;border-radius:50%;background:#FF7900"></span></span>Compte Principal</div>
+          <div style="display:flex;align-items:center;gap:14px;color:#aaa"><span style="width:28px;height:28px;border-radius:50%;border:3px solid #ccc"></span>Compte Plus</div></div>
+        <div class="btn bq" style="left:24px;width:205px;top:510px">Quitter</div><div class="btn bo" id="hOk" style="left:259px;width:205px;top:510px">Confirmer</div>
+      </div>
+    </div>
+
+    <!-- I congrats -->
+    <div class="pg" id="pI" style="background:#f6f6f6">
+      <div class="hdr" style="background:#fff">← &nbsp;Mastercard</div>
+      <div class="dim"></div>
+      <div class="sheet" style="height:520px">
+        <div style="margin:40px auto 0;width:130px;height:130px;border-radius:50%;background:#3CC85A;display:grid;place-items:center;font-size:76px">🎉</div>
+        <div style="margin:26px 36px 0;text-align:center;font-size:23px;font-weight:600;color:#333;line-height:1.4"><b>Félicitations !</b> Votre Mastercard est disponible. Pour l'activer, faites votre première recharge.</div>
+        <div class="btn bq" style="left:30px;width:200px;top:410px">Fermer</div><div class="btn bo" style="left:258px;width:200px;top:410px">Activer</div>
+      </div>
+    </div>
+
+    <!-- K recharge -->
+    <div class="pg" id="pK" style="background:#fff">
+      <div class="hdr">← &nbsp;Recharger ma carte</div>
+      <div style="position:absolute;left:30px;right:30px;top:136px;font-size:21px">
+        <div style="font-weight:800;font-size:23px">Transférer depuis</div>
+        <div style="margin-top:16px;display:flex;align-items:center;gap:14px;font-weight:700"><span style="width:28px;height:28px;border-radius:50%;border:3px solid #FF7900;display:grid;place-items:center"><span style="width:12px;height:12px;border-radius:50%;background:#FF7900"></span></span>Compte Principal</div>
+        <div style="margin-top:14px;display:flex;align-items:center;gap:14px;color:#aaa;font-weight:700"><span style="width:28px;height:28px;border-radius:50%;border:3px solid #ccc"></span>Compte Plus</div>
+        <div style="margin-top:28px;font-weight:800;font-size:23px">Vers</div>
+        <div style="margin-top:16px;display:flex;align-items:center;gap:14px;font-weight:800;font-size:24px"><span style="width:28px;height:28px;border-radius:50%;border:3px solid #FF7900;display:grid;place-items:center"><span style="width:12px;height:12px;border-radius:50%;background:#FF7900"></span></span>Mastercard <span style="margin-left:auto;font-weight:600;font-size:18px;color:#999">•••• 0000</span></div>
+        <div style="margin-top:34px;color:#777;font-size:18px">Entrez un montant *</div>
+        <div style="margin-top:6px;border-bottom:3px solid #FF7900;font-weight:700;font-size:30px;min-height:46px" id="kAmt"></div>
+        <div style="margin-top:14px;color:#C2410C;font-weight:600;font-size:18px">Montant entre 500 F et 2 000 000 F</div>
+      </div>
+      <div id="kChips"></div>
+      <div class="btn bq" style="left:24px;width:205px;top:930px">Quitter</div><div class="btn bo" id="kGo" style="left:259px;width:205px;top:930px">Continuer</div>
+      <div id="kToast" style="position:absolute;left:40px;right:40px;top:440px;padding:30px;border-radius:24px;background:#16A34A;color:#fff;text-align:center;font-weight:800;font-size:26px;box-shadow:0 20px 50px rgba(0,0,0,.3)">✓ Recharge réussie<br><span style="font-weight:600;font-size:20px">Ta carte est activée</span></div>
+    </div>
+
+    <!-- L online checkout -->
+    <div class="pg" id="pL" style="background:#F4F4F6">
+      <div style="position:absolute;left:16px;right:16px;top:56px;height:54px;border-radius:28px;background:#fff;display:flex;align-items:center;gap:10px;padding:0 20px;font-size:19px;color:#555">🔒 boutique-exemple.com</div>
+      <div style="position:absolute;left:20px;right:20px;top:130px;padding:20px;border-radius:22px;background:#fff;display:flex;gap:16px;align-items:center">
+        <div style="width:96px;height:96px;border-radius:16px;background:linear-gradient(135deg,#FFE3C4,#FFB067);display:grid;place-items:center;font-size:52px">🎧</div>
+        <div><div style="font-weight:800;font-size:24px">Écouteurs sans fil</div><div style="font-weight:900;font-size:26px;color:#FF7900;margin-top:4px">2 000 CFA</div></div></div>
+      <div style="position:absolute;left:20px;right:20px;top:280px;padding:24px;border-radius:22px;background:#fff">
+        <div style="font-weight:800;font-size:23px">Paiement par carte</div>
+        <div style="margin-top:16px;font-size:16px;color:#888;font-weight:700">Numéro de carte</div>
+        <div style="margin-top:4px;height:58px;border-radius:12px;border:2px solid #ddd;display:flex;align-items:center;padding:0 14px;font-weight:700;font-size:23px" id="lNum"></div>
+        <div style="display:flex;gap:14px;margin-top:14px">
+          <div style="flex:1"><div style="font-size:16px;color:#888;font-weight:700">Expiration</div><div style="margin-top:4px;height:58px;border-radius:12px;border:2px solid #ddd;display:flex;align-items:center;padding:0 14px;font-weight:700;font-size:23px" id="lExp"></div></div>
+          <div style="flex:1"><div style="font-size:16px;color:#888;font-weight:700">CVV</div><div style="margin-top:4px;height:58px;border-radius:12px;border:2px solid #ddd;display:flex;align-items:center;padding:0 14px;font-weight:700;font-size:23px" id="lCvv"></div></div></div>
+      </div>
+      <div class="btn bo" id="lPay" style="left:20px;right:20px;top:720px">Payer 2 000 CFA</div>
+      <div id="lOk" style="position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <svg width="190" height="190" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#16A34A"/><path id="lChk" d="M30 51 l14 14 l27 -29" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></svg>
+        <div style="margin-top:26px;font-weight:900;font-size:34px">Paiement accepté !</div><div style="margin-top:8px;font-size:21px;color:#666">Ta commande est confirmée</div></div>
+    </div>
+
+    <div class="tap" id="tap"></div>
+    <svg class="finger" id="finger" width="70" height="90" viewBox="0 0 24 30"><path d="M9 2a2 2 0 0 1 2 2v9l1-.2V9a2 2 0 0 1 4 0v4l.6-.1A2 2 0 0 1 19 15v6c0 4-3 7-7 7s-6-2-7.5-5L2 18a2 2 0 0 1 3-2.5L7 18V4a2 2 0 0 1 2-2z" fill="#fff" stroke="#111" stroke-width="1.2"/></svg>
+  </div></div>
+  <div class="a" id="simu" style="padding:8px 16px;border-radius:12px;background:#111;border:2px solid #FF7900;color:#FF9A3C;font-weight:800;font-size:18px;letter-spacing:3px">SIMULATION</div>
+  </div>
+
+  <!-- 3D card -->
+  <div class="a" id="cardw" style="perspective:2000px"><div class="card" id="card">
+    <div id="cdots"></div>
+    <div style="position:absolute;left:46px;top:150px;width:96px;height:72px;border-radius:12px;background:linear-gradient(135deg,#E9C46A,#B8892E)"></div>
+    <div style="position:absolute;right:44px;top:40px;font-weight:800;font-size:30px;color:#fff;text-align:right;line-height:1.05">Orabank <span style="color:#555">|</span> <span style="color:#FF7900">Orange Money</span></div>
+    <div style="position:absolute;left:46px;top:262px;font-weight:700;font-size:46px;letter-spacing:6px">•••• •••• •••• 0000</div>
+    <div style="position:absolute;left:46px;top:340px;font-size:18px;color:#aaa;font-weight:700">EXPIRE À FIN <span style="color:#fff;font-size:26px;margin-left:8px">MM/AA</span></div>
+    <div style="position:absolute;left:46px;top:395px;font-weight:800;font-size:22px;letter-spacing:3px;color:#FF9A3C">PRÉPAYÉE · VIRTUELLE</div>
+    <div style="position:absolute;right:44px;bottom:36px;font-weight:800;font-size:30px;font-style:italic;color:#fff">Mastercard</div>
+    <div id="shine" style="position:absolute;top:-50%;width:180px;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:rotate(20deg)"></div>
+    <div style="position:absolute;left:0;right:0;top:46%;text-align:center;font-weight:900;font-size:34px;letter-spacing:14px;color:rgba(255,255,255,.12)">SPÉCIMEN</div>
+  </div></div>
+
+  <!-- stepper + captions -->
+  <div class="a" id="stepper" style="width:1080px;height:120px"></div>
+  <div class="a" id="lab" style="width:1080px;text-align:center;font-weight:800;font-size:26px;letter-spacing:7px;color:#FF7900"></div>
+  <div class="a h" id="ttl" style="width:1080px;text-align:center;font-size:64px"></div>
+  <div class="a" id="sub" style="width:1000px;left:40px;text-align:center;font-weight:700;font-size:31px;line-height:1.25"></div>
+  <div class="a" id="pricep" style="padding:16px 40px;border-radius:40px;background:#FF7900;color:#fff;font-weight:900;font-size:32px;white-space:nowrap;box-shadow:0 14px 36px rgba(255,121,0,.4)">Carte virtuelle · 1 000 FCFA</div>
+
+  <!-- recap -->
+  <div class="a" id="recap" style="width:900px;left:90px;padding:44px 50px;border-radius:40px;background:#151517;border:2px solid #FF7900">
+    <div class="h" style="font-size:54px;text-align:center">C'est <span style="color:#FF7900">simple !</span></div>
+    <div id="rlist" style="margin-top:30px;display:flex;flex-direction:column;gap:22px"></div>
+  </div>
+  <div class="a" id="secu" style="width:900px;left:90px;padding:26px 34px;border-radius:28px;background:rgba(225,29,46,.15);border:2px solid #E11D2E;display:flex;gap:20px;align-items:center;font-weight:800;font-size:28px;line-height:1.3"><span style="font-size:52px">🔒</span>Ne partage jamais ton code secret ni le CVV de ta carte.</div>
+  <div class="a h" id="cta" style="width:1080px;text-align:center;font-size:84px">À toi de <span style="color:#FF7900">jouer !</span></div>
+  <div class="a" id="cta2" style="width:1080px;text-align:center;font-weight:800;font-size:34px;color:#FF9A3C">Max it › Mastercard › Acheter</div>
+</div>
+<canvas id="grain" width="360" height="640"></canvas>
+<div id="sig">TUTORIEL · SOGOBA CRÉATIVE</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const EZ={lin:x=>x,outCubic:x=>1-Math.pow(1-x,3),inCubic:x=>x*x*x,inOutCubic:x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,
+ outExpo:x=>x>=1?1:1-Math.pow(2,-10*x),inExpo:x=>x<=0?0:Math.pow(2,10*x-10),
+ outBack:x=>{const c1=1.7,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)}};
+const E=(t,a,b,e='outExpo')=>EZ[e](seg(t,a,b));
+function tf(el,o){const {x=0,y=0,s=1,r=0,ry=0,rx=0,c=true,op}=o;
+  el.style.transform=`translate(${x}px,${y}px)${c?' translate(-50%,-50%)':''} rotateX(${rx}deg) rotateY(${ry}deg) rotate(${r}deg) scale(${s})`;if(op!==undefined)el.style.opacity=op;}
+let seed=5;const rnd=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};
+const words=txt=>txt.split(' ').map(w=>`<span class="w"><span class="wi">${w}</span></span>`).join(' ');
+function animW(el,t,t0,stag=.06,dur=.5){el.querySelectorAll('.wi').forEach((w,i)=>{const p=E(t,t0+i*stag,t0+i*stag+dur);w.style.transform=`translateY(${(1-p)*110}%)`})}
+
+/* ---------- data ---------- */
+const STEPS=[[3.5,'Max it','Ouvre Max it',"Sur ton téléphone, ouvre l'appli Max it."],
+ [7,'Recherche','Recherche « Mastercard »','Touche la loupe et tape Mastercard.'],
+ [11,'Acheter','Touche « Acheter »',"Pas encore de carte ? Touche Acheter."],
+ [14,'Infos','Tes informations','Choisis la carte virtuelle à 1 000 FCFA et remplis tes infos.'],
+ [19.5,'Conditions','Accepte les conditions','Coche la case, puis touche Suivant.'],
+ [23,'Code','Confirme l’achat','Tape ton code secret Orange Money et confirme.'],
+ [30.5,'Activer','Active ta carte','Fais ta première recharge, dès 500 F.'],
+ [40,'Payer','Paie en ligne !','Utilise ta carte sur les sites marchands.']];
+$('stepper').innerHTML=STEPS.map(([,l],i)=>`<div class="st" style="left:${70+i*134-35}px;top:0"><div class="c">${i+1}</div><div class="t">${l}</div></div>`).join('')+
+ '<div id="sline" style="position:absolute;left:70px;top:29px;height:4px;width:0;background:#FF7900;z-index:-1"></div><div style="position:absolute;left:70px;right:70px;top:29px;height:4px;background:#333;z-index:-2"></div>';
+// home apps
+{const APPS=[['📁','Fichiers','#3B82F6'],['🎨','Thèmes','#F59E0B'],['☁️','Météo','#0EA5E9'],['⚙️','Réglages','#6B7280'],
+ ['📝','Notes','#FBBF24'],['','Max it','#FF7900'],['🗺️','Cartes','#10B981'],['📷','Caméra','#374151'],
+ ['💬','Messages','#22C55E'],['🎵','Musique','#EF4444'],['📞','Téléphone','#16A34A'],['🌐','Navigateur','#2563EB']];
+ $('apps').innerHTML=APPS.map(([e,n,c],i)=>{const x=79+(i%4)*110,y=180+Math.floor(i/4)*160;
+  return `<div style="position:absolute;left:${x-44}px;top:${y-44}px;width:88px;text-align:center"><div ${n==='Max it'?'id="maxicon"':''} style="width:88px;height:88px;border-radius:24px;background:${c};display:grid;place-items:center;font-size:44px;${n==='Max it'?'font-weight:900;font-size:26px;color:#fff;letter-spacing:-1px':''}">${n==='Max it'?'Max it':e}</div><div style="margin-top:8px;font-size:17px;font-weight:600;white-space:nowrap;margin-left:-20px;margin-right:-20px">${n}</div></div>`}).join('');}
+// form fields
+const FF=[['Civilité','Mr'],['Nom','Traoré'],['Prénom','Awa'],['Email','awa@exemple.com'],['Lieu de naissance','Bamako'],['Date de naissance','01/01/2000']];
+$('eFields').innerHTML=FF.map(([l],i)=>`<div class="fld" style="top:${330+i*92}px"><div class="l">${l}</div><div class="v" id="ef${i}"></div></div>`).join('');
+$('fLines').innerHTML=Array.from({length:9},(_,i)=>`<div style="height:12px;border-radius:6px;background:#eee;margin-bottom:18px;width:${70+((i*37)%30)}%"></div>`).join('');
+$('gDots').innerHTML=Array.from({length:4},(_,i)=>`<span class="gd" style="width:26px;height:26px;border-radius:50%;border:3px solid #FFB066"></span>`).join('');
+const KEYS=[['1',0,0],['5',1,0],['8',2,0],['3',3,0],['2',0,1],['7',1,1],['6',2,1],['9',3,1],['0',1,2],['⌫',2,2],['OK',3,2]];
+$('gKeys').innerHTML=KEYS.map(([k,c,r])=>`<div class="key" style="left:${34+c*106}px;top:${190+r*110}px;${k==='OK'?'background:#FF7900;color:#fff;border:none;font-size:26px;font-weight:900':''}">${k}</div>`).join('');
+const CH=['2 000','5 000','10 000','15 000','20 000','50 000'];
+$('kChips').innerHTML=CH.map((c,i)=>`<div class="chipA kc" style="left:${30+(i%3)*146}px;top:${700+Math.floor(i/3)*70}px">${c} CFA</div>`).join('');
+$('cdots').innerHTML=Array.from({length:160},()=>{const a=rnd()*Math.PI*2,r=Math.sqrt(rnd());const x=470+Math.cos(a)*r*330,y=230+Math.sin(a)*r*300;return x<760&&y<480?`<span style="position:absolute;left:${x}px;top:${y}px;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.12)"></span>`:''}).join('');
+$('hk1').innerHTML=words('Tu veux acheter en ligne…');$('hk2').innerHTML=words('sans carte bancaire ?');
+const RL=['Carte virtuelle à 1 000 FCFA','Directement dans Max it','Recharge de 500 F à 2 000 000 F','Paiements en ligne sécurisés'];
+$('rlist').innerHTML=RL.map(r=>`<div class="rl" style="display:flex;align-items:center;gap:20px;font-weight:800;font-size:34px"><span style="width:52px;height:52px;border-radius:50%;background:#FF7900;display:grid;place-items:center;flex:none;font-size:28px">✓</span>${r}</div>`).join('');
+
+const gctx=$('grain').getContext('2d');const gimg=gctx.createImageData(360,640);
+function grain(f){let s=(f*7919+13)%2147483647||1;const d=gimg.data;for(let i=0;i<d.length;i+=4){s=(s*16807)%2147483647;const v=s&255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255}gctx.putImageData(gimg,0,0)}
+
+/* page timeline inside phone: [id, start, end] with slide-in */
+const PAGES=[['pA',3.3,6.0],['pB',5.8,7.9],['pC',7.7,11.0],['pD',10.8,14.0],['pE',13.8,19.6],['pF',19.4,30.6],['pI',30.4,34.5],['pK',34.3,40.1],['pL',39.9,47]];
+function pages(t){PAGES.forEach(([id,a,b])=>{const el=$(id);const on=t>=a&&t<b;el.style.display=on?'block':'none';if(!on)return;
+  const p=E(t,a,a+.35,'inOutCubic');el.style.transform=`translateX(${(1-p)*488}px)`;el.style.zIndex=Math.round(a*10);});}
+const TAPS=[[5.4,189,340],[7.4,435,93],[10.2,240,322],[12.9,358,385+578],[14.5,240,215],[18.7,361,963],[21.0,47,817],[22.2,361,963],
+ [23.9,77,640],[24.3,183,640],[24.7,289,640],[25.1,395,640],[25.6,395,860],[29.4,361,428+510+33],[31.3,358,410+528+33],[35.6,96,726],[37.3,361,963],[44.0,244,753]];
+function taps(t){let cur=null;for(const tp of TAPS)if(t>=tp[0]-.5&&t<tp[0]+.55)cur=tp;const tap=$('tap'),fg=$('finger');
+  if(!cur){tap.style.opacity=0;fg.style.opacity=0;return}const [t0,x,y]=cur;const k=seg(t,t0,t0+.45);
+  tap.style.left=x+'px';tap.style.top=y+'px';tap.style.transform=`scale(${t<t0?0:.6+k*1.2})`;tap.style.opacity=t<t0?0:1-k;
+  const app=E(t,t0-.5,t0-.1,'outCubic');fg.style.opacity=clamp(app*2)*(1-seg(t,t0+.3,t0+.55));
+  fg.style.left=(x-14)+'px';fg.style.top=(y-6+(1-app)*80+(t>t0-.05&&t<t0+.12?6:0))+'px';}
+
+function render(t,frame){
+  $('bgword').style.transform=`translateX(${-((t*40)%1400)}px)`;
+  /* header */
+  const hd=E(t,3.0,3.6,'outCubic');
+  tf($('pill'),{x:540,y:lerp(-80,110,E(t,.1,.6,'outBack'))});
+  tf($('t1'),{c:false,x:0,y:lerp(-200,160,hd)});tf($('t2'),{c:false,x:0,y:lerp(-200,240,hd)});
+  tf($('t3'),{c:false,x:0,y:lerp(-200,334,hd)});tf($('t4'),{c:false,x:0,y:lerp(-200,390,hd),op:E(t,3.3,3.8)});
+  /* hook 0–3.3 */
+  const hk=t<3.4;['hk1','hk2','hkcart'].forEach(id=>$(id).style.display=hk?'block':'none');
+  if(hk){animW($('hk1'),t,.2,.07,.5);animW($('hk2'),t,.7,.07,.5);const ho=E(t,2.9,3.3,'inCubic');
+    tf($('hk1'),{c:false,x:0,y:520-ho*80,op:1-ho});tf($('hk2'),{c:false,x:0,y:610-ho*80,op:1-ho});
+    const cp=E(t,1.0,1.5,'outBack');tf($('hkcart'),{x:540,y:1100+(1-cp)*700,op:1-ho,r:t>1.8&&t<2.3?Math.sin(t*60)*3:0});
+    $('hkerr').style.opacity=t>1.8?1:0;}
+  /* phone */
+  const pIn=E(t,3.2,3.9,'outExpo'),pOut=E(t,46.3,46.9,'inExpo');
+  const phShow=t>=3.15&&t<47;$('phw').style.display=phShow?'block':'none';
+  if(phShow){tf($('phw'),{x:540,y:lerp(1500,960,pIn)+pOut*1300,s:.78});pages(t);taps(t);
+    tf($('simu'),{c:false,x:360,y:-14,s:1/.78*.78});}
+  /* C typing */
+  const txt='Mastercard';$('cType').innerHTML=txt.slice(0,Math.floor(clamp((t-8.0)/1.1)*txt.length))+(t>7.9&&t<9.6&&Math.floor(t*4)%2?'<span style="color:#FF7900">|</span>':'');
+  $('cRes').style.opacity=E(t,9.2,9.5);$('cRow').style.background=t>10.1&&t<10.8?'#1E2A35':'transparent';
+  /* D sheet */
+  $('dSheet').style.transform=`translateY(${(1-E(t,11.0,11.5))*470}px)`;$('dBuy').style.transform=`scale(${t>12.85&&t<13.05?.94:1})`;
+  /* E form */
+  $('eType').style.background=t>14.45?'#FFF1E5':'transparent';$('eType').style.boxShadow=t>14.45?'0 0 0 3px #FF7900 inset':'none';
+  FF.forEach(([,v],i)=>{const a=15.0+i*.55;$('ef'+i).textContent=v.slice(0,Math.floor(clamp((t-a)/.45)*v.length))});
+  /* F / G / H */
+  $('fBox').textContent=t>20.95?'✓':'';$('fBox').style.background=t>20.95?'#FF7900':'#fff';
+  const gIn=E(t,23.0,23.4),gOut=E(t,25.85,26.2,'inCubic');$('gSheet').style.transform=`translateY(${(1-gIn+gOut)*640}px)`;
+  $('fDim').style.opacity=t>23&&t<30.6?1:0;
+  document.querySelectorAll('.gd').forEach((d,i)=>{d.style.background=t>23.9+i*.4?'#FF7900':'transparent'});
+  const hIn=E(t,26.2,26.6);$('hSheet').style.transform=`translateY(${(1-hIn)*620}px)`;$('hSheet').style.display=t>26.1?'block':'none';
+  $('hOk').style.transform=`scale(${t>29.35&&t<29.55?.94:1})`;
+  /* card reveal 31.6–34.4 */
+  const cw=$('cardw');const cOn=t>=31.6&&t<34.5;cw.style.display=cOn?'block':'none';
+  if(cOn){const ci=E(t,31.6,32.4,'outBack'),co=E(t,34.0,34.45,'inCubic');tf(cw,{x:540,y:900,s:lerp(.3,1,ci)*(1-co*.7),op:1-co});
+    $('card').style.transform=`rotateY(${lerp(180,0,E(t,31.6,32.5,'outCubic'))+Math.sin(t*2)*6}deg) rotateX(${Math.sin(t*1.5)*4}deg)`;
+    $('shine').style.left=lerp(-30,130,seg(t,32.5,33.5))+'%';$('phw').style.filter=`blur(${E(t,31.6,32,'lin')*(1-co)*8}px) brightness(${1-.5*E(t,31.6,32,'lin')*(1-co)})`;}
+  else $('phw').style.filter='none';
+  /* K */
+  document.querySelectorAll('.kc').forEach((c,i)=>{const on=i===0&&t>35.55;c.style.background=on?'#FF7900':'#f1f1f1';c.style.color=on?'#fff':'#111';c.style.borderColor=on?'#FF7900':'#ccc'});
+  $('kAmt').textContent=t>35.6?'2000':'';
+  const kt=E(t,37.6,38.0,'outBack');$('kToast').style.transform=`scale(${kt})`;$('kToast').style.opacity=t>37.6&&t<39.9?1:0;
+  /* L */
+  const fill=(id,v,a)=>{$(id).textContent=v.slice(0,Math.floor(clamp((t-a)/.6)*v.length))};
+  fill('lNum','•••• •••• •••• 0000',41.0);fill('lExp','MM/AA',41.8);fill('lCvv','•••',42.4);
+  $('lPay').style.transform=`scale(${t>43.95&&t<44.15?.95:1})`;
+  $('lOk').style.opacity=E(t,44.5,44.8,'lin');$('lOk').style.display=t>44.45?'flex':'none';
+  $('lChk').style.strokeDasharray='1 1';$('lChk').style.strokeDashoffset=1-E(t,44.7,45.1);
+  /* stepper + captions */
+  let si=-1;STEPS.forEach((s,i)=>{if(t>=s[0])si=i});
+  const capOn=t>=3.4&&t<46.4;['stepper','lab','ttl','sub','pricep'].forEach(id=>$(id).style.display=capOn?'block':'none');
+  if(capOn){tf($('stepper'),{c:false,x:0,y:lerp(1920,1440,E(t,3.4,4.0))});
+    document.querySelectorAll('.st').forEach((s,i)=>{const c=s.querySelector('.c'),tx=s.querySelector('.t');const done=i<si,cur=i===si;
+      c.style.background=done||cur?'#FF7900':'#151517';c.style.borderColor=done||cur?'#FF7900':'#444';c.style.color=done||cur?'#fff':'#777';c.textContent=done?'✓':i+1;
+      tx.style.color=cur?'#fff':done?'#FFB066':'#777';const pop=cur?1+.18*Math.exp(-((t-STEPS[i][0]-.15)**2)*40):1;c.style.transform=`scale(${pop})`});
+    const lp=si<0?0:(si+seg(t,STEPS[si][0],STEPS[si][0]+.6))/7;$('sline').style.width=(Math.min(1,lp)*(1080-140))+'px';
+    if(si>=0){const [s0,,ti,su]=STEPS[si];const cp=E(t,s0,s0+.4,'outBack');
+      $('lab').textContent=`ÉTAPE ${si+1}/8`;tf($('lab'),{c:false,x:0,y:1585,op:E(t,s0,s0+.3)});
+      $('ttl').textContent=ti;tf($('ttl'),{x:540,y:1665,s:lerp(.7,1,cp),op:clamp(cp*2)});
+      if($('sub').dataset.k!=si){$('sub').innerHTML=su.split(' ').map(w=>`<span class="kw" style="opacity:.25">${w}</span>`).join(' ');$('sub').dataset.k=si;}
+      const ws=$('sub').querySelectorAll('.kw');ws.forEach((w,j)=>{const wt=s0+.5+j*.18;w.style.opacity=t>wt?1:.25;w.style.color=t>wt&&t<wt+.3?'#FF9A3C':'#fff'});
+      tf($('sub'),{c:false,x:0,y:1720});}
+    tf($('pricep'),{x:540,y:1810,s:E(t,14.3,14.8,'outBack')*(1+(t>14.3&&t<15.2?.06*Math.sin((t-14.3)*14):0)),op:t>14.3&&t<30.5?1:0});}
+  /* recap 46.4–53 */
+  const rOn=t>=46.4;['recap','secu','cta','cta2'].forEach(id=>$(id).style.display=rOn?'block':'none');
+  if(rOn){const rp=E(t,46.5,47.1,'outBack');tf($('recap'),{c:false,x:0,y:520+(1-rp)*200,op:clamp(rp*2)});
+    document.querySelectorAll('.rl').forEach((r,i)=>{const q=E(t,47.0+i*.35,47.4+i*.35);r.style.opacity=q;r.style.transform=`translateX(${(1-q)*-60}px)`});
+    const sc=E(t,48.7,49.1,'outBack');tf($('secu'),{c:false,x:0,y:1180,op:clamp(sc*2)});$('secu').style.transform+=` scale(${sc})`;
+    const ct=E(t,49.6,50.1,'outBack');tf($('cta'),{x:540,y:1560,s:ct,op:clamp(ct*2)});
+    tf($('cta2'),{x:540,y:1670,op:E(t,50.1,50.6)});}
+  grain(frame);
+}
+window.render=render;
+window.ready=Promise.all([document.fonts.ready]);
+</script>
+</body>
+</html>
