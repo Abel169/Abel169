@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Tuto Sogoba · WhatsApp Business</title>
+<style>
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-900-normal.woff2);font-weight:900}
+/* ===== Series template: Tuto Sogoba ===== */
+:root{--gr:linear-gradient(100deg,#25F4EE 0%,#8B5CF6 50%,#FE2C55 100%);--acc:#00A884;--acc2:#25D366;--appbar:#0B6E5C}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+body{font-family:Mont,sans-serif;color:#fff}
+#stage{position:absolute;inset:0;overflow:hidden;background:#07070C}
+#bg{position:absolute;inset:-200px;background:radial-gradient(ellipse at 10% 5%,rgba(139,92,246,.5) 0%,rgba(139,92,246,0) 42%),radial-gradient(ellipse at 95% 98%,rgba(0,168,132,.45) 0%,rgba(0,168,132,0) 45%)}
+.a{position:absolute;left:0;top:0;will-change:transform,opacity}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .05em .14em;margin-bottom:-.14em}
+.wi{display:inline-block;will-change:transform}
+.h{font-weight:900;letter-spacing:-1.5px;line-height:1.05;white-space:nowrap}
+.pill{display:inline-block;padding:2px 24px 8px;border-radius:18px;background:var(--gr);color:#07070C}
+svg.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.phone{width:520px;height:1080px;border-radius:72px;background:#111;padding:16px;box-shadow:0 0 0 3px #2a2a33 inset,0 0 0 6px rgba(0,168,132,.45),0 50px 120px rgba(0,0,0,.6)}
+.scr{position:relative;width:488px;height:1048px;border-radius:56px;overflow:hidden;background:#fff;color:#111}
+.cam{position:absolute;left:50%;top:14px;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:#111;z-index:60}
+.pg{position:absolute;inset:0;display:none;overflow:hidden;background:#fff}
+.bar{position:absolute;left:0;right:0;top:0;height:130px;background:var(--appbar);color:#fff;padding:62px 26px 0;font-weight:800;font-size:28px;display:flex;align-items:center;gap:16px}
+.btn{position:absolute;left:40px;right:40px;height:76px;border-radius:40px;background:var(--acc);color:#fff;display:grid;place-items:center;font-weight:800;font-size:25px}
+.fld{position:absolute;left:36px;right:36px;border-bottom:3px solid var(--acc);padding-bottom:8px}
+.fld .l{font-size:16px;color:var(--acc);font-weight:800}.fld .v{font-size:25px;font-weight:700;min-height:34px;margin-top:4px}
+.row{position:absolute;left:30px;right:30px;display:flex;align-items:center;gap:18px;font-size:22px;font-weight:600}
+.row .ic2{width:48px;height:48px;border-radius:50%;background:#E7F7F2;color:var(--acc);display:grid;place-items:center;flex:none}
+.tg{width:70px;height:40px;border-radius:20px;background:#ccc;position:relative;flex:none;margin-left:auto}.tg i{position:absolute;top:4px;left:4px;width:32px;height:32px;border-radius:50%;background:#fff}
+.tap{position:absolute;width:64px;height:64px;margin:-32px;border-radius:50%;background:rgba(0,168,132,.35);border:4px solid var(--acc);z-index:70;pointer-events:none}
+.finger{position:absolute;z-index:71;pointer-events:none}
+.st{position:absolute;width:150px;text-align:center}
+.st .c{width:62px;height:62px;margin:0 auto;border-radius:50%;border:3px solid #444;display:grid;place-items:center;font-weight:900;font-size:26px;color:#777;background:#151517}
+.st .t{margin-top:8px;font-weight:700;font-size:19px;color:#777;white-space:nowrap}
+#grain{position:absolute;inset:0;width:1080px;height:1920px;mix-blend-mode:overlay;opacity:.05;pointer-events:none;z-index:90}
+#sig{position:absolute;left:0;width:1080px;top:1866px;text-align:center;font-weight:700;font-size:20px;letter-spacing:9px;color:rgba(255,255,255,.65);z-index:95}
+</style>
+</head>
+<body>
+<div id="stage"><div id="bg"></div>
+  <div class="a" id="bgword" style="top:250px;font-weight:900;font-size:230px;white-space:nowrap;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.06)">TUTO · WHATSAPP BUSINESS · TUTO ·</div>
+
+  <!-- fixed header (template) -->
+  <div class="a" id="pill" style="padding:12px 30px;border-radius:40px;background:#fff;color:#111;font-weight:800;font-size:24px;white-space:nowrap">Tuto Sogoba · Épisode 1</div>
+  <div class="a h" id="t1" style="width:1080px;text-align:center;font-size:72px">COMMENT CRÉER TON</div>
+  <div class="a h" id="t2" style="width:1080px;text-align:center;font-size:84px;color:#25D366">WHATSAPP BUSINESS</div>
+  <div class="a" id="t3" style="width:1080px;text-align:center;font-weight:700;font-size:40px">en <span class="pill" style="font-weight:900">5 étapes</span></div>
+
+  <!-- hook -->
+  <div class="a h" id="hk1" style="width:1080px;text-align:center;font-size:64px"></div>
+  <div class="a h" id="hk2" style="width:1080px;text-align:center;font-size:64px;color:#25D366"></div>
+  <div class="a" id="hkchat" style="width:600px">
+    <div class="hb" style="margin-left:0;width:420px;padding:20px 26px;border-radius:26px 26px 26px 6px;background:#fff;color:#111;font-size:26px;font-weight:600;box-shadow:0 20px 40px rgba(0,0,0,.4)">Bonsoir, c'est combien ? 👀</div>
+    <div class="hb" style="margin-top:18px;margin-left:120px;width:480px;padding:20px 26px;border-radius:26px 26px 6px 26px;background:#DCF8C6;color:#111;font-size:26px;font-weight:600;box-shadow:0 20px 40px rgba(0,0,0,.4)">Mamadou, t'as vu le match hier ?? ⚽</div>
+    <div class="hb" style="margin-top:18px;width:440px;padding:20px 26px;border-radius:26px 26px 26px 6px;background:#fff;color:#111;font-size:26px;font-weight:600;box-shadow:0 20px 40px rgba(0,0,0,.4)">Vous êtes une vraie boutique ? 🤔</div>
+  </div>
+
+  <!-- phone -->
+  <div class="a" id="phw"><div class="phone"><div class="scr">
+    <div class="cam"></div>
+
+    <!-- 1 store -->
+    <div class="pg" id="p1">
+      <div style="position:absolute;left:24px;right:24px;top:70px;height:64px;border-radius:32px;background:#F1F3F4;display:flex;align-items:center;gap:14px;padding:0 22px;font-size:22px;color:#555"><svg class="ic" width="28" height="28" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><span id="q1"></span></div>
+      <div id="p1res" style="position:absolute;left:30px;right:30px;top:180px">
+        <div style="display:flex;gap:22px;align-items:center">
+          <div style="width:130px;height:130px;border-radius:30px;background:var(--acc);display:grid;place-items:center;color:#fff;flex:none"><svg width="76" height="76" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 9h4a2 2 0 0 1 0 4H9V7h3a2 2 0 0 1 0 4" stroke-width="1.8"/></svg></div>
+          <div><div style="font-weight:800;font-size:30px">WhatsApp Business</div><div style="font-size:19px;color:#0B6E5C;font-weight:700;margin-top:4px">Gratuit · Android & iPhone</div></div></div>
+        <div id="p1btn" style="margin-top:34px;height:70px;border-radius:36px;background:var(--acc);color:#fff;display:grid;place-items:center;font-weight:800;font-size:24px">Installer</div>
+        <div id="p1prog" style="margin-top:20px;height:10px;border-radius:5px;background:#E5E5E5;overflow:hidden"><div id="p1bar" style="height:100%;width:0;background:var(--acc)"></div></div>
+      </div>
+    </div>
+
+    <!-- 2 verify -->
+    <div class="pg" id="p2">
+      <div style="position:absolute;left:0;right:0;top:110px;text-align:center;font-weight:800;font-size:28px;color:var(--appbar)">Vérifie ton numéro</div>
+      <div style="position:absolute;left:40px;right:40px;top:170px;text-align:center;font-size:19px;color:#555">WhatsApp Business va t'envoyer un SMS avec un code de vérification.</div>
+      <div style="position:absolute;left:60px;right:60px;top:290px;display:flex;gap:18px;font-size:30px;font-weight:700">
+        <div style="width:120px;border-bottom:3px solid var(--acc);padding-bottom:8px">🇲🇱 +223</div><div id="p2num" style="flex:1;border-bottom:3px solid var(--acc);padding-bottom:8px;min-height:46px"></div></div>
+      <div class="btn" id="p2next" style="top:420px">Suivant</div>
+      <div id="p2code" style="position:absolute;left:0;right:0;top:560px;text-align:center">
+        <div style="font-size:20px;color:#555">Saisis le code à 6 chiffres</div>
+        <div id="p2digits" style="margin-top:20px;display:flex;justify-content:center;gap:14px"></div>
+        <div id="p2ok" style="margin-top:34px;font-weight:800;font-size:26px;color:var(--acc)">✓ Numéro vérifié</div></div>
+    </div>
+
+    <!-- 3 profile -->
+    <div class="pg" id="p3">
+      <div class="bar">Profil d'entreprise</div>
+      <div id="p3photo" style="position:absolute;left:174px;top:170px;width:140px;height:140px;border-radius:50%;background:#E7F7F2;display:grid;place-items:center;color:var(--acc);overflow:hidden">
+        <svg class="ic" width="60" height="60" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+        <div id="p3logo" style="position:absolute;inset:0;background:linear-gradient(135deg,#FE2C55,#8B5CF6);display:grid;place-items:center;color:#fff;font-weight:900;font-size:56px">BA</div></div>
+      <div class="fld" style="top:350px"><div class="l">Nom de l'entreprise</div><div class="v" id="p3name"></div></div>
+      <div class="fld" style="top:460px"><div class="l">Catégorie</div><div class="v" id="p3cat"></div></div>
+      <div id="p3list" style="position:absolute;left:36px;right:36px;top:560px;border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.18);overflow:hidden">
+        <div style="padding:16px 20px;font-size:21px;border-bottom:1px solid #eee">Alimentation</div>
+        <div id="p3opt" style="padding:16px 20px;font-size:21px;border-bottom:1px solid #eee">Vêtements et mode</div>
+        <div style="padding:16px 20px;font-size:21px;border-bottom:1px solid #eee">Beauté et cosmétiques</div>
+        <div style="padding:16px 20px;font-size:21px">Restaurant</div></div>
+      <div class="btn" style="top:900px">Terminé</div>
+    </div>
+
+    <!-- 4 details -->
+    <div class="pg" id="p4">
+      <div class="bar">← &nbsp;Profil d'entreprise</div>
+      <div style="position:absolute;left:30px;top:160px;display:flex;gap:18px;align-items:center">
+        <div style="width:86px;height:86px;border-radius:50%;background:linear-gradient(135deg,#FE2C55,#8B5CF6);display:grid;place-items:center;color:#fff;font-weight:900;font-size:34px">BA</div>
+        <div><div style="font-weight:800;font-size:28px">Boutique Awa</div><div style="font-size:19px;color:#666">Vêtements et mode</div></div></div>
+      <div id="p4rows"></div>
+    </div>
+
+    <!-- 5 tools -->
+    <div class="pg" id="p5">
+      <div class="bar">Outils professionnels</div>
+      <div id="p5rows"></div>
+      <div id="p5cat" style="position:absolute;left:30px;right:30px;top:640px">
+        <div style="font-weight:800;font-size:22px;color:var(--appbar)">Catalogue</div>
+        <div id="p5items" style="margin-top:14px;display:flex;gap:14px"></div></div>
+      <div id="p5msg" style="position:absolute;left:30px;right:90px;top:880px;padding:16px 20px;border-radius:20px 20px 20px 6px;background:#E7F7F2;font-size:19px;font-weight:600;line-height:1.35">👋 Bienvenue chez Boutique Awa ! Comment pouvons-nous vous aider ?</div>
+    </div>
+
+    <div class="tap" id="tap"></div>
+    <svg class="finger" id="finger" width="70" height="90" viewBox="0 0 24 30"><path d="M9 2a2 2 0 0 1 2 2v9l1-.2V9a2 2 0 0 1 4 0v4l.6-.1A2 2 0 0 1 19 15v6c0 4-3 7-7 7s-6-2-7.5-5L2 18a2 2 0 0 1 3-2.5L7 18V4a2 2 0 0 1 2-2z" fill="#fff" stroke="#111" stroke-width="1.2"/></svg>
+  </div></div>
+  <div class="a" id="simu" style="padding:8px 16px;border-radius:12px;background:#111;border:2px solid #00A884;color:#25D366;font-weight:800;font-size:18px;letter-spacing:3px">SIMULATION</div>
+  </div>
+
+  <!-- stepper + captions (template) -->
+  <div class="a" id="stepper" style="width:1080px;height:120px"></div>
+  <div class="a" id="lab" style="width:1080px;text-align:center;font-weight:800;font-size:26px;letter-spacing:7px;color:#25D366"></div>
+  <div class="a h" id="ttl" style="width:1080px;text-align:center;font-size:64px"></div>
+  <div class="a" id="sub" style="width:1000px;left:40px;text-align:center;font-weight:700;font-size:31px;line-height:1.25"></div>
+
+  <!-- recap (template) -->
+  <div class="a" id="recap" style="width:900px;left:90px;padding:44px 50px;border-radius:40px;background:#151517;border:2px solid #00A884">
+    <div class="h" style="font-size:54px;text-align:center">Ton récap <span style="color:#25D366">✓</span></div>
+    <div id="rlist" style="margin-top:30px;display:flex;flex-direction:column;gap:20px"></div>
+  </div>
+  <div class="a" id="tip" style="width:900px;left:90px;padding:26px 34px;border-radius:28px;background:rgba(37,211,102,.12);border:2px solid #25D366;display:flex;gap:20px;align-items:center;font-weight:800;font-size:28px;line-height:1.3"><span style="font-size:52px">💡</span>Ton compte perso reste séparé : tes clients ne voient plus tes discussions privées.</div>
+  <div class="a h" id="cta" style="width:1080px;text-align:center;font-size:70px">Enregistre <span class="pill">📌</span> et partage !</div>
+  <div class="a" id="cta2" style="width:1080px;text-align:center;font-weight:800;font-size:34px">Plus de tutos : <span style="background:var(--gr);-webkit-background-clip:text;color:transparent">@sogobacreative</span></div>
+</div>
+<canvas id="grain" width="360" height="640"></canvas>
+<div id="sig">TUTO · SOGOBA CRÉATIVE</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const EZ={lin:x=>x,outCubic:x=>1-Math.pow(1-x,3),inCubic:x=>x*x*x,inOutCubic:x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,
+ outExpo:x=>x>=1?1:1-Math.pow(2,-10*x),outBack:x=>{const c1=1.7,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)}};
+const E=(t,a,b,e='outExpo')=>EZ[e](seg(t,a,b));
+function tf(el,o){const {x=0,y=0,s=1,r=0,c=true,op}=o;el.style.transform=`translate(${x}px,${y}px)${c?' translate(-50%,-50%)':''} rotate(${r}deg) scale(${s})`;if(op!==undefined)el.style.opacity=op;}
+const words=txt=>txt.split(' ').map(w=>`<span class="w"><span class="wi">${w}</span></span>`).join(' ');
+function animW(el,t,t0,stag=.06,dur=.5){el.querySelectorAll('.wi').forEach((w,i)=>{const p=E(t,t0+i*stag,t0+i*stag+dur);w.style.transform=`translateY(${(1-p)*110}%)`})}
+const type=(id,v,a,d=.6)=>{$(id).textContent=v.slice(0,Math.floor(clamp((t_-a)/d)*v.length))};let t_=0;
+
+/* ===== episode content ===== */
+const STEPS=[[3.4,'Télécharge','Télécharge l’appli',"Cherche WhatsApp Business sur Play Store ou App Store, et installe-la."],
+ [9.5,'Numéro','Vérifie ton numéro',"Entre ton numéro, puis le code reçu par SMS."],
+ [16,'Profil','Crée ton profil',"Ajoute le nom de ta boutique, ta catégorie et ton logo."],
+ [22.5,'Fiche','Complète ta fiche',"Description, adresse, horaires : tes clients savent tout."],
+ [29,'Outils','Active les outils pro',"Message d’accueil, réponses rapides et catalogue."]];
+const PAGES=[['p1',3.3,9.6],['p2',9.4,16.1],['p3',15.9,22.6],['p4',22.4,29.1],['p5',28.9,36]];
+const TAPS=[[5.2,244,325],[11.6,244,458],[19.4,244,622],[20.9,244,938],[30.0,410,229],[30.9,410,329]];
+$('stepper').innerHTML=STEPS.map(([,l],i)=>`<div class="st" style="left:${(140+i*200)-75}px;top:0"><div class="c">${i+1}</div><div class="t">${l}</div></div>`).join('')+
+ '<div id="sline" style="position:absolute;left:140px;top:30px;height:4px;width:0;background:#25D366;z-index:-1"></div><div style="position:absolute;left:140px;right:140px;top:30px;height:4px;background:#333;z-index:-2"></div>';
+$('p2digits').innerHTML=Array.from({length:6},(_,i)=>`<div class="dg" style="width:56px;height:70px;border-radius:12px;border:3px solid #ddd;display:grid;place-items:center;font-weight:800;font-size:32px"></div>`).join('');
+const R4=[['📝','Description','Vêtements femme & enfant, livraison à Bamako'],['📍','Adresse','Hamdallaye ACI 2000, Bamako'],['🕘','Horaires','Lun – Sam : 9 h – 20 h'],['✉️','E-mail','contact@boutique-awa.ml']];
+$('p4rows').innerHTML=R4.map(([e,l,v],i)=>`<div class="row" style="top:${300+i*120}px"><div class="ic2" style="font-size:24px">${e}</div><div style="flex:1"><div style="font-size:16px;color:#888;font-weight:800">${l}</div><div class="r4v" data-v="${v}" style="font-size:21px;min-height:28px"></div></div></div>`).join('');
+const R5=[['👋','Message d’accueil'],['⚡','Réponses rapides'],['🌙','Message d’absence']];
+$('p5rows').innerHTML=R5.map(([e,l],i)=>`<div class="row" style="top:${200+i*100}px"><div class="ic2" style="font-size:24px">${e}</div><div style="flex:1">${l}</div><div class="tg"><i></i></div></div>`).join('');
+$('p5items').innerHTML=[['👗','Robe wax','12 500 F'],['👕','T-shirt','5 000 F'],['👟','Baskets','15 000 F']].map(([e,n,p])=>`<div class="ci" style="flex:1;border-radius:16px;border:2px solid #eee;padding:12px;text-align:center"><div style="height:80px;border-radius:12px;background:#F6F6F6;display:grid;place-items:center;font-size:44px">${e}</div><div style="font-size:17px;font-weight:700;margin-top:8px">${n}</div><div style="font-size:17px;font-weight:800;color:var(--acc)">${p}</div></div>`).join('');
+$('hk1').innerHTML=words('Tes clients t’écrivent');$('hk2').innerHTML=words('sur ton WhatsApp perso ?');
+const RL=['Appli gratuite, compte séparé','Profil pro avec ton logo','Fiche : adresse, horaires…','Message d’accueil automatique','Catalogue de tes produits'];
+$('rlist').innerHTML=RL.map(r=>`<div class="rl" style="display:flex;align-items:center;gap:20px;font-weight:800;font-size:32px"><span style="width:50px;height:50px;border-radius:50%;background:#25D366;color:#07070C;display:grid;place-items:center;flex:none;font-size:26px">✓</span>${r}</div>`).join('');
+
+const gctx=$('grain').getContext('2d');const gimg=gctx.createImageData(360,640);
+function grain(f){let s=(f*7919+13)%2147483647||1;const d=gimg.data;for(let i=0;i<d.length;i+=4){s=(s*16807)%2147483647;const v=s&255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255}gctx.putImageData(gimg,0,0)}
+function pages(t){PAGES.forEach(([id,a,b])=>{const el=$(id);const on=t>=a&&t<b;el.style.display=on?'block':'none';if(!on)return;const p=E(t,a,a+.35,'inOutCubic');el.style.transform=`translateX(${(1-p)*488}px)`;el.style.zIndex=Math.round(a*10)})}
+function taps(t){let cur=null;for(const tp of TAPS)if(t>=tp[0]-.5&&t<tp[0]+.55)cur=tp;const tap=$('tap'),fg=$('finger');
+  if(!cur){tap.style.opacity=0;fg.style.opacity=0;return}const [t0,x,y]=cur;const k=seg(t,t0,t0+.45);
+  tap.style.left=x+'px';tap.style.top=y+'px';tap.style.transform=`scale(${t<t0?0:.6+k*1.2})`;tap.style.opacity=t<t0?0:1-k;
+  const app=E(t,t0-.5,t0-.1,'outCubic');fg.style.opacity=clamp(app*2)*(1-seg(t,t0+.3,t0+.55));fg.style.left=(x-14)+'px';fg.style.top=(y-6+(1-app)*80)+'px';}
+
+const END=36;
+function render(t,frame){t_=t;
+  $('bgword').style.transform=`translateX(${-((t*40)%1400)}px)`;
+  const hd=E(t,3.0,3.6,'outCubic');
+  tf($('pill'),{x:540,y:lerp(-80,110,E(t,.1,.6,'outBack'))});
+  tf($('t1'),{c:false,x:0,y:lerp(-200,160,hd)});tf($('t2'),{c:false,x:0,y:lerp(-200,240,hd)});tf($('t3'),{c:false,x:0,y:lerp(-200,338,hd)});
+  /* hook */
+  const hk=t<3.4;['hk1','hk2','hkchat'].forEach(id=>$(id).style.display=hk?'block':'none');
+  if(hk){animW($('hk1'),t,.2,.07,.5);animW($('hk2'),t,.6,.07,.5);const ho=E(t,2.9,3.3,'inCubic');
+    tf($('hk1'),{c:false,x:0,y:500-ho*80,op:1-ho});tf($('hk2'),{c:false,x:0,y:580-ho*80,op:1-ho});
+    tf($('hkchat'),{x:540,y:1120,op:1-ho});document.querySelectorAll('.hb').forEach((b,i)=>{const p=E(t,.9+i*.45,1.3+i*.45,'outBack');b.style.transform=`scale(${p})`;b.style.opacity=clamp(p*2)});}
+  /* phone */
+  const pIn=E(t,3.2,3.9),pOut=E(t,END-.6,END,'inCubic');const ph=t>=3.15&&t<END;$('phw').style.display=ph?'block':'none';
+  if(ph){tf($('phw'),{x:540,y:lerp(1500,960,pIn)+pOut*1300,s:.78});pages(t);taps(t);tf($('simu'),{c:false,x:360,y:-14});}
+  // p1
+  type('q1','WhatsApp Business',3.8,.9);$('p1res').style.opacity=E(t,4.7,5.0);
+  $('p1btn').textContent=t>5.25?(t>8.0?'Ouvrir':'Installation…'):'Installer';$('p1btn').style.background=t>5.25&&t<8?'#9AA0A6':'#00A884';
+  $('p1bar').style.width=(E(t,5.3,7.9,'lin')*100)+'%';$('p1prog').style.opacity=t>5.25&&t<8.2?1:0;
+  // p2
+  type('p2num','XX XX XX XX',10.1,.8);$('p2code').style.opacity=t>11.8?1:0;
+  document.querySelectorAll('.dg').forEach((d,i)=>{const on=t>12.4+i*.3;d.textContent=on?'•':'';d.style.borderColor=on?'#00A884':'#ddd'});
+  $('p2ok').style.opacity=E(t,14.4,14.8);
+  // p3
+  type('p3name','Boutique Awa',16.6,.9);$('p3list').style.display=t>18.4&&t<19.6?'block':'none';$('p3opt').style.background=t>19.3?'#E7F7F2':'#fff';
+  $('p3cat').textContent=t>19.5?'Vêtements et mode':'';$('p3logo').style.opacity=E(t,20.2,20.6);$('p3logo').style.transform=`scale(${E(t,20.2,20.7,'outBack')})`;
+  // p4
+  document.querySelectorAll('.r4v').forEach((r,i)=>{const v=r.dataset.v;const a=23.3+i*1.3;r.textContent=v.slice(0,Math.floor(clamp((t-a)/.9)*v.length))});
+  // p5
+  document.querySelectorAll('#p5 .tg').forEach((g,i)=>{const on=t>30+i*.9;g.style.background=on?'#00A884':'#ccc';g.querySelector('i').style.left=on?'34px':'4px'});
+  document.querySelectorAll('.ci').forEach((c,i)=>{const p=E(t,32.6+i*.3,33.0+i*.3,'outBack');c.style.transform=`scale(${p})`;c.style.opacity=clamp(p*2)});
+  $('p5cat').style.opacity=E(t,32.4,32.7);const m=E(t,34.0,34.4,'outBack');$('p5msg').style.transform=`scale(${m})`;$('p5msg').style.opacity=clamp(m*2);
+  /* stepper + captions */
+  let si=-1;STEPS.forEach((s,i)=>{if(t>=s[0])si=i});
+  const capOn=t>=3.4&&t<END-.3;['stepper','lab','ttl','sub'].forEach(id=>$(id).style.display=capOn?'block':'none');
+  if(capOn){tf($('stepper'),{c:false,x:0,y:lerp(1920,1460,E(t,3.4,4.0))});
+    document.querySelectorAll('.st').forEach((s,i)=>{const c=s.querySelector('.c'),tx=s.querySelector('.t');const done=i<si,cur=i===si;
+      c.style.background=done||cur?'#25D366':'#151517';c.style.borderColor=done||cur?'#25D366':'#444';c.style.color=done||cur?'#07070C':'#777';c.textContent=done?'✓':i+1;
+      tx.style.color=cur?'#fff':done?'#7FE3A8':'#777';c.style.transform=`scale(${cur?1+.18*Math.exp(-((t-STEPS[i][0]-.15)**2)*40):1})`});
+    const lp=si<0?0:(si+seg(t,STEPS[si][0],STEPS[si][0]+.6))/4;$('sline').style.width=(Math.min(1,lp)*800)+'px';
+    if(si>=0){const [s0,,ti,su]=STEPS[si];const cp=E(t,s0,s0+.4,'outBack');
+      $('lab').textContent=`ÉTAPE ${si+1}/5`;tf($('lab'),{c:false,x:0,y:1610,op:E(t,s0,s0+.3)});
+      $('ttl').textContent=ti;tf($('ttl'),{x:540,y:1690,s:lerp(.7,1,cp),op:clamp(cp*2)});
+      if($('sub').dataset.k!=si){$('sub').innerHTML=su.split(' ').map(w=>`<span class="kw">${w}</span>`).join(' ');$('sub').dataset.k=si;}
+      $('sub').querySelectorAll('.kw').forEach((w,j)=>{const wt=s0+.5+j*.17;w.style.opacity=t>wt?1:.25;w.style.color=t>wt&&t<wt+.3?'#25D366':'#fff'});
+      tf($('sub'),{c:false,x:0,y:1745});}}
+  /* recap */
+  const rOn=t>=END;['recap','tip','cta','cta2'].forEach(id=>$(id).style.display=rOn?'block':'none');
+  if(rOn){const rp=E(t,END+.1,END+.7,'outBack');tf($('recap'),{c:false,x:0,y:500+(1-rp)*200,op:clamp(rp*2)});
+    document.querySelectorAll('.rl').forEach((r,i)=>{const q=E(t,END+.5+i*.3,END+.9+i*.3);r.style.opacity=q;r.style.transform=`translateX(${(1-q)*-60}px)`});
+    const tp=E(t,END+2.2,END+2.6,'outBack');tf($('tip'),{c:false,x:0,y:1160,op:clamp(tp*2)});$('tip').style.transform+=` scale(${tp})`;
+    const ct=E(t,END+3.0,END+3.5,'outBack');tf($('cta'),{x:540,y:1520,s:ct,op:clamp(ct*2)});tf($('cta2'),{x:540,y:1630,op:E(t,END+3.5,END+4)});}
+  grain(frame);
+}
+window.render=render;window.ready=document.fonts.ready;
+</script>
+</body>
+</html>
