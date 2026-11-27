@@ -117,6 +117,11 @@
     var comp = app.project.items.addComp("SOGOBA_TEST_9x16", W, H, 1, DUR, FPS);
     comp.parentFolder = folder;
     comp.motionBlur = true;
+    // Moteur 3D classique : fonctionne sur tous les PC (le moteur "3D avancee" exige une carte graphique recente)
+    try {
+        var rs = comp.renderers, ri;
+        for (ri = 0; ri < rs.length; ri++) { if (rs[ri] === "ADBE Advanced 3d") { comp.renderer = rs[ri]; break; } }
+    } catch (e) {}
     comp.bgColor = C_BG1;
 
     // ---------- 1. fond degrade (Degrade de couleurs / Gradient Ramp) ----------
