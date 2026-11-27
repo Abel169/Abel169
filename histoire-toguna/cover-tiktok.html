@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Toguna · Couverture</title>
+<style>
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-900-normal.woff2);font-weight:900}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#1C120B;font-family:Mont,sans-serif;color:#FFF4E2}
+#bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 28%,rgba(217,130,43,.45),rgba(217,130,43,0) 50%),radial-gradient(ellipse at 10% 95%,rgba(200,85,61,.35),rgba(200,85,61,0) 45%),#1C120B}
+#sun{position:absolute;left:290px;top:300px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,#F2B134 0%,#D9822B 55%,rgba(217,130,43,0) 72%);opacity:.45}
+.a{position:absolute}.t{left:0;width:1080px;text-align:center;white-space:nowrap}
+.m{-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 55%,transparent 75%)}
+</style></head><body><div id="bg"></div><div id="sun"></div>
+<svg class="a" id="band" style="left:0;top:0" width="1080" height="44" viewBox="0 0 1080 44"></svg>
+<div class="a t" style="top:265px"><span style="display:inline-block;padding:12px 32px;border-radius:40px;background:#FFF4E2;color:#1C120B;font-weight:900;font-size:30px;letter-spacing:2px">MARQUES MALIENNES · ÉPISODE 1</span></div>
+<div class="a t" style="top:370px;font-weight:800;font-size:54px">Il vendait de l’<span style="color:#F2B134">engrais</span>…</div>
+<div class="a t" style="top:445px;font-weight:800;font-size:54px">…puis il a construit <span style="color:#F2B134">l’usine.</span></div>
+<img class="a m" src="assets/cover/sack.png" style="left:20px;top:610px;width:330px">
+<div class="a" style="left:330px;top:790px;font-size:90px;font-weight:900;color:#F2B134">➜</div>
+<img class="a m" src="assets/cover/factory.png" style="left:420px;top:600px;width:640px">
+<div class="a t" style="top:1060px;font-weight:900;font-size:200px;letter-spacing:-7px;color:#F2B134;line-height:1">TOGUNA</div>
+<div class="a t" style="top:1270px;font-weight:800;font-size:40px;color:#e5d8c4">L’histoire de Seydou Nantoumé</div>
+<div class="a t" style="top:1350px"><span style="display:inline-flex;gap:18px;align-items:center;padding:16px 34px;border-radius:40px;border:3px solid rgba(242,177,52,.6);background:rgba(43,26,16,.85);font-weight:900;font-size:42px">1989 <span style="color:#F2B134">→</span> 2016</span></div>
+<div class="a t" style="top:1470px;font-weight:800;font-size:34px">En 2016 : 🏭 400 000 t/an &nbsp;·&nbsp; 🌍 9 pays</div>
+<div class="a t" style="top:1580px;font-weight:800;font-size:24px;letter-spacing:8px;color:rgba(255,244,226,.7)">SOGOBA CRÉATIVE</div>
+<svg class="a" id="band2" style="left:0;top:1876px" width="1080" height="44" viewBox="0 0 1080 44"></svg>
+<script>
+const NS='http://www.w3.org/2000/svg';function sv(p,t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+for(const id of ['band','band2']){const b=document.getElementById(id);sv(b,'rect',{x:0,y:0,width:1080,height:44,fill:'#2B1A10'});
+ for(let i=0;i<31;i++){const x=i*36;sv(b,'path',{d:`M${x} 44 L${x+18} 4 L${x+36} 44`,fill:i%2?'#C8553D':'#D9822B'});sv(b,'rect',{x:x+15,y:32,width:6,height:6,fill:'#FFF4E2'})}}
+window.ready=Promise.all([document.fonts.ready,...[...document.images].map(i=>i.decode().catch(()=>{}))]);</script>
+</body></html>
