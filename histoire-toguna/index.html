@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Marques maliennes · Toguna</title>
+<style>
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-500-normal.woff2);font-weight:500}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:Mont;src:url(fonts/montserrat-latin-900-normal.woff2);font-weight:900}
+:root{--sand:#E8C38A;--ocre:#D9822B;--terra:#C8553D;--earth:#1C120B;--earth2:#2B1A10;--mil:#7DBB42;--gold:#F2B134;--cream:#FFF4E2;
+ --gr:linear-gradient(100deg,#25F4EE 0%,#8B5CF6 50%,#FE2C55 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+body{font-family:Mont,sans-serif;color:var(--cream)}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--earth)}
+#bg{position:absolute;inset:-200px;background:radial-gradient(ellipse at 50% 30%,rgba(217,130,43,.35) 0%,rgba(217,130,43,0) 50%),radial-gradient(ellipse at 10% 95%,rgba(200,85,61,.35) 0%,rgba(200,85,61,0) 45%),radial-gradient(ellipse at 95% 90%,rgba(125,187,66,.18) 0%,rgba(125,187,66,0) 40%)}
+#sun{position:absolute;left:340px;top:260px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,#F2B134 0%,#D9822B 55%,rgba(217,130,43,0) 72%);opacity:0;filter:blur(2px)}
+.a{position:absolute;left:0;top:0;will-change:transform,opacity}
+.sc{position:absolute;inset:0;display:none}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .05em .14em;margin-bottom:-.14em}
+.wi{display:inline-block;will-change:transform}
+.h{font-weight:900;letter-spacing:-1.5px;line-height:1.05;white-space:nowrap;width:1080px;text-align:center}
+.yr{font-weight:900;letter-spacing:-8px;line-height:.9;width:1080px;text-align:center;color:transparent;-webkit-text-stroke:3px rgba(242,177,52,.9)}
+.cap{position:absolute;left:60px;width:960px;top:1390px;text-align:center;font-weight:800;font-size:46px;line-height:1.2;text-shadow:0 6px 20px rgba(0,0,0,.6)}
+.cap b{color:var(--gold);font-weight:900}
+.chip{display:inline-flex;align-items:center;gap:12px;padding:14px 28px;border-radius:40px;background:rgba(255,244,226,.1);border:2px solid rgba(255,244,226,.25);font-weight:800;font-size:30px;white-space:nowrap}
+.node{width:270px;padding:22px 10px;border-radius:30px;background:var(--earth2);border:3px solid rgba(242,177,52,.5);text-align:center;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.node .i{font-size:76px;line-height:1.1}.node .l{font-weight:900;font-size:30px;margin-top:8px}.node .s{font-weight:700;font-size:20px;color:#bba;margin-top:4px}
+.bub{padding:22px 34px;border-radius:34px 34px 34px 8px;background:#fff;color:#1C120B;font-weight:900;font-size:44px;white-space:nowrap;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.stamp{padding:16px 36px;border:7px solid var(--terra);color:var(--terra);font-weight:900;font-size:62px;letter-spacing:3px;border-radius:16px;white-space:nowrap;background:rgba(28,18,11,.7)}
+.cnt{width:960px;padding:26px 40px;border-radius:32px;background:linear-gradient(160deg,#2B1A10,#1E130C);border:2px solid rgba(242,177,52,.35);display:flex;align-items:center;gap:30px;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.cnt .n{font-weight:900;font-size:88px;letter-spacing:-3px;color:var(--gold);min-width:470px}.cnt .u{font-weight:800;font-size:34px;line-height:1.15}
+.step{position:absolute;bottom:0;width:280px;border-radius:24px 24px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:26px;font-weight:900;font-size:32px;color:#1C120B}
+.step i{font-style:normal;font-size:70px;line-height:1.1}
+#tl{position:absolute;left:90px;width:900px;top:1700px;height:90px}
+.tld{position:absolute;top:0;width:150px;margin-left:-75px;text-align:center}
+.tld .d{width:30px;height:30px;margin:0 auto;border-radius:50%;background:#3a2a1e;border:4px solid #5a4636}
+.tld .y{margin-top:10px;font-weight:800;font-size:24px;color:#7a6656}
+#series{position:absolute;left:0;width:1080px;top:86px;text-align:center;z-index:40}
+#series span{display:inline-block;padding:12px 30px;border-radius:40px;background:var(--cream);color:var(--earth);font-weight:900;font-size:26px;letter-spacing:2px}
+#band{position:absolute;left:0;top:0;width:1080px;height:44px;z-index:39;opacity:.85}
+#band2{position:absolute;left:0;top:1640px;width:1080px;height:30px;z-index:5;opacity:.35}
+#src{position:absolute;left:0;width:1080px;top:1810px;text-align:center;font-weight:700;font-size:19px;color:rgba(255,244,226,.55);z-index:41}
+#dust{position:absolute;inset:0;pointer-events:none;z-index:30}
+#grain{position:absolute;inset:0;width:1080px;height:1920px;mix-blend-mode:overlay;opacity:.07;pointer-events:none;z-index:90}
+#vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%);pointer-events:none;z-index:89}
+#flash{position:absolute;inset:0;background:#FFF4E2;opacity:0;pointer-events:none;z-index:88}
+#sig{position:absolute;left:0;width:1080px;top:1866px;text-align:center;font-weight:700;font-size:20px;letter-spacing:9px;color:rgba(255,244,226,.65);z-index:95}
+svg .dr{fill:none;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+<div id="stage"><div id="bg"></div><div id="sun"></div>
+<svg id="band" viewBox="0 0 1080 44"></svg>
+<div id="series"><span>MARQUES MALIENNES · ÉPISODE 1</span></div>
+
+<!-- ===== S0 hook ===== -->
+<div class="sc" id="s0">
+  <div class="a yr" id="h_yr" style="font-size:300px">1989</div>
+  <svg class="a" id="sack" width="420" height="520" viewBox="0 0 420 520">
+    <defs><linearGradient id="gs" x1="0" x2="1"><stop offset="0" stop-color="#B98E55"/><stop offset=".5" stop-color="#D8B07A"/><stop offset="1" stop-color="#A47A45"/></linearGradient></defs>
+    <path d="M120 70 Q210 40 300 70 L330 120 Q395 230 380 400 Q372 485 300 500 L120 500 Q48 485 40 400 Q25 230 90 120 Z" fill="url(#gs)" stroke="#6E4E2A" stroke-width="6"/>
+    <path d="M115 72 Q210 100 305 72 L290 30 Q210 50 130 30 Z" fill="#C9A36A" stroke="#6E4E2A" stroke-width="6"/>
+    <path d="M150 80 Q210 95 270 80" stroke="#6E4E2A" stroke-width="10" fill="none"/>
+    <g stroke="rgba(110,78,42,.35)" stroke-width="3">
+      <line x1="60" y1="200" x2="360" y2="200"/><line x1="50" y1="260" x2="370" y2="260"/><line x1="48" y1="320" x2="372" y2="320"/><line x1="50" y1="380" x2="370" y2="380"/><line x1="60" y1="440" x2="360" y2="440"/></g>
+    <rect x="105" y="235" width="210" height="150" rx="14" fill="#FFF4E2" stroke="#6E4E2A" stroke-width="5"/>
+    <text x="210" y="300" text-anchor="middle" font-family="Mont" font-weight="900" font-size="40" fill="#2E6B1E">ENGRAIS</text>
+    <text x="210" y="355" text-anchor="middle" font-family="Mont" font-weight="900" font-size="46" fill="#1C120B">50 kg</text>
+  </svg>
+  <svg class="a" id="fac" width="900" height="620" viewBox="0 0 900 620"></svg>
+  <div class="cap" id="h_c1" style="top:1300px;font-size:58px">Il vendait de l’<b>engrais</b></div>
+  <div class="cap" id="h_c1b" style="top:1375px;font-size:44px;color:#d8c6ae">avec son père…</div>
+  <div class="cap" id="h_c2" style="top:1300px;font-size:58px">…il le <b>fabriquait.</b></div>
+  <div class="a h" id="t_k" style="font-size:34px;letter-spacing:10px;color:var(--gold)">L’HISTOIRE DE</div>
+  <div class="a h" id="t_n" style="font-size:96px">SEYDOU NANTOUMÉ</div>
+  <div class="a h" id="t_a" style="font-size:44px;color:#d8c6ae">et du groupe</div>
+  <div class="a h" id="t_t" style="font-size:190px;letter-spacing:-6px;color:var(--gold)">TOGUNA</div>
+</div>
+
+<!-- ===== S1 1989 ===== -->
+<div class="sc" id="s1">
+  <svg class="a" id="cliff" width="1080" height="560" viewBox="0 0 1080 560"></svg>
+  <div class="a yr" id="y1" style="font-size:230px">1989</div>
+  <div class="a chip" id="dogon">📍 Né au pays dogon</div>
+  <div class="a node" id="n1"><div class="i">🚢</div><div class="l">Importateur</div><div class="s">achète en gros</div></div>
+  <div class="a node" id="n2" style="border-color:var(--gold)"><div class="i">🧑🏿‍🌾</div><div class="l">Seydou</div><div class="s">revend</div></div>
+  <div class="a node" id="n3"><div class="i">🌾</div><div class="l">Paysans</div><div class="s">cultivent</div></div>
+  <svg class="a" id="flow" width="1080" height="300" viewBox="0 0 1080 300"></svg>
+  <div class="cap" id="c1">Il commence <b>petit</b> : il achète, puis <b>revend</b>.</div>
+</div>
+
+<!-- ===== S2 map import ===== -->
+<div class="sc" id="s2">
+  <svg class="a" id="map" width="952" height="644" viewBox="0 0 952 644"></svg>
+  <div class="cap" id="c2">Petit à petit, il <b>importe lui-même</b></div>
+  <div class="a chip" id="c2b" style="font-size:34px">🇨🇮 Côte d’Ivoire &nbsp;·&nbsp; 🇸🇳 Sénégal</div>
+</div>
+
+<!-- ===== S3 1994 toguna ===== -->
+<div class="sc" id="s3">
+  <div class="a yr" id="y3" style="font-size:230px">1994</div>
+  <svg class="a" id="tog" width="900" height="520" viewBox="0 0 900 520"></svg>
+  <div class="a" id="logo94" style="padding:18px 40px;border-radius:20px;background:var(--cream);color:var(--earth);font-weight:900;font-size:58px;letter-spacing:4px;box-shadow:0 20px 50px rgba(0,0,0,.5)">TOGUNA <span style="font-size:30px;color:var(--terra)">SARL</span></div>
+  <div class="cap" id="c3" style="font-size:40px;top:1360px"><b>Toguna</b>, en langue dogon : <br> l’abri où les sages jugent <br> les <b>affaires sérieuses</b>.</div>
+  <svg class="a" id="bumpy" width="900" height="260" viewBox="0 0 900 260"></svg>
+  <div class="cap" id="c3b">Les débuts ne sont <b>pas faciles</b>.</div>
+</div>
+
+<!-- ===== S4 2006 factory ===== -->
+<div class="sc" id="s4">
+  <div class="a yr" id="y4" style="font-size:230px">2006</div>
+  <div class="a bub" id="b1">Une usine ? 🤨</div>
+  <div class="a bub" id="b2" style="border-radius:34px 34px 8px 34px">Au Mali ?!</div>
+  <div class="a bub" id="b3">C’est trop cher !</div>
+  <div class="a bub" id="b4" style="border-radius:34px 34px 8px 34px">Impossible.</div>
+  <div class="a stamp" id="st4">PERSONNE N’Y CROIT</div>
+  <svg class="a" id="fac2" width="900" height="620" viewBox="0 0 900 620"></svg>
+  <div class="a h" id="ta4" style="font-size:58px">TOGUNA <span style="color:var(--gold)">AGRO-INDUSTRIES</span></div>
+  <div class="a chip" id="cap4">💰 Capital : 1,5 milliard FCFA</div>
+  <div class="cap" id="c4">Il le fait <b>quand même.</b></div>
+</div>
+
+<!-- ===== S5 2009 mine ===== -->
+<div class="sc" id="s5">
+  <div class="a yr" id="y5" style="font-size:230px">2009</div>
+  <svg class="a" id="mali" width="952" height="644" viewBox="0 0 952 644"></svg>
+  <div class="a chip" id="mine" style="background:var(--earth2);border-color:var(--gold);font-size:32px">⛏️ Mine de phosphate · Tilemsi</div>
+  <div class="cap" id="c5">Sa <b>propre matière première</b>. <br> <span style="font-size:36px;color:#d8c6ae">Il ne dépend plus des autres.</span></div>
+</div>
+
+<!-- ===== S6 2016 numbers ===== -->
+<div class="sc" id="s6">
+  <div class="a yr" id="y6" style="font-size:230px">2016</div>
+  <div class="a cnt" id="k1"><div class="n" id="k1n">0</div><div class="u">tonnes d’engrais<br>par an</div></div>
+  <div class="a cnt" id="k2"><div class="n" id="k2n">0</div><div class="u">employés<br>environ</div></div>
+  <div class="a cnt" id="k3"><div class="n" id="k3n">0</div><div class="u">pays clients<br>en Afrique de l’Ouest</div></div>
+  <svg class="a" id="wa" width="952" height="644" viewBox="0 0 952 644"></svg>
+  <div class="a" id="src6" style="width:1080px;text-align:center;font-weight:700;font-size:22px;color:#bba">Chiffres 2016 · Source : Le Pays / Maliweb</div>
+</div>
+
+<!-- ===== S7 lesson ===== -->
+<div class="sc" id="s7">
+  <div class="a h" id="l_t" style="font-size:40px;letter-spacing:8px;color:var(--gold)">LA LEÇON POUR TON BUSINESS</div>
+  <div class="a h" id="l_1" style="font-size:66px">Commence <span style="color:var(--gold)">petit.</span></div>
+  <div class="a h" id="l_2" style="font-size:66px">Apprends ton métier <span style="color:var(--gold)">à fond.</span></div>
+  <div class="a h" id="l_3" style="font-size:66px">Puis <span style="color:var(--mil)">remonte la chaîne.</span></div>
+  <div class="a" id="stairs" style="width:900px;height:560px">
+    <div class="step" id="sp1" style="left:0;height:200px;background:#E8C38A"><i>🛒</i>Revendeur</div>
+    <div class="step" id="sp2" style="left:310px;height:360px;background:#D9822B"><i>🚢</i>Importateur</div>
+    <div class="step" id="sp3" style="left:620px;height:540px;background:#7DBB42"><i>🏭</i>Fabricant</div>
+  </div>
+  <div class="a" id="climber" style="width:80px;height:80px;border-radius:50%;background:var(--cream);box-shadow:0 0 0 10px rgba(255,244,226,.25),0 0 50px rgba(242,177,52,.9)"></div>
+</div>
+
+<!-- ===== S8 outro ===== -->
+<div class="sc" id="s8">
+  <div class="a h" id="o1" style="font-size:60px">Quelle marque malienne</div>
+  <div class="a h" id="o2" style="font-size:60px;color:var(--gold)">veux-tu qu’on raconte ensuite ?</div>
+  <div class="a" id="ocom" style="width:860px;padding:28px 36px;border-radius:30px;background:var(--cream);color:var(--earth);font-weight:800;font-size:38px;box-shadow:0 30px 70px rgba(0,0,0,.5)">💬 Dis-le en commentaire 👇</div>
+  <div class="a" id="osrc" style="width:860px;padding:26px 34px;border-radius:26px;border:2px solid rgba(255,244,226,.2);background:rgba(255,244,226,.05)">
+    <div style="font-weight:900;font-size:24px;letter-spacing:5px;color:var(--gold);margin-bottom:12px">SOURCES</div>
+    <div style="font-weight:700;font-size:24px;line-height:1.6;color:#e5d8c4">• Le Pays / Maliweb.net (26 mai 2016)<br>• L’Alternance / Bamada.net<br>• groupetoguna.com</div>
+  </div>
+  <div class="a h" id="o3" style="font-size:40px;font-weight:800;color:#ddd">Abonne-toi pour l’épisode 2</div>
+  <div class="a h" id="o4" style="font-size:54px"><span style="display:inline-block;padding:2px 26px 10px;border-radius:20px;background:var(--gr);color:#07070C">@sogobacreative</span></div>
+</div>
+
+<svg id="band2" viewBox="0 0 1080 30"></svg>
+<div id="tl"></div>
+<div id="src"></div>
+<canvas id="dust" width="1080" height="1920"></canvas>
+<div id="flash"></div><div id="vig"></div>
+</div>
+<canvas id="grain" width="360" height="640"></canvas>
+<div id="sig">SOGOBA CRÉATIVE</div>
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const seg=(t,a,b)=>clamp((t-a)/(b-a));
+const EZ={lin:x=>x,outCubic:x=>1-Math.pow(1-x,3),inCubic:x=>x*x*x,inOutCubic:x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,
+ outExpo:x=>x>=1?1:1-Math.pow(2,-10*x),outBack:x=>{const c1=1.7,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)}};
+const E=(t,a,b,e='outExpo')=>EZ[e](seg(t,a,b));
+function tf(el,o){const {x=0,y=0,s=1,r=0,c=true,op}=o;el.style.transform=`translate(${x}px,${y}px)${c?' translate(-50%,-50%)':''} rotate(${r}deg) scale(${s})`;if(op!==undefined)el.style.opacity=op;}
+const words=html=>html.replace(/(<span[^>]*>.*?<\/span>|<b>.*?<\/b>|<br>|\S+)/g,w=>w==='<br>'?w:`<span class="w"><span class="wi">${w}</span></span>`);
+function animW(el,t,t0,stag=.06,dur=.5){el.querySelectorAll('.wi').forEach((w,i)=>{const p=E(t,t0+i*stag,t0+i*stag+dur);w.style.transform=`translateY(${(1-p)*110}%)`})}
+const NS='http://www.w3.org/2000/svg';
+function sv(parent,tag,attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e}
+const draw=(el,p)=>{el.style.strokeDasharray=1;el.style.strokeDashoffset=1-p};
+
+/* ===== timeline (aligned on the voice) ===== */
+const T={h1:.2,h2:3.0,ti:4.6,s1:7.6,s2:13.4,s3:18.6,s4:27.6,s5:34.6,s6:40.4,s7:47.4,s8:55.4,END:61};
+const SC=[['s0',0,T.s1],['s1',T.s1,T.s2],['s2',T.s2,T.s3],['s3',T.s3,T.s4],['s4',T.s4,T.s5],['s5',T.s5,T.s6],['s6',T.s6,T.s7],['s7',T.s7,T.s8],['s8',T.s8,99]];
+const YEARS=[['1989',T.s1],['1994',T.s3],['2006',T.s4],['2009',T.s5],['2016',T.s6]];
+
+/* ===== Dogon-style geometric band ===== */
+(function(){for(const id of ['band','band2']){const b=$(id);const h=id==='band'?44:30;sv(b,'rect',{x:0,y:0,width:1080,height:h,fill:'#2B1A10'});
+ for(let i=0;i<1080/36+1;i++){const x=i*36;sv(b,'path',{d:`M${x} ${h} L${x+18} 4 L${x+36} ${h}`,fill:i%2?'#C8553D':'#D9822B',opacity:.9});
+  sv(b,'rect',{x:x+15,y:h-12,width:6,height:6,fill:'#FFF4E2'})}}})();
+
+/* ===== factory builder ===== */
+function buildFactory(svg,big){
+  const g={};const P=(d,w,col)=>sv(svg,'path',{d,class:'dr',stroke:col||'#FFF4E2','stroke-width':w||6,pathLength:1});
+  g.ground=P('M20 560 L880 560',8,'#D9822B');
+  g.silo1=P('M560 560 L560 260 Q600 220 640 260 L640 560');g.silo2=P('M660 560 L660 220 Q700 180 740 220 L740 560');
+  g.main=P('M120 560 L120 330 L190 270 L260 330 L330 270 L400 330 L470 270 L540 330 L540 560');
+  g.chim=P('M200 300 L200 120 L240 120 L240 300');g.chim2=P('M300 300 L300 160 L330 160 L330 300');
+  g.belt=P('M540 420 L560 420 M640 380 L660 380',6,'#F2B134');
+  g.door=P('M290 560 L290 470 L370 470 L370 560');
+  g.win=[];for(let i=0;i<4;i++){g.win.push(sv(svg,'rect',{x:150+i*95,y:370,width:56,height:50,rx:6,fill:'#F2B134',opacity:0}))}
+  g.smoke=[];for(let i=0;i<7;i++)g.smoke.push(sv(svg,'circle',{cx:220,cy:100,r:20,fill:'rgba(255,244,226,.5)',opacity:0}));
+  g.truck=sv(svg,'g',{opacity:0});sv(g.truck,'rect',{x:0,y:-60,width:150,height:56,rx:6,fill:'#7DBB42'});sv(g.truck,'rect',{x:150,y:-48,width:50,height:44,rx:6,fill:'#5E9A2E'});
+  sv(g.truck,'circle',{cx:30,cy:2,r:14,fill:'#1C120B'});sv(g.truck,'circle',{cx:120,cy:2,r:14,fill:'#1C120B'});sv(g.truck,'circle',{cx:178,cy:2,r:14,fill:'#1C120B'});
+  sv(g.truck,'text',{x:75,y:-24,'text-anchor':'middle','font-family':'Mont','font-weight':900,'font-size':22,fill:'#fff'}).textContent='TOGUNA';
+  return g}
+function animFactory(g,t,t0,dur=2.2){const k=i=>seg(t,t0+i*dur/9,t0+(i+2.5)*dur/9);
+  draw(g.ground,k(0));draw(g.main,k(1));draw(g.chim,k(2));draw(g.chim2,k(2.5));draw(g.silo1,k(3));draw(g.silo2,k(3.6));draw(g.door,k(4));draw(g.belt,k(5));
+  g.win.forEach((w,i)=>{w.setAttribute('opacity',E(t,t0+dur*.8+i*.08,t0+dur*.8+i*.08+.2)*(.75+.25*Math.sin(t*3+i)))});
+  g.smoke.forEach((s,i)=>{const ph=((t-t0-dur*.7)*0.6+i/7)%1;const on=t>t0+dur*.7;s.setAttribute('cy',110-ph*160);s.setAttribute('cx',220+ph*60+Math.sin(ph*6+i)*10);s.setAttribute('r',16+ph*34);s.setAttribute('opacity',on?(1-ph)*.55:0)});
+  const tp=seg(t,t0+dur*.9,t0+dur*.9+2.5);g.truck.setAttribute('opacity',tp>0&&tp<1?1:0);g.truck.setAttribute('transform',`translate(${lerp(-220,900,EZ.inOutCubic(tp))},556)`)}
+const F1=buildFactory($('fac')),F2=buildFactory($('fac2'));
+
+/* ===== cliff (Bandiagara escarpment) with granaries ===== */
+(function(){const s=$('cliff');sv(s,'path',{d:'M0 560 L0 300 L80 280 L130 220 L210 210 L260 160 L380 150 L430 120 L560 110 L640 150 L720 140 L800 190 L900 200 L960 250 L1080 260 L1080 560 Z',fill:'#5A3420'});
+ sv(s,'path',{d:'M0 560 L0 380 L120 360 L260 330 L420 320 L600 300 L760 330 L900 350 L1080 370 L1080 560 Z',fill:'#7A4426'});
+ for(let i=0;i<9;i++){const x=150+i*90+(i%2)*20,y=270+(i%3)*24;sv(s,'rect',{x,y,width:40,height:50,fill:'#A8643A'});sv(s,'path',{d:`M${x-6} ${y} L${x+20} ${y-34} L${x+46} ${y} Z`,fill:'#C8A060'})}
+ sv(s,'path',{d:'M0 560 L0 470 L1080 450 L1080 560 Z',fill:'#3C2416'});})();
+
+/* ===== flow arrows ===== */
+const FL=[sv($('flow'),'path',{d:'M325 150 L415 150',class:'dr',stroke:'#F2B134','stroke-width':10,pathLength:1}),sv($('flow'),'path',{d:'M665 150 L755 150',class:'dr',stroke:'#F2B134','stroke-width':10,pathLength:1})];
+const FLh=[sv($('flow'),'path',{d:'M395 132 L420 150 L395 168',class:'dr',stroke:'#F2B134','stroke-width':10}),sv($('flow'),'path',{d:'M735 132 L760 150 L735 168',class:'dr',stroke:'#F2B134','stroke-width':10})];
+const coins=[];for(let i=0;i<4;i++)coins.push(sv($('flow'),'circle',{r:14,fill:'#F2B134',opacity:0}));
+
+/* ===== map ===== */
+const C={
+ mali:[[-12.2,14.7],[-11.4,15.6],[-10.7,15.1],[-9.4,15.4],[-5.5,15.5],[-5.3,16.3],[-6.5,24.9],[-4.9,25],[1.2,21.1],[1.8,20.6],[3.2,19.8],[4.2,19.1],[4.3,16.9],[3.6,15.6],[0.4,14.9],[-0.5,15.1],[-1.1,14.97],[-2,14.2],[-3,13.6],[-4.3,13.2],[-5.4,10.4],[-6,10.2],[-7,10.2],[-8,10.2],[-8.3,11],[-8.8,12],[-9.6,12.2],[-10.5,11.9],[-11.4,12.4],[-11.6,13.4]],
+ senegal:[[-17.5,14.7],[-16.7,12.4],[-15.6,12.6],[-13.7,12.6],[-12.4,12.4],[-11.6,13.4],[-12.2,14.7],[-14,16.6],[-16.5,16.2]],
+ cotedivoire:[[-8,10.2],[-6,10.2],[-5.4,10.4],[-4.7,9.8],[-3,9.9],[-2.6,8.2],[-3.2,6.3],[-2.9,5.1],[-4.6,5.2],[-7.5,4.4],[-7.6,5.6],[-8.6,6.5],[-8.4,7.7],[-8.2,8.5],[-7.9,10]],
+ burkina:[[-5.4,10.4],[-4.3,13.2],[-3,13.6],[-2,14.2],[-1.1,14.97],[-0.5,15.1],[0.4,14.9],[1.3,13.3],[2.4,12.2],[1,11],[-0.1,11.1],[-2.9,11],[-4.7,9.8]],
+ guinee:[[-13.7,12.6],[-12.4,12.4],[-11.4,12.4],[-10.5,11.9],[-9.6,12.2],[-8.8,12],[-8.3,11],[-8,10.2],[-7.9,10],[-8.2,8.5],[-9.3,7.4],[-10.3,8.5],[-10.7,9.3],[-12.4,9.9],[-13.3,9.5],[-14.7,10.7],[-15.1,11]],
+ niger:[[0.4,14.9],[3.6,15.6],[4.3,16.9],[4.2,19.1],[5.8,19.4],[11.9,23.5],[14,23],[15.9,20.4],[15.5,16],[13.6,13.7],[12.3,13.1],[9,12.8],[4.1,13.5],[3.6,11.7],[2.4,12.2],[1.3,13.3]],
+ mauritanie:[[-17,21.4],[-13,21.3],[-13.1,22.8],[-12,23.5],[-12,26],[-8.7,27.3],[-4.9,25],[-6.5,24.9],[-5.3,16.3],[-5.5,15.5],[-9.4,15.4],[-10.7,15.1],[-11.4,15.6],[-12.2,14.7],[-14,16.6],[-16.5,16.2],[-16.1,18],[-16.5,19.6]],
+ benin:[[2.4,12.2],[3.6,11.7],[3.8,10.4],[2.7,9],[2.7,6.3],[1.6,6.2],[1.6,9],[1,11]],
+ sierraleone:[[-13.3,9.5],[-12.4,9.9],[-10.7,9.3],[-10.3,8.5],[-11.4,6.9],[-13.2,8]],
+ gambie:[[-16.8,13.6],[-13.8,13.5],[-13.8,13.2],[-16.7,13.1]],
+ ghana:[[-2.9,11],[-0.1,11.1],[0,10.6],[0.4,8.3],[1.2,6.1],[-2,4.7],[-2.9,5.1],[-3.2,6.3],[-2.6,8.2],[-2.6,9.8]],
+ togo:[[-0.1,11.1],[1,11],[1.6,9],[1.6,6.2],[1.2,6.1],[0.4,8.3],[0,10.6]],
+ liberia:[[-11.4,6.9],[-10.3,8.5],[-9.3,7.4],[-8.6,6.5],[-7.6,5.6],[-7.5,4.4],[-9,5]],
+ nigeria:[[3.6,11.7],[4.1,13.5],[9,12.8],[12.3,13.1],[13.6,13.7],[14.6,11.5],[13.3,9],[12.2,7],[9.6,5],[8.5,4.5],[5.9,4.3],[4.5,6.3],[2.7,6.3],[2.7,9],[3.8,10.4]],
+ guineebissau:[[-16.7,12.4],[-15.1,11],[-13.7,12.6],[-15.6,12.6]]};
+const K=28,pj=([lo,la])=>[(lo+18)*K,(27-la)*K];
+const ptsStr=a=>a.map(p=>pj(p).join(',')).join(' ');
+const centroid=a=>{let x=0,y=0;a.forEach(p=>{const q=pj(p);x+=q[0];y+=q[1]});return [x/a.length,y/a.length]};
+function buildMap(svg){const m={};for(const k in C)m[k]=sv(svg,'polygon',{points:ptsStr(C[k]),fill:'#3A281B',stroke:'#1C120B','stroke-width':3});return m}
+const M2=buildMap($('map')),M5=buildMap($('mali')),M6=buildMap($('wa'));
+const BKO=pj([-8,12.65]),TIL=pj([0.3,17.2]);
+const ar2=[['cotedivoire',[-5.3,7.2]],['senegal',[-15.4,14.6]]].map(([k,ll])=>{const a=pj(ll);const d=`M${a[0]} ${a[1]} Q${(a[0]+BKO[0])/2} ${Math.min(a[1],BKO[1])-120} ${BKO[0]} ${BKO[1]}`;
+  return {k,p:sv($('map'),'path',{d,class:'dr',stroke:'#F2B134','stroke-width':8,'stroke-dasharray':'1','pathLength':1}),dot:sv($('map'),'circle',{r:12,fill:'#FFF4E2',opacity:0}),d}});
+const bko2=sv($('map'),'circle',{cx:BKO[0],cy:BKO[1],r:14,fill:'#F2B134'});
+const lb2=sv($('map'),'text',{x:BKO[0]+22,y:BKO[1]+10,'font-family':'Mont','font-weight':900,'font-size':30,fill:'#FFF4E2'});lb2.textContent='Bamako';
+const mineDot=sv($('mali'),'circle',{cx:TIL[0],cy:TIL[1],r:16,fill:'#F2B134'});const minePulse=sv($('mali'),'circle',{cx:TIL[0],cy:TIL[1],r:16,fill:'none',stroke:'#F2B134','stroke-width':5});
+const facDot=sv($('mali'),'circle',{cx:BKO[0],cy:BKO[1],r:14,fill:'#7DBB42'});
+const mineLine=sv($('mali'),'path',{d:`M${TIL[0]} ${TIL[1]} Q${(TIL[0]+BKO[0])/2+40} ${(TIL[1]+BKO[1])/2+60} ${BKO[0]} ${BKO[1]}`,class:'dr',stroke:'#F2B134','stroke-width':8,'stroke-dasharray':'1',pathLength:1});
+const lbB=sv($('mali'),'text',{x:BKO[0]-40,y:BKO[1]+50,'font-family':'Mont','font-weight':900,'font-size':28,fill:'#FFF4E2'});lbB.textContent='🏭 Usine · Bamako';
+const CL6=['burkina','cotedivoire','niger','senegal','benin','guinee','sierraleone','gambie','mauritanie'];
+const dots6=CL6.map(k=>{const c=centroid(C[k]);const l=sv($('wa'),'path',{d:`M${BKO[0]} ${BKO[1]} L${c[0]} ${c[1]}`,class:'dr',stroke:'#F2B134','stroke-width':4,'stroke-dasharray':'1',pathLength:1});return {k,l,c:sv($('wa'),'circle',{cx:c[0],cy:c[1],r:10,fill:'#FFF4E2',opacity:0})}});
+const bko6=sv($('wa'),'circle',{cx:BKO[0],cy:BKO[1],r:16,fill:'#7DBB42'});
+
+/* ===== toguna shelter ===== */
+const TG={pil:[],roof:[],sage:[]};(function(){const s=$('tog');
+ for(let i=0;i<8;i++){const x=110+i*95;const g=sv(s,'g',{});sv(g,'path',{d:`M${x} 500 L${x} 300 L${x+34} 300 L${x+34} 500 Z`,fill:'#8A5A30',stroke:'#4A2E16','stroke-width':4});
+  sv(g,'path',{d:`M${x+6} 340 L${x+28} 360 L${x+6} 380 M${x+6} 410 L${x+28} 430 L${x+6} 450`,fill:'none',stroke:'#4A2E16','stroke-width':4});TG.pil.push(g)}
+ for(let r=0;r<9;r++){const y=300-r*24;const w=440-r*6;const d=`M${450-w} ${y} `+Array.from({length:30},(_,i)=>`L${450-w+i*(2*w/29)} ${y-14-((i*37+r*11)%9)*2}`).join(' ')+` L${450+w} ${y} Z`;
+  TG.roof.push(sv(s,'path',{d,fill:r%2?'#B8894A':'#9A6E38',stroke:'#6E4A22','stroke-width':3}))}
+ for(let i=0;i<4;i++){const x=230+i*140;const g=sv(s,'g',{opacity:0});sv(g,'circle',{cx:x,cy:420,r:22,fill:'#1C120B'});sv(g,'path',{d:`M${x-34} 500 Q${x-30} 445 ${x} 445 Q${x+30} 445 ${x+34} 500 Z`,fill:'#1C120B'});TG.sage.push(g)}
+ sv(s,'path',{d:'M20 500 L880 500',stroke:'#D9822B','stroke-width':8});})();
+const BUMP=sv($('bumpy'),'path',{d:'M20 200 L120 150 L170 210 L250 120 L300 190 L380 140 L420 230 L500 110 L560 170 L640 80 L700 140 L780 50 L880 30',class:'dr',stroke:'#C8553D','stroke-width':10,pathLength:1});
+const BUMPd=sv($('bumpy'),'circle',{r:16,fill:'#FFF4E2'});
+
+/* ===== timeline ===== */
+$('tl').innerHTML='<div style="position:absolute;left:0;right:0;top:14px;height:4px;background:#3a2a1e"></div><div id="tlf" style="position:absolute;left:0;top:14px;height:4px;width:0;background:#F2B134"></div>'+
+ YEARS.map(([y],i)=>`<div class="tld" style="left:${i*225}px"><div class="d"></div><div class="y">${y}</div></div>`).join('');
+
+/* ===== dust particles ===== */
+const dctx=$('dust').getContext('2d');const PRT=Array.from({length:70},(_,i)=>({x:(i*733)%1080,y:(i*1291)%1920,s:1+(i*7)%4,v:8+(i*13)%22,ph:i}));
+function dust(t){dctx.clearRect(0,0,1080,1920);dctx.fillStyle='rgba(242,177,52,.55)';PRT.forEach(p=>{const y=(p.y-t*p.v+1920*4)%1920,x=p.x+Math.sin(t*.7+p.ph)*20;dctx.globalAlpha=.25+.25*Math.sin(t*2+p.ph);dctx.beginPath();dctx.arc(x,y,p.s,0,7);dctx.fill()})}
+const gctx=$('grain').getContext('2d');const gimg=gctx.createImageData(360,640);
+function grain(f){let s=(f*7919+13)%2147483647||1;const d=gimg.data;for(let i=0;i<d.length;i+=4){s=(s*16807)%2147483647;const v=s&255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255}gctx.putImageData(gimg,0,0)}
+
+['h_c1','h_c1b','h_c2','c1','c2','c3','c3b','c4','c5','l_1','l_2','l_3','o1','o2','o3','t_n','t_a'].forEach(id=>$(id).innerHTML=words($(id).innerHTML));
+
+function render(t,frame){
+  /* scene visibility with crossfade */
+  SC.forEach(([id,a,b])=>{const on=t>=a-.05&&t<b+.35;const el=$(id);el.style.display=on?'block':'none';if(on)el.style.opacity=E(t,a-.05,a+.3,'outCubic')*(1-seg(t,b-.05,b+.35))});
+  const sOn=t>=T.s1&&t<T.s8;$('tl').style.opacity=E(t,T.s1,T.s1+.6)*(1-seg(t,T.s7-.4,T.s7));
+  let yi=-1;YEARS.forEach(([,a],i)=>{if(t>=a)yi=i});$('tlf').style.width=(yi<0?0:yi*225+ (yi<4?225*clamp((t-YEARS[yi][1])/((YEARS[yi+1]||[0,T.s7])[1]-YEARS[yi][1])):0))+'px';
+  [...$('tl').querySelectorAll('.tld')].forEach((d,i)=>{const on=i<=yi,cur=i===yi;d.querySelector('.d').style.background=on?'#F2B134':'#3a2a1e';d.querySelector('.d').style.borderColor=on?'#F2B134':'#5a4636';
+    d.querySelector('.y').style.color=cur?'#FFF4E2':on?'#F2B134':'#7a6656';d.style.transform=`scale(${cur?1.25:1})`;});
+  $('series').style.opacity=E(t,T.ti,T.ti+.5)*(1-seg(t,T.s8-.3,T.s8));tf($('series'),{c:false,y:lerp(-60,0,E(t,T.ti,T.ti+.6))});
+  $('sun').style.opacity=.35+.25*E(t,T.s1,T.s1+1)*(t<T.s3?1:.6);tf($('sun'),{c:false,y:Math.sin(t*.3)*10});
+  const flash=(a)=>Math.max(0,1-Math.abs(t-a)/.18)*.8;$('flash').style.opacity=Math.max(flash(T.h2),flash(T.ti),flash(T.s4+2.5),flash(T.s6))*.6;
+  const shake=Math.max(0,1-Math.abs(t-T.s4-2.5)/.3)*10;$('stage').style.transform=`translate(${Math.sin(t*90)*shake}px,${Math.cos(t*77)*shake}px)`;
+  const SRC=[[T.s1,T.s3,'Source : L’Alternance / Bamada.net'],[T.s3,T.s5,'Sources : Maliweb / Le Pays · Bamada · groupetoguna.com'],[T.s5,T.s6,'Source : Le Pays / Maliweb (2016)']];
+  const sr=SRC.find(([a,b])=>t>=a&&t<b);$('src').textContent=sr?sr[2]:'';
+
+  /* S0 hook */
+  if(t<T.s1+.4){const h=T.h1;
+    tf($('h_yr'),{x:540,y:560,s:lerp(1.3,1,E(t,h,h+.8)),op:E(t,h,h+.4)*(1-seg(t,T.h2-.2,T.h2+.2))*.9});
+    const drop=E(t,h+.1,h+.7,'outBack');tf($('sack'),{x:540,y:lerp(-400,900,drop)+Math.sin(t*4)*6,r:lerp(-25,-4,drop),s:(1-E(t,T.h2-.3,T.h2+.2,'inCubic')*.9),op:1-seg(t,T.h2-.1,T.h2+.2)});
+    animW($('h_c1'),t,h+.3,.07,.5);animW($('h_c1b'),t,h+1.2,.07,.5);[$('h_c1'),$('h_c1b')].forEach(e=>e.style.opacity=1-seg(t,T.h2-.3,T.h2));
+    const fOn=t>=T.h2-.2;$('fac').style.display=fOn?'block':'none';if(fOn){tf($('fac'),{x:540,y:860,s:.95,op:1-seg(t,T.ti-.2,T.ti+.2)});animFactory(F1,t,T.h2-.1,1.6)}
+    $('h_c2').style.display=t>=T.h2?'block':'none';animW($('h_c2'),t,T.h2+.1,.08,.5);$('h_c2').style.opacity=1-seg(t,T.ti-.2,T.ti);
+    const ti=t>=T.ti;['t_k','t_n','t_a','t_t'].forEach(id=>$(id).style.display=ti?'block':'none');
+    if(ti){tf($('t_k'),{c:false,y:560,op:E(t,T.ti+.1,T.ti+.5)});animW($('t_n'),t,T.ti+.15,.08,.5);tf($('t_n'),{c:false,y:620});animW($('t_a'),t,T.ti+.5,.06,.4);tf($('t_a'),{c:false,y:740});
+      tf($('t_t'),{x:540,y:900,s:E(t,T.ti+.7,T.ti+1.3,'outBack')*(1+.01*Math.sin(t*5)),r:-2})}}
+
+  /* S1 1989 */
+  if(t>=T.s1-.1&&t<T.s2+.4){const a=T.s1;
+    tf($('cliff'),{c:false,x:0,y:lerp(1300,560,E(t,a,a+1.2,'outCubic'))});
+    tf($('y1'),{x:540,y:420,s:lerp(1.4,1,E(t,a,a+.7)),op:E(t,a,a+.4)});
+    tf($('dogon'),{x:540,y:620,s:E(t,a+.9,a+1.3,'outBack')});
+    const nodes=['n1','n2','n3'];nodes.forEach((n,i)=>tf($(n),{x:200+i*340,y:1130,s:E(t,a+1.6+i*.35,a+2.0+i*.35,'outBack')}));
+    draw(FL[0],E(t,a+2.3,a+2.8));draw(FL[1],E(t,a+3.0,a+3.5));FLh[0].style.opacity=seg(t,a+2.7,a+2.8);FLh[1].style.opacity=seg(t,a+3.4,a+3.5);tf($('flow'),{c:false,y:980});
+    coins.forEach((c,i)=>{const ph=((t-a-3.6)*.5+i/4)%1;const on=t>a+3.6;c.setAttribute('cx',lerp(760,330,ph));c.setAttribute('cy',150+Math.sin(ph*Math.PI)*-60);c.setAttribute('opacity',on?Math.sin(ph*Math.PI):0)});
+    animW($('c1'),t,a+2.0,.06,.45);}
+
+  /* S2 map */
+  if(t>=T.s2-.1&&t<T.s3+.4){const a=T.s2;const zm=E(t,a,a+1.2,'outCubic');
+    tf($('map'),{x:540,y:900,s:lerp(1.4,1.05,zm),op:zm});
+    for(const k in M2){M2[k].setAttribute('fill',k==='mali'?'#D9822B':(k==='cotedivoire'||k==='senegal')&&t>a+1.6?'#7A5A3C':'#3A281B')}
+    ar2.forEach((r,i)=>{const p=E(t,a+1.8+i*.6,a+2.8+i*.6,'inOutCubic');draw(r.p,p);const L=r.p.getTotalLength?r.p.getTotalLength():0;
+      const q=((t-a-3.2-i*.3)*.45)%1;if(t>a+3.2&&L){const pt=r.p.getPointAtLength(q*L);r.dot.setAttribute('cx',pt.x);r.dot.setAttribute('cy',pt.y);r.dot.setAttribute('opacity',Math.sin(q*Math.PI))}else r.dot.setAttribute('opacity',0)});
+    bko2.setAttribute('r',14+4*Math.sin(t*5));
+    animW($('c2'),t,a+.4,.07,.45);tf($('c2b'),{x:540,y:1560,s:E(t,a+1.9,a+2.3,'outBack')});}
+
+  /* S3 1994 */
+  if(t>=T.s3-.1&&t<T.s4+.4){const a=T.s3,bt=a+5.6;
+    tf($('y3'),{x:540,y:420,s:lerp(1.4,1,E(t,a,a+.7)),op:E(t,a,a+.4)*(1-seg(t,bt-.3,bt))});
+    tf($('logo94'),{x:540,y:600,s:E(t,a+.4,a+.9,'outBack')*(1-seg(t,bt-.3,bt)),r:-2});
+    TG.pil.forEach((p,i)=>{const k=E(t,a+.8+i*.06,a+1.2+i*.06,'outBack');p.setAttribute('transform',`translate(0 ${(1-k)*300})`);p.setAttribute('opacity',clamp(k))});
+    TG.roof.forEach((r,i)=>{const k=E(t,a+1.4+i*.09,a+1.8+i*.09,'outCubic');r.setAttribute('transform',`translate(0 ${-(1-k)*500})`);r.setAttribute('opacity',clamp(k*2))});
+    TG.sage.forEach((g,i)=>g.setAttribute('opacity',E(t,a+2.6+i*.15,a+3.0+i*.15)));
+    tf($('tog'),{x:540,y:980,s:.95*(1-seg(t,bt-.3,bt)*.4),op:1-seg(t,bt-.3,bt)});
+    $('c3').style.opacity=1-seg(t,bt-.3,bt);animW($('c3'),t,a+1.6,.05,.45);
+    const bon=t>=bt-.1;$('bumpy').style.display=bon?'block':'none';$('c3b').style.display=bon?'block':'none';
+    if(bon){const p=E(t,bt,bt+2.2,'lin');draw(BUMP,p);const L=BUMP.getTotalLength();const pt=BUMP.getPointAtLength(p*L);BUMPd.setAttribute('cx',pt.x);BUMPd.setAttribute('cy',pt.y);
+      tf($('bumpy'),{x:540,y:900,op:E(t,bt,bt+.3)});animW($('c3b'),t,bt+.1,.07,.45);tf($('c3b'),{c:false,x:0,y:-160})}}
+
+  /* S4 2006 */
+  if(t>=T.s4-.1&&t<T.s5+.4){const a=T.s4,bang=a+2.5;
+    tf($('y4'),{x:540,y:420,s:lerp(1.4,1,E(t,a,a+.7)),op:E(t,a,a+.4)});
+    [['b1',290,760,-6],['b2',800,880,5],['b3',300,1040,4],['b4',780,1180,-5]].forEach(([id,x,y,r],i)=>{const p=E(t,a+.5+i*.3,a+.85+i*.3,'outBack');const out=E(t,bang,bang+.4,'inCubic');tf($(id),{x:x+(x<540?-1:1)*out*700,y,s:p,r:r+out*30,op:clamp(p*2)*(1-out)})});
+    const sp=E(t,a+1.7,a+2.0,'outBack');tf($('st4'),{x:540,y:960,s:lerp(2.2,1,clamp(sp))*(1-E(t,bang,bang+.3,'inCubic')),r:-8,op:clamp(sp*2)});
+    const fo=t>=bang;$('fac2').style.display=fo?'block':'none';if(fo){tf($('fac2'),{x:540,y:950,s:lerp(.6,.95,E(t,bang,bang+.6,'outBack'))});animFactory(F2,t,bang,2.0)}
+    tf($('ta4'),{c:false,y:1320,op:E(t,bang+1.4,bang+1.8)});tf($('cap4'),{x:540,y:1430,s:E(t,bang+2.4,bang+2.8,'outBack')});
+    animW($('c4'),t,bang+.1,.08,.5);tf($('c4'),{c:false,x:0,y:150});}
+
+  /* S5 2009 mine */
+  if(t>=T.s5-.1&&t<T.s6+.4){const a=T.s5;
+    tf($('y5'),{x:540,y:420,s:lerp(1.4,1,E(t,a,a+.7)),op:E(t,a,a+.4)});
+    const z=E(t,a+.3,a+1.5,'outCubic');tf($('mali'),{x:540+lerp(0,-140,z),y:lerp(1000,1060,z),s:lerp(1.0,1.6,z),op:E(t,a,a+.5)});
+    for(const k in M5)M5[k].setAttribute('fill',k==='mali'?'#D9822B':'#3A281B');
+    minePulse.setAttribute('r',16+((t*1.5)%1)*40);minePulse.setAttribute('opacity',t>a+1.4?1-((t*1.5)%1):0);mineDot.setAttribute('opacity',E(t,a+1.3,a+1.6));
+    draw(mineLine,E(t,a+2.6,a+3.8,'inOutCubic'));facDot.setAttribute('opacity',E(t,a+3.6,a+3.9));lbB.setAttribute('opacity',E(t,a+3.7,a+4.1));
+    tf($('mine'),{x:540,y:640,s:E(t,a+1.5,a+1.9,'outBack')});
+    animW($('c5'),t,a+2.6,.06,.45);tf($('c5'),{c:false,x:0,y:110});}
+
+  /* S6 2016 */
+  if(t>=T.s6-.1&&t<T.s7+.4){const a=T.s6;
+    tf($('y6'),{x:540,y:420,s:lerp(1.4,1,E(t,a,a+.7)),op:E(t,a,a+.4)});
+    const K3=[[a+.9,400000,'k1'],[a+2.4,500,'k2'],[a+3.8,9,'k3']];
+    K3.forEach(([t0,v,id],i)=>{const p=E(t,t0,t0+.45,'outBack');tf($(id),{x:540+(1-clamp(p))*-1100,y:640+i*190});
+      const n=Math.round(E(t,t0,t0+1.2,'outCubic')*v);$(id+'n').textContent=(i===1?'~':'')+n.toLocaleString('fr-FR').replace(/ | /g,' ')});
+    tf($('wa'),{x:540,y:1350,s:.8,op:E(t,a+3.8,a+4.3)});
+    for(const k in M6)M6[k].setAttribute('fill',k==='mali'?'#D9822B':'#3A281B');
+    dots6.forEach((d,i)=>{const p=E(t,a+4.2+i*.18,a+4.6+i*.18);draw(d.l,p);d.c.setAttribute('opacity',p);if(p>0)M6[d.k].setAttribute('fill','#5E8A34')});
+    tf($('src6'),{c:false,y:1640,op:E(t,a+1,a+1.5)});}
+
+  /* S7 lesson */
+  if(t>=T.s7-.1&&t<T.s8+.4){const a=T.s7;
+    tf($('l_t'),{c:false,y:250,op:E(t,a,a+.4)});
+    [['l_1',a+.8],['l_2',a+1.9],['l_3',a+3.6]].forEach(([id,t0],i)=>{animW($(id),t,t0,.06,.45);tf($(id),{c:false,y:330+i*90})});
+    ['sp1','sp2','sp3'].forEach((id,i)=>{const p=E(t,a+3.8+i*.5,a+4.3+i*.5,'outBack');$(id).style.transform=`scaleY(${p})`;$(id).style.transformOrigin='bottom';$(id).style.opacity=clamp(p*2)});
+    tf($('stairs'),{x:540,y:1260});
+    const pos=[[140,1260-200-90],[450,1260-360-90],[760,1260-540-90]].map(([x,y])=>[x+90,y+280]);
+    let cx=pos[0][0],cy=pos[0][1];for(let i=0;i<3;i++){const t0=a+4.0+i*.5;if(t>=t0){cx=pos[i][0];cy=pos[i][1];if(i<2){const hp=seg(t,t0+.5,t0+.9);if(hp>0){cx=lerp(pos[i][0],pos[i+1][0],hp);cy=lerp(pos[i][1],pos[i+1][1],hp)-Math.sin(hp*Math.PI)*120}}}}
+    tf($('climber'),{x:cx,y:cy,s:E(t,a+4.0,a+4.3,'outBack'),op:E(t,a+4,a+4.2)});}
+
+  /* S8 outro */
+  if(t>=T.s8-.1){const o=T.s8;
+    animW($('o1'),t,o,.06,.45);animW($('o2'),t,o+.4,.06,.45);tf($('o1'),{c:false,y:300});tf($('o2'),{c:false,y:390});
+    tf($('ocom'),{x:540,y:620,s:E(t,o+1.2,o+1.7,'outBack')*(1+.02*Math.sin((t-o)*7))});
+    tf($('osrc'),{x:540,y:930,op:E(t,o+2,o+2.5),s:lerp(.9,1,E(t,o+2,o+2.5))});
+    animW($('o3'),t,o+2.6,.05,.45);tf($('o3'),{c:false,y:1180});tf($('o4'),{x:540,y:1300,s:E(t,o+3.0,o+3.5,'outBack')});}
+
+  dust(t);grain(frame);
+}
+window.render=render;window.ready=document.fonts.ready;
+</script>
+</body>
+</html>
