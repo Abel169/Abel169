@@ -14,19 +14,20 @@ N = len(m); fx = fx[:N]
 
 # (start, end) in the voice file -> position in the video (s)
 LINES = [
-    ((0.00, 1.77), 0.2),     # « Une simple capture d'écran… »
-    ((2.07, 2.95), 3.2),     # « prend du mouvement… »             -> MOUVEMENT
-    ((3.03, 4.91), 5.4),     # « et devient une pub qui donne envie ! » -> PUB
-    ((5.19, 6.89), 8.6),     # « Ça, c'est Sogoba Créative. »
-    ((7.11, 10.58), 11.6),   # « Spots publicitaires, présentations d'applis, tutoriels, campagnes… »
-    ((10.83, 12.08), 22.9),  # « je donne vie à tes idées. »
-    ((12.47, 14.53), 24.2),  # « Ton produit est bon… mais personne ne le voit ? »
-    ((14.92, 18.83), 30.3),  # « Trois offres de lancement… dès vingt mille francs ! »
-    ((19.13, 22.40), 35.4),  # « Livraison en 48 h, voix off incluse, paiement Orange Money. »
-    ((22.68, 23.53), 39.9),  # « Écris-moi sur WhatsApp : »
-    ((23.79, 27.74), 40.75), # « +223 64 97 57 93 »
-    ((27.99, 29.06), 44.7),  # « Sogoba Créative… »
-    ((29.29, 30.43), 45.75), # « à toi de briller ! »
+    ((0.00, 2.25), 0.2),     # « Tes clients t'écrivent encore sur ton WhatsApp perso ? »
+    ((2.50, 4.50), 2.4),     # « Passe au WhatsApp Business, c'est gratuit ! »
+    ((4.70, 5.42), 4.3),     # « Étape un : »
+    ((5.55, 8.50), 4.95),    # « télécharge WhatsApp Business… »
+    ((8.68, 9.46), 9.6),     # « Étape deux : »
+    ((9.58, 12.42), 10.3),   # « entre ton numéro, puis le code… »
+    ((12.60, 13.36), 16.1),  # « Étape trois : »
+    ((13.48, 16.35), 16.8),  # « ajoute le nom de ta boutique… »
+    ((16.53, 17.38), 22.6),  # « Étape quatre : »
+    ((17.46, 20.90), 23.35), # « complète ta fiche… »
+    ((21.12, 21.98), 29.1),  # « Étape cinq : »
+    ((22.06, 25.41), 29.9),  # « active le message d'accueil… »
+    ((25.55, 27.52), 36.2),  # « Et voilà, ton commerce a l'air pro ! »
+    ((27.63, 30.32), 38.2),  # « Enregistre la vidéo… »
 ]
 
 v = sosfilt(butter(2, 90, 'high', fs=SR, output='sos'), v)
